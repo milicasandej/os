@@ -5,6 +5,24 @@
 
 #include "../lib/hw.h"
 
+#define READ_REG(var, regname) __asm__ volatile("mv %0, " regname: "=r"(var))
+#define WRITE_REG(regname, val) __asm__ volatile("mv " regname ", %0" :: "r"(val))
+
+namespace Num{
+    constexpr uint8 SCALL_MEM_ALLOC = 0x01;
+    constexpr uint8 SCALL_MEM_FREE = 0x02;
+    constexpr uint8 SCALL_MEM_GET_FREE_SPACE = 0x03;
+    constexpr uint8 SCALL_MEM_GET_LARGEST_FREE_BLOCK = 0x04;
+    constexpr uint8 SCALL_THREAD_CREATE= 0x11;
+    constexpr uint8 SCALL_THREAD_EXIT = 0x12;
+    constexpr uint8 SCALL_THREAD_DISPATCH = 0x13;
+    constexpr uint8 SCALL_SEM_OPEN = 0x21;
+    constexpr uint8 SCALL_SEM_CLOSE = 0x22;
+    constexpr uint8 SCALL_SEM_WAIT = 0x23;
+    constexpr uint8 SCALL_SEM_SIGNAL = 0x24;
+}
+
+
 class Riscv
 {
 public:

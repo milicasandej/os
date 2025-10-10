@@ -7,10 +7,10 @@
 #include "scheduler.hpp"
 
 // Thread Control Block
-class TCB
+class _thread
 {
 public:
-    ~TCB() { delete[] stack; }
+    ~_thread() { delete[] stack; }
 
     bool isFinished() const { return finished; }
 
@@ -20,20 +20,20 @@ public:
 
     using Body = void (*)();
 
-    static TCB *createThread(Body body);
+    static _thread *createThread(Body body, void* args);
 
     static void yield();
 
-    static TCB *running;
+    static _thread *running;
 
 private:
-    TCB(Body body, uint64 timeSlice) :
+    _thread(Body body, void* args) :
             body(body),
+            args(args),
             stack(body != nullptr ? new uint64[STACK_SIZE] : nullptr),
             context({(uint64) &threadWrapper,
                      stack != nullptr ? (uint64) &stack[STACK_SIZE] : 0
                     }),
-            timeSlice(timeSlice),
             finished(false)
     {
         if (body != nullptr) { Scheduler::put(this); }
@@ -46,6 +46,7 @@ private:
     };
 
     Body body;
+    void* args;
     uint64 *stack;
     Context context;
     uint64 timeSlice;

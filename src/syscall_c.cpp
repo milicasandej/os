@@ -3,10 +3,9 @@
 //
 
 #include "../h/syscall_c.hpp"
+#include "../h/riscv.hpp"
 #include "../lib/mem.h"
 
-#define READ_REG(var, regname) __asm__ volatile("mv %0, " regname: "=r"(var))
-#define WRITE_REG(regname, val) __asm__ volatile("mv " regname ", %0" :: "r"(val))
 
 void* mem_alloc(size_t size){
     return __mem_alloc(size); //TODO
@@ -25,42 +24,78 @@ int mem_free(void* ptr){
 //}
 
 int thread_create(thread_t* handle, void(*start_routine)(void*), void* arg){
+    uint64 r0, r1, r2;
+    READ_REG(r0, "a0");
+    READ_REG(r1, "a1");
+    READ_REG(r2, "a2");
+
     void* stack = mem_alloc(DEFAULT_STACK_SIZE);
 
+    WRITE_REG("a0", r0);
+    WRITE_REG("a1", r1);
+    WRITE_REG("a2", r2);
     WRITE_REG("a3", (uint64)stack + DEFAULT_STACK_SIZE);
     WRITE_REG("a7", Num::SCALL_THREAD_CREATE);
 
     __asm__ volatile("ecall");
 
-    volatile uint64 ret;
+    int ret;
     READ_REG(ret, "a0");
     return ret;
 }
 
 int thread_exit(){
-    return -1;
+    WRITE_REG("a7", Num::SCALL_THREAD_EXIT);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 void thread_dispatch(){
-    return;
+    WRITE_REG("a7", Num::SCALL_THREAD_DISPATCH);
+
+    __asm__ volatile("ecall");
 }
 
 int sem_open(sem_t* handle, unsigned init){
-    //TODO
-    return -1;
+    WRITE_REG("a7", Num::SCALL_SEM_OPEN);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 int sem_close(sem_t handle) {
-    //TODO
-    return -1;
+    WRITE_REG("a7", Num::SCALL_SEM_CLOSE);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 int sem_wait(sem_t id){
-    //TODO
-    return -1;
+    WRITE_REG("a7", Num::SCALL_SEM_WAIT);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 int sem_signal(sem_t id){
-    //TODO
-    return -1;
+    WRITE_REG("a7", Num::SCALL_SEM_SIGNAL);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
