@@ -7,6 +7,7 @@
 
 using namespace Num;
 
+
 void Riscv::popSppSpie()
 {
     __asm__ volatile("csrw sepc, ra");
@@ -35,16 +36,22 @@ void Riscv::handleSupervisorTrap()
                 case SCALL_MEM_GET_LARGEST_FREE_BLOCK:
                     break;
                 case SCALL_THREAD_CREATE: {
-                    uint64 param1, param2, param3;
-                    READ_REG(param1, "a0");
-                    READ_REG(param2, "a1");
-                    READ_REG(param3, "a2");
-
+                    thread_t* handle;
+                    _thread::Body body;
+                    void* args;
+                    READ_REG(handle, "a0");
+                    READ_REG(body, "a1");
+                    READ_REG(args, "a2");
+                    *handle = _thread::createThread(body, args);
+                    if(*handle != nullptr) ret = 0;
+                    else ret = -1;
                     break;
                 }
                 case SCALL_THREAD_EXIT:
+                    ret = _thread::exitThread();
                     break;
                 case SCALL_THREAD_DISPATCH:
+                    _thread::dispatch();
                     break;
                 case SCALL_SEM_OPEN:
                     break;
@@ -60,6 +67,7 @@ void Riscv::handleSupervisorTrap()
             WRITE_REG("a0", ret);
             w_sstatus(sstatus);
             w_sepc(sepc);
+            break;
         }
         case 0x8000000000000001UL:
             mc_sip(SIP_SSIP);

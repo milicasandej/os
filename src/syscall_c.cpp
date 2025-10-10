@@ -5,6 +5,7 @@
 #include "../h/syscall_c.hpp"
 #include "../h/riscv.hpp"
 #include "../lib/mem.h"
+#include "../lib/console.h"
 
 
 void* mem_alloc(size_t size){
@@ -24,17 +25,6 @@ int mem_free(void* ptr){
 //}
 
 int thread_create(thread_t* handle, void(*start_routine)(void*), void* arg){
-    uint64 r0, r1, r2;
-    READ_REG(r0, "a0");
-    READ_REG(r1, "a1");
-    READ_REG(r2, "a2");
-
-    void* stack = mem_alloc(DEFAULT_STACK_SIZE);
-
-    WRITE_REG("a0", r0);
-    WRITE_REG("a1", r1);
-    WRITE_REG("a2", r2);
-    WRITE_REG("a3", (uint64)stack + DEFAULT_STACK_SIZE);
     WRITE_REG("a7", Num::SCALL_THREAD_CREATE);
 
     __asm__ volatile("ecall");
@@ -98,4 +88,12 @@ int sem_signal(sem_t id){
     int ret;
     READ_REG(ret, "a0");
     return ret;
+}
+
+char getc(){
+    return __getc();
+}
+
+void putc(char c){
+    __putc(c);
 }

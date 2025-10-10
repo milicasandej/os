@@ -5,7 +5,6 @@
 
 _thread *_thread::running = nullptr;
 
-uint64 _thread::timeSliceCounter = 0;
 
 _thread *_thread::createThread(Body body, void* args)
 {
@@ -34,4 +33,10 @@ void _thread::threadWrapper()
     running->body();
     running->setFinished(true);
     _thread::yield();
+}
+
+int _thread::exitThread() {
+    _thread::running->setFinished(true);
+    _thread::dispatch();
+    return 0;
 }

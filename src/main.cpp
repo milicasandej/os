@@ -1,8 +1,11 @@
 
 
-#include "../h/print.hpp"
+#include "../test/printing.hpp"
 #include "../h/syscall_c.hpp"
 #include "../h/riscv.hpp"
+#include "../h/_thread.hpp"
+
+extern void userMain();
 
 void main()
 {
@@ -12,10 +15,12 @@ void main()
     // idle nit
     thread_t idleThread;
     thread_create(&idleThread, nullptr, nullptr);
+    _thread::running = idleThread;
 
     // promena rezima
 
     // uposleno cekanje
 
+    userMain();
     printString("Finished\n");
 }

@@ -6,6 +6,8 @@
 #include "../lib/hw.h"
 #include "scheduler.hpp"
 
+typedef _thread* thread_t;
+
 // Thread Control Block
 class _thread
 {
@@ -16,8 +18,6 @@ public:
 
     void setFinished(bool value) { finished = value; }
 
-    uint64 getTimeSlice() const { return timeSlice; }
-
     using Body = void (*)();
 
     static _thread *createThread(Body body, void* args);
@@ -26,14 +26,17 @@ public:
 
     static _thread *running;
 
+    static int exitThread();
+
 private:
     _thread(Body body, void* args) :
             body(body),
             args(args),
-            stack(body != nullptr ? new uint64[STACK_SIZE] : nullptr),
-            context({(uint64) &threadWrapper,
-                     stack != nullptr ? (uint64) &stack[STACK_SIZE] : 0
-                    }),
+            stack(body != nullptr ? new uint64[DEFAULT_STACK_SIZE] : nullptr),
+            context({
+                (uint64) &threadWrapper,
+                stack != nullptr ? (uint64) &stack[DEFAULT_STACK_SIZE] : 0
+            }),
             finished(false)
     {
         if (body != nullptr) { Scheduler::put(this); }
@@ -60,10 +63,9 @@ private:
 
     static void dispatch();
 
-    static uint64 timeSliceCounter;
 
-    static uint64 constexpr STACK_SIZE = 1024;
-    static uint64 constexpr TIME_SLICE = 2;
+
+
 };
 
 #endif //OS1_VEZBE07_RISCV_CONTEXT_SWITCH_2_INTERRUPT_TCB_HPP
