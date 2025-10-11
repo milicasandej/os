@@ -18,7 +18,7 @@ public:
 
     void setFinished(bool value) { finished = value; }
 
-    using Body = void (*)();
+    using Body = void (*)(void*);
 
     static _thread *createThread(Body body, void* args);
 
