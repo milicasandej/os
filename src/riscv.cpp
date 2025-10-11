@@ -4,6 +4,7 @@
 #include "../h/_thread.hpp"
 #include "../lib/console.h"
 #include "../lib/mem.h"
+#include "../h/_sem.hpp"
 
 using namespace Num;
 
@@ -48,18 +49,34 @@ void Riscv::handleSupervisorTrap()
                     break;
                 }
                 case SCALL_THREAD_EXIT:
-                    _thread::exitThread();
+                    ret = _thread::exitThread();
                     break;
                 case SCALL_THREAD_DISPATCH:
                     _thread::dispatch();
                     break;
                 case SCALL_SEM_OPEN:
+                    sem_t* handle;
+                    uint32 init;
+                    READ_REG(handle, "a0");
+                    READ_REG(init, "a1");
+                    *handle = _sem::createSemaphore(init);
+                    if(*handle != nullptr) ret = 0;
+                    else ret = -1;
                     break;
                 case SCALL_SEM_CLOSE:
+                    sem_t handleClose;
+                    READ_REG(handleClose, "a0");
+                    ret = handleClose->close();
                     break;
                 case SCALL_SEM_WAIT:
+                    sem_t idWait;
+                    READ_REG(idWait, "a0");
+                    ret = idWait->wait();
                     break;
                 case SCALL_SEM_SIGNAL:
+                    sem_t idSignal;
+                    READ_REG(idSignal, "a0");
+                    ret = idSignal->wait();
                     break;
                 default:
                     break;

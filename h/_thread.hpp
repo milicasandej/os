@@ -30,6 +30,12 @@ public:
 
     void setStart(bool b);
 
+    bool isStarted() const { return started; }
+
+    void setBlock(bool b);
+
+    bool isBlocked() const { return blocked; }
+
 private:
     _thread(Body body, void* args) :
             body(body),
@@ -40,7 +46,8 @@ private:
                 stack != nullptr ? (uint64) &stack[DEFAULT_STACK_SIZE] : 0
             }),
             finished(false),
-            started(true)
+            started(true),
+            blocked(false)
     {
             if (body != nullptr) { Scheduler::put(this);}
     }
@@ -56,7 +63,7 @@ private:
     uint64 *stack;
     Context context;
     uint64 timeSlice;
-    bool finished, started;
+    bool finished, started, blocked;
 
     friend class Riscv;
 

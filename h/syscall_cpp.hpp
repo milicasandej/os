@@ -34,7 +34,7 @@ private:
 class Semaphore{
 public:
 
-    Semaphore(unsigned init = 1);
+    explicit Semaphore(unsigned init = 1);
     virtual ~Semaphore();
 
     int wait();
