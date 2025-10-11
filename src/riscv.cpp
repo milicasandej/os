@@ -76,7 +76,7 @@ void Riscv::handleSupervisorTrap()
                 case SCALL_SEM_SIGNAL:
                     sem_t idSignal;
                     READ_REG(idSignal, "a0");
-                    ret = idSignal->wait();
+                    ret = idSignal->signal();
                     break;
                 default:
                     break;

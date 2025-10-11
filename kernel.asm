@@ -1273,9 +1273,9 @@ inline uint64 Riscv::r_sstatus()
     80001bc4:	0180006f          	j	80001bdc <_ZN5Riscv20handleSupervisorTrapEv+0x150>
                     READ_REG(idSignal, "a0");
     80001bc8:	00050513          	mv	a0,a0
-                    ret = idSignal->wait();
+                    ret = idSignal->signal();
     80001bcc:	00000097          	auipc	ra,0x0
-    80001bd0:	054080e7          	jalr	84(ra) # 80001c20 <_ZN4_sem4waitEv>
+    80001bd0:	0f8080e7          	jalr	248(ra) # 80001cc4 <_ZN4_sem6signalEv>
                     break;
     80001bd4:	0080006f          	j	80001bdc <_ZN5Riscv20handleSupervisorTrapEv+0x150>
             READ_REG(scallnum, "a7");
