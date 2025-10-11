@@ -28,6 +28,8 @@ public:
 
     static int exitThread();
 
+    void setStart(bool b);
+
 private:
     _thread(Body body, void* args) :
             body(body),
@@ -37,9 +39,10 @@ private:
                 (uint64) &threadWrapper,
                 stack != nullptr ? (uint64) &stack[DEFAULT_STACK_SIZE] : 0
             }),
-            finished(false)
+            finished(false),
+            started(true)
     {
-        if (body != nullptr) { Scheduler::put(this); }
+            if (body != nullptr) { Scheduler::put(this);}
     }
 
     struct Context
@@ -53,7 +56,7 @@ private:
     uint64 *stack;
     Context context;
     uint64 timeSlice;
-    bool finished;
+    bool finished, started;
 
     friend class Riscv;
 

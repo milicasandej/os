@@ -17,7 +17,8 @@ public:
     int start();
 
     static void dispatch();
-    static int sleep(time_t);
+
+
 
 protected:
     Thread();
@@ -26,6 +27,7 @@ protected:
 private:
     thread_t myHandle;
     void (*body)(void*); void* arg;
+    static void startWrapper(void* thread);
 
 };
 

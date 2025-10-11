@@ -1,4 +1,4 @@
-GAS LISTING /tmp/cc93g4CE.s 			page 1
+GAS LISTING /tmp/ccMSzsAe.s 			page 1
 
 
    1              		.file	"userMain.cpp"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   27      74616B20 
   27      322E2C20 
   28 0177 00       		.align	3
-GAS LISTING /tmp/cc93g4CE.s 			page 2
+GAS LISTING /tmp/ccMSzsAe.s 			page 2
 
 
   29              	.LC7:
@@ -84,7 +84,7 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
    9:src/userMain.cpp **** // TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)
   10:src/userMain.cpp **** #include "../test/Threads_C_API_test.hpp"
   11:src/userMain.cpp **** // TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)
-  12:src/userMain.cpp **** //#include "../test/Threads_CPP_API_test.hpp"
+  12:src/userMain.cpp **** #include "../test/Threads_CPP_API_test.hpp"
   13:src/userMain.cpp **** // TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnickom rezimu)
   14:src/userMain.cpp **** //#include "../test/System_Mode_test.hpp"
   15:src/userMain.cpp **** #endif
@@ -118,7 +118,7 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   47              		.cfi_offset 8, -16
   48              		.cfi_offset 9, -24
   49              		.cfi_offset 18, -32
-GAS LISTING /tmp/cc93g4CE.s 			page 3
+GAS LISTING /tmp/ccMSzsAe.s 			page 3
 
 
   50 0014 13040102 		addi	s0,sp,32
@@ -162,7 +162,7 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   72 0040 1B07D9FC 		addiw	a4,s2,-51
   73              		.loc 1 45 5
   74 0044 93071000 		li	a5,1
-  75 0048 63F2E704 		bleu	a4,a5,.L11
+  75 0048 63F6E704 		bleu	a4,a5,.L11
   46:src/userMain.cpp ****         if (LEVEL_3_IMPLEMENTED == 0) {
   47:src/userMain.cpp ****             printString("Nije navedeno da je zadatak 3 implementiran\n");
   48:src/userMain.cpp ****             return;
@@ -176,9 +176,9 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   79              	.LVL4:
   80              		.loc 1 52 5
   81 0050 93071000 		li	a5,1
-  82 0054 63F02707 		bleu	s2,a5,.L12
+  82 0054 63F42707 		bleu	s2,a5,.L12
   53:src/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
-GAS LISTING /tmp/cc93g4CE.s 			page 4
+GAS LISTING /tmp/ccMSzsAe.s 			page 4
 
 
   54:src/userMain.cpp ****             printString("Nije navedeno da je zadatak 4 implementiran\n");
@@ -189,13 +189,13 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   59:src/userMain.cpp ****     switch (test) {
   83              		.loc 1 59 5 is_stmt 1
   84 0058 93076000 		li	a5,6
-  85 005c 63C69706 		bgt	s1,a5,.L5
+  85 005c 63CA9706 		bgt	s1,a5,.L5
   86 0060 93073000 		li	a5,3
-  87 0064 63DCF402 		bge	s1,a5,.L1
+  87 0064 63D0F404 		bge	s1,a5,.L1
   88 0068 93071000 		li	a5,1
-  89 006c 6384F408 		beq	s1,a5,.L6
+  89 006c 6388F408 		beq	s1,a5,.L6
   90 0070 93072000 		li	a5,2
-  91 0074 639EF408 		bne	s1,a5,.L8
+  91 0074 6392F40A 		bne	s1,a5,.L8
   60:src/userMain.cpp ****         case 1:
   61:src/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
   62:src/userMain.cpp ****             Threads_C_API_test();
@@ -205,42 +205,47 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
   66:src/userMain.cpp ****         case 2:
   92              		.loc 1 66 9
   67:src/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
-  68:src/userMain.cpp **** //            Threads_CPP_API_test();
+  68:src/userMain.cpp ****             Threads_CPP_API_test();
+  93              		.loc 1 68 13
+  94              		.loc 1 68 33 is_stmt 0
+  95 0078 97000000 		call	_Z20Threads_CPP_API_testv@plt
+  95      E7800000 
+  96              	.LVL5:
   69:src/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
-  93              		.loc 1 69 13
-  94              		.loc 1 69 24 is_stmt 0
-  95 0078 17050000 		lla	a0,.LC4
-  95      13050500 
-  96 0080 97000000 		call	_Z11printStringPKc@plt
-  96      E7800000 
-  97              	.LVL5:
+  97              		.loc 1 69 13 is_stmt 1
+  98              		.loc 1 69 24 is_stmt 0
+  99 0080 17050000 		lla	a0,.LC4
+  99      13050500 
+ 100 0088 97000000 		call	_Z11printStringPKc@plt
+ 100      E7800000 
+ 101              	.LVL6:
   70:src/userMain.cpp **** #endif
   71:src/userMain.cpp ****             break;
-  98              		.loc 1 71 13 is_stmt 1
-  99 0088 6F004001 		j	.L1
- 100              	.LVL6:
- 101              	.L11:
+ 102              		.loc 1 71 13 is_stmt 1
+ 103 0090 6F004001 		j	.L1
+ 104              	.LVL7:
+ 105              	.L11:
   46:src/userMain.cpp ****             printString("Nije navedeno da je zadatak 3 implementiran\n");
- 102              		.loc 1 46 9
+ 106              		.loc 1 46 9
   47:src/userMain.cpp ****             return;
- 103              		.loc 1 47 13
+ 107              		.loc 1 47 13
   47:src/userMain.cpp ****             return;
- 104              		.loc 1 47 24 is_stmt 0
- 105 008c 17050000 		lla	a0,.LC1
- 105      13050500 
- 106 0094 97000000 		call	_Z11printStringPKc@plt
- 106      E7800000 
- 107              	.LVL7:
+ 108              		.loc 1 47 24 is_stmt 0
+ 109 0094 17050000 		lla	a0,.LC1
+ 109      13050500 
+ 110 009c 97000000 		call	_Z11printStringPKc@plt
+ 110      E7800000 
+ 111              	.LVL8:
   48:src/userMain.cpp ****         }
- 108              		.loc 1 48 13 is_stmt 1
- 109              	.L1:
+ 112              		.loc 1 48 13 is_stmt 1
+GAS LISTING /tmp/ccMSzsAe.s 			page 5
+
+
+ 113              	.L1:
   72:src/userMain.cpp ****         case 3:
   73:src/userMain.cpp **** #if LEVEL_3_IMPLEMENTED == 1
   74:src/userMain.cpp ****             producerConsumer_C_API();
   75:src/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
-GAS LISTING /tmp/cc93g4CE.s 			page 5
-
-
   76:src/userMain.cpp **** #endif
   77:src/userMain.cpp ****             break;
   78:src/userMain.cpp ****         case 4:
@@ -272,261 +277,268 @@ GAS LISTING /tmp/cc93g4CE.s 			page 1
  104:src/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
  105:src/userMain.cpp ****     }
  106:src/userMain.cpp **** }...
- 110              		.loc 1 106 1 is_stmt 0
- 111 009c 83308101 		ld	ra,24(sp)
- 112              		.cfi_remember_state
- 113              		.cfi_restore 1
- 114 00a0 03340101 		ld	s0,16(sp)
- 115              		.cfi_restore 8
- 116              		.cfi_def_cfa 2, 32
- 117 00a4 83348100 		ld	s1,8(sp)
- 118              		.cfi_restore 9
- 119 00a8 03390100 		ld	s2,0(sp)
- 120              		.cfi_restore 18
- 121 00ac 13010102 		addi	sp,sp,32
- 122              		.cfi_def_cfa_offset 0
- 123 00b0 67800000 		jr	ra
- 124              	.L12:
- 125              		.cfi_restore_state
+ 114              		.loc 1 106 1 is_stmt 0
+ 115 00a4 83308101 		ld	ra,24(sp)
+ 116              		.cfi_remember_state
+ 117              		.cfi_restore 1
+ 118 00a8 03340101 		ld	s0,16(sp)
+ 119              		.cfi_restore 8
+ 120              		.cfi_def_cfa 2, 32
+ 121 00ac 83348100 		ld	s1,8(sp)
+ 122              		.cfi_restore 9
+ 123 00b0 03390100 		ld	s2,0(sp)
+ 124              		.cfi_restore 18
+ 125 00b4 13010102 		addi	sp,sp,32
+ 126              		.cfi_def_cfa_offset 0
+ 127 00b8 67800000 		jr	ra
+ 128              	.L12:
+ 129              		.cfi_restore_state
   53:src/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
- 126              		.loc 1 53 9 is_stmt 1
+ 130              		.loc 1 53 9 is_stmt 1
   54:src/userMain.cpp ****             printString("Nije navedeno da je zadatak 4 implementiran\n");
- 127              		.loc 1 54 13
+ 131              		.loc 1 54 13
   54:src/userMain.cpp ****             printString("Nije navedeno da je zadatak 4 implementiran\n");
- 128              		.loc 1 54 24 is_stmt 0
- 129 00b4 17050000 		lla	a0,.LC2
- 129      13050500 
- 130 00bc 97000000 		call	_Z11printStringPKc@plt
- 130      E7800000 
-GAS LISTING /tmp/cc93g4CE.s 			page 6
+GAS LISTING /tmp/ccMSzsAe.s 			page 6
 
 
- 131              	.LVL8:
+ 132              		.loc 1 54 24 is_stmt 0
+ 133 00bc 17050000 		lla	a0,.LC2
+ 133      13050500 
+ 134 00c4 97000000 		call	_Z11printStringPKc@plt
+ 134      E7800000 
+ 135              	.LVL9:
   55:src/userMain.cpp ****             return;
- 132              		.loc 1 55 13 is_stmt 1
- 133 00c4 6FF09FFD 		j	.L1
- 134              	.L5:
+ 136              		.loc 1 55 13 is_stmt 1
+ 137 00cc 6FF09FFD 		j	.L1
+ 138              	.L5:
   59:src/userMain.cpp ****     switch (test) {
- 135              		.loc 1 59 5 is_stmt 0
- 136 00c8 93077000 		li	a5,7
- 137 00cc 6392F404 		bne	s1,a5,.L8
+ 139              		.loc 1 59 5 is_stmt 0
+ 140 00d0 93077000 		li	a5,7
+ 141 00d4 6392F404 		bne	s1,a5,.L8
   96:src/userMain.cpp ****         case 7:
- 138              		.loc 1 96 9 is_stmt 1
+ 142              		.loc 1 96 9 is_stmt 1
   99:src/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
- 139              		.loc 1 99 13
+ 143              		.loc 1 99 13
   99:src/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
- 140              		.loc 1 99 24 is_stmt 0
- 141 00d0 17050000 		lla	a0,.LC5
- 141      13050500 
- 142 00d8 97000000 		call	_Z11printStringPKc@plt
- 142      E7800000 
- 143              	.LVL9:
+ 144              		.loc 1 99 24 is_stmt 0
+ 145 00d8 17050000 		lla	a0,.LC5
+ 145      13050500 
+ 146 00e0 97000000 		call	_Z11printStringPKc@plt
+ 146      E7800000 
+ 147              	.LVL10:
  100:src/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
- 144              		.loc 1 100 13 is_stmt 1
+ 148              		.loc 1 100 13 is_stmt 1
  100:src/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
- 145              		.loc 1 100 24 is_stmt 0
- 146 00e0 17050000 		lla	a0,.LC6
- 146      13050500 
- 147 00e8 97000000 		call	_Z11printStringPKc@plt
- 147      E7800000 
- 148              	.LVL10:
+ 149              		.loc 1 100 24 is_stmt 0
+ 150 00e8 17050000 		lla	a0,.LC6
+ 150      13050500 
+ 151 00f0 97000000 		call	_Z11printStringPKc@plt
+ 151      E7800000 
+ 152              	.LVL11:
  102:src/userMain.cpp ****             break;
- 149              		.loc 1 102 13 is_stmt 1
- 150 00f0 6FF0DFFA 		j	.L1
- 151              	.L6:
+ 153              		.loc 1 102 13 is_stmt 1
+ 154 00f8 6FF0DFFA 		j	.L1
+ 155              	.L6:
   60:src/userMain.cpp ****         case 1:
- 152              		.loc 1 60 9
+ 156              		.loc 1 60 9
   62:src/userMain.cpp ****             Threads_C_API_test();
- 153              		.loc 1 62 13
+ 157              		.loc 1 62 13
   62:src/userMain.cpp ****             Threads_C_API_test();
- 154              		.loc 1 62 31 is_stmt 0
- 155 00f4 97000000 		call	_Z18Threads_C_API_testv@plt
- 155      E7800000 
- 156              	.LVL11:
+ 158              		.loc 1 62 31 is_stmt 0
+ 159 00fc 97000000 		call	_Z18Threads_C_API_testv@plt
+ 159      E7800000 
+ 160              	.LVL12:
   63:src/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
- 157              		.loc 1 63 13 is_stmt 1
+ 161              		.loc 1 63 13 is_stmt 1
   63:src/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
- 158              		.loc 1 63 24 is_stmt 0
- 159 00fc 17050000 		lla	a0,.LC3
- 159      13050500 
- 160 0104 97000000 		call	_Z11printStringPKc@plt
- 160      E7800000 
- 161              	.LVL12:
+ 162              		.loc 1 63 24 is_stmt 0
+ 163 0104 17050000 		lla	a0,.LC3
+ 163      13050500 
+ 164 010c 97000000 		call	_Z11printStringPKc@plt
+ 164      E7800000 
+ 165              	.LVL13:
   65:src/userMain.cpp ****             break;
- 162              		.loc 1 65 13 is_stmt 1
- 163 010c 6FF01FF9 		j	.L1
- 164              	.L8:
+GAS LISTING /tmp/ccMSzsAe.s 			page 7
+
+
+ 166              		.loc 1 65 13 is_stmt 1
+ 167 0114 6FF01FF9 		j	.L1
+ 168              	.L8:
  103:src/userMain.cpp ****         default:
- 165              		.loc 1 103 9
-GAS LISTING /tmp/cc93g4CE.s 			page 7
-
-
+ 169              		.loc 1 103 9
  104:src/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
- 166              		.loc 1 104 13
+ 170              		.loc 1 104 13
  104:src/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
- 167              		.loc 1 104 24 is_stmt 0
- 168 0110 17050000 		lla	a0,.LC7
- 168      13050500 
- 169 0118 97000000 		call	_Z11printStringPKc@plt
- 169      E7800000 
- 170              	.LVL13:
- 171 0120 6FF0DFF7 		j	.L1
- 172              		.cfi_endproc
- 173              	.LFE0:
- 175              	.Letext0:
- 176              		.file 2 "src/../test/../h/../lib/hw.h"
- 177              		.file 3 "src/../test/printing.hpp"
- 178              		.file 4 "src/../test/../h/syscall_c.hpp"
- 179              		.file 5 "src/../test/Threads_C_API_test.hpp"
-GAS LISTING /tmp/cc93g4CE.s 			page 8
+ 171              		.loc 1 104 24 is_stmt 0
+ 172 0118 17050000 		lla	a0,.LC7
+ 172      13050500 
+ 173 0120 97000000 		call	_Z11printStringPKc@plt
+ 173      E7800000 
+ 174              	.LVL14:
+ 175 0128 6FF0DFF7 		j	.L1
+ 176              		.cfi_endproc
+ 177              	.LFE0:
+ 179              	.Letext0:
+ 180              		.file 2 "src/../test/../h/../lib/hw.h"
+ 181              		.file 3 "src/../test/printing.hpp"
+ 182              		.file 4 "src/../test/../h/syscall_c.hpp"
+ 183              		.file 5 "src/../test/Threads_CPP_API_test.hpp"
+ 184              		.file 6 "src/../test/Threads_C_API_test.hpp"
+GAS LISTING /tmp/ccMSzsAe.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 userMain.cpp
-     /tmp/cc93g4CE.s:35     .text:0000000000000000 _Z8userMainv
-     /tmp/cc93g4CE.s:39     .text:0000000000000000 .L0 
-     /tmp/cc93g4CE.s:40     .text:0000000000000000 .L0 
-     /tmp/cc93g4CE.s:41     .text:0000000000000004 .L0 
-     /tmp/cc93g4CE.s:46     .text:0000000000000014 .L0 
-     /tmp/cc93g4CE.s:47     .text:0000000000000014 .L0 
-     /tmp/cc93g4CE.s:48     .text:0000000000000014 .L0 
-     /tmp/cc93g4CE.s:49     .text:0000000000000014 .L0 
-     /tmp/cc93g4CE.s:51     .text:0000000000000018 .L0 
-     /tmp/cc93g4CE.s:53     .text:0000000000000018 .L0 
-     /tmp/cc93g4CE.s:54     .text:0000000000000018 .L0 
-     /tmp/cc93g4CE.s:58     .text:0000000000000028 .L0 
-     /tmp/cc93g4CE.s:59     .text:0000000000000028 .L0 
-     /tmp/cc93g4CE.s:63     .text:0000000000000034 .L0 
-     /tmp/cc93g4CE.s:66     .text:0000000000000038 .L0 
-     /tmp/cc93g4CE.s:67     .text:0000000000000038 .L0 
-     /tmp/cc93g4CE.s:70     .text:0000000000000040 .L0 
-     /tmp/cc93g4CE.s:71     .text:0000000000000040 .L0 
-     /tmp/cc93g4CE.s:72     .text:0000000000000040 .L0 
-     /tmp/cc93g4CE.s:74     .text:0000000000000044 .L0 
-     /tmp/cc93g4CE.s:77     .text:000000000000004c .L0 
-     /tmp/cc93g4CE.s:78     .text:000000000000004c .L0 
-     /tmp/cc93g4CE.s:81     .text:0000000000000050 .L0 
-     /tmp/cc93g4CE.s:84     .text:0000000000000058 .L0 
-     /tmp/cc93g4CE.s:93     .text:0000000000000078 .L0 
-     /tmp/cc93g4CE.s:94     .text:0000000000000078 .L0 
-     /tmp/cc93g4CE.s:95     .text:0000000000000078 .L0 
-     /tmp/cc93g4CE.s:99     .text:0000000000000088 .L0 
-     /tmp/cc93g4CE.s:103    .text:000000000000008c .L0 
-     /tmp/cc93g4CE.s:104    .text:000000000000008c .L0 
-     /tmp/cc93g4CE.s:105    .text:000000000000008c .L0 
-     /tmp/cc93g4CE.s:110    .text:000000000000009c .L0 
-     /tmp/cc93g4CE.s:111    .text:000000000000009c .L0 
-     /tmp/cc93g4CE.s:112    .text:00000000000000a0 .L0 
-     /tmp/cc93g4CE.s:113    .text:00000000000000a0 .L0 
-     /tmp/cc93g4CE.s:115    .text:00000000000000a4 .L0 
-     /tmp/cc93g4CE.s:116    .text:00000000000000a4 .L0 
-     /tmp/cc93g4CE.s:118    .text:00000000000000a8 .L0 
-     /tmp/cc93g4CE.s:120    .text:00000000000000ac .L0 
-     /tmp/cc93g4CE.s:122    .text:00000000000000b0 .L0 
-     /tmp/cc93g4CE.s:125    .text:00000000000000b4 .L0 
-     /tmp/cc93g4CE.s:127    .text:00000000000000b4 .L0 
-     /tmp/cc93g4CE.s:128    .text:00000000000000b4 .L0 
-     /tmp/cc93g4CE.s:129    .text:00000000000000b4 .L0 
-     /tmp/cc93g4CE.s:133    .text:00000000000000c4 .L0 
-     /tmp/cc93g4CE.s:136    .text:00000000000000c8 .L0 
-     /tmp/cc93g4CE.s:139    .text:00000000000000d0 .L0 
-     /tmp/cc93g4CE.s:140    .text:00000000000000d0 .L0 
-     /tmp/cc93g4CE.s:141    .text:00000000000000d0 .L0 
-     /tmp/cc93g4CE.s:145    .text:00000000000000e0 .L0 
-     /tmp/cc93g4CE.s:146    .text:00000000000000e0 .L0 
-     /tmp/cc93g4CE.s:150    .text:00000000000000f0 .L0 
-     /tmp/cc93g4CE.s:153    .text:00000000000000f4 .L0 
-     /tmp/cc93g4CE.s:154    .text:00000000000000f4 .L0 
-     /tmp/cc93g4CE.s:155    .text:00000000000000f4 .L0 
-GAS LISTING /tmp/cc93g4CE.s 			page 9
+     /tmp/ccMSzsAe.s:35     .text:0000000000000000 _Z8userMainv
+     /tmp/ccMSzsAe.s:39     .text:0000000000000000 .L0 
+     /tmp/ccMSzsAe.s:40     .text:0000000000000000 .L0 
+     /tmp/ccMSzsAe.s:41     .text:0000000000000004 .L0 
+     /tmp/ccMSzsAe.s:46     .text:0000000000000014 .L0 
+     /tmp/ccMSzsAe.s:47     .text:0000000000000014 .L0 
+     /tmp/ccMSzsAe.s:48     .text:0000000000000014 .L0 
+     /tmp/ccMSzsAe.s:49     .text:0000000000000014 .L0 
+     /tmp/ccMSzsAe.s:51     .text:0000000000000018 .L0 
+     /tmp/ccMSzsAe.s:53     .text:0000000000000018 .L0 
+     /tmp/ccMSzsAe.s:54     .text:0000000000000018 .L0 
+     /tmp/ccMSzsAe.s:58     .text:0000000000000028 .L0 
+     /tmp/ccMSzsAe.s:59     .text:0000000000000028 .L0 
+     /tmp/ccMSzsAe.s:63     .text:0000000000000034 .L0 
+     /tmp/ccMSzsAe.s:66     .text:0000000000000038 .L0 
+     /tmp/ccMSzsAe.s:67     .text:0000000000000038 .L0 
+     /tmp/ccMSzsAe.s:70     .text:0000000000000040 .L0 
+     /tmp/ccMSzsAe.s:71     .text:0000000000000040 .L0 
+     /tmp/ccMSzsAe.s:72     .text:0000000000000040 .L0 
+     /tmp/ccMSzsAe.s:74     .text:0000000000000044 .L0 
+     /tmp/ccMSzsAe.s:77     .text:000000000000004c .L0 
+     /tmp/ccMSzsAe.s:78     .text:000000000000004c .L0 
+     /tmp/ccMSzsAe.s:81     .text:0000000000000050 .L0 
+     /tmp/ccMSzsAe.s:84     .text:0000000000000058 .L0 
+     /tmp/ccMSzsAe.s:93     .text:0000000000000078 .L0 
+     /tmp/ccMSzsAe.s:94     .text:0000000000000078 .L0 
+     /tmp/ccMSzsAe.s:95     .text:0000000000000078 .L0 
+     /tmp/ccMSzsAe.s:98     .text:0000000000000080 .L0 
+     /tmp/ccMSzsAe.s:99     .text:0000000000000080 .L0 
+     /tmp/ccMSzsAe.s:103    .text:0000000000000090 .L0 
+     /tmp/ccMSzsAe.s:107    .text:0000000000000094 .L0 
+     /tmp/ccMSzsAe.s:108    .text:0000000000000094 .L0 
+     /tmp/ccMSzsAe.s:109    .text:0000000000000094 .L0 
+     /tmp/ccMSzsAe.s:114    .text:00000000000000a4 .L0 
+     /tmp/ccMSzsAe.s:115    .text:00000000000000a4 .L0 
+     /tmp/ccMSzsAe.s:116    .text:00000000000000a8 .L0 
+     /tmp/ccMSzsAe.s:117    .text:00000000000000a8 .L0 
+     /tmp/ccMSzsAe.s:119    .text:00000000000000ac .L0 
+     /tmp/ccMSzsAe.s:120    .text:00000000000000ac .L0 
+     /tmp/ccMSzsAe.s:122    .text:00000000000000b0 .L0 
+     /tmp/ccMSzsAe.s:124    .text:00000000000000b4 .L0 
+     /tmp/ccMSzsAe.s:126    .text:00000000000000b8 .L0 
+     /tmp/ccMSzsAe.s:129    .text:00000000000000bc .L0 
+     /tmp/ccMSzsAe.s:131    .text:00000000000000bc .L0 
+     /tmp/ccMSzsAe.s:132    .text:00000000000000bc .L0 
+     /tmp/ccMSzsAe.s:133    .text:00000000000000bc .L0 
+     /tmp/ccMSzsAe.s:137    .text:00000000000000cc .L0 
+     /tmp/ccMSzsAe.s:140    .text:00000000000000d0 .L0 
+     /tmp/ccMSzsAe.s:143    .text:00000000000000d8 .L0 
+     /tmp/ccMSzsAe.s:144    .text:00000000000000d8 .L0 
+     /tmp/ccMSzsAe.s:145    .text:00000000000000d8 .L0 
+     /tmp/ccMSzsAe.s:149    .text:00000000000000e8 .L0 
+     /tmp/ccMSzsAe.s:150    .text:00000000000000e8 .L0 
+     /tmp/ccMSzsAe.s:154    .text:00000000000000f8 .L0 
+     /tmp/ccMSzsAe.s:157    .text:00000000000000fc .L0 
+GAS LISTING /tmp/ccMSzsAe.s 			page 9
 
 
-     /tmp/cc93g4CE.s:158    .text:00000000000000fc .L0 
-     /tmp/cc93g4CE.s:159    .text:00000000000000fc .L0 
-     /tmp/cc93g4CE.s:163    .text:000000000000010c .L0 
-     /tmp/cc93g4CE.s:166    .text:0000000000000110 .L0 
-     /tmp/cc93g4CE.s:167    .text:0000000000000110 .L0 
-     /tmp/cc93g4CE.s:168    .text:0000000000000110 .L0 
-     /tmp/cc93g4CE.s:172    .text:0000000000000124 .L0 
-     /tmp/cc93g4CE.s:180    .text:0000000000000124 .L0 
-     /tmp/cc93g4CE.s:8      .rodata.str1.8:0000000000000000 .LC0
-     /tmp/cc93g4CE.s:54     .text:0000000000000018 .L0 
-     /tmp/cc93g4CE.s:20     .rodata.str1.8:00000000000000c0 .LC4
-     /tmp/cc93g4CE.s:95     .text:0000000000000078 .L0 
-     /tmp/cc93g4CE.s:11     .rodata.str1.8:0000000000000020 .LC1
-     /tmp/cc93g4CE.s:105    .text:000000000000008c .L0 
-     /tmp/cc93g4CE.s:14     .rodata.str1.8:0000000000000050 .LC2
-     /tmp/cc93g4CE.s:129    .text:00000000000000b4 .L0 
-     /tmp/cc93g4CE.s:23     .rodata.str1.8:0000000000000100 .LC5
-     /tmp/cc93g4CE.s:141    .text:00000000000000d0 .L0 
-     /tmp/cc93g4CE.s:26     .rodata.str1.8:0000000000000120 .LC6
-     /tmp/cc93g4CE.s:146    .text:00000000000000e0 .L0 
-     /tmp/cc93g4CE.s:17     .rodata.str1.8:0000000000000080 .LC3
-     /tmp/cc93g4CE.s:159    .text:00000000000000fc .L0 
-     /tmp/cc93g4CE.s:29     .rodata.str1.8:0000000000000178 .LC7
-     /tmp/cc93g4CE.s:168    .text:0000000000000110 .L0 
-     /tmp/cc93g4CE.s:101    .text:000000000000008c .L11
-     /tmp/cc93g4CE.s:124    .text:00000000000000b4 .L12
-     /tmp/cc93g4CE.s:134    .text:00000000000000c8 .L5
-     /tmp/cc93g4CE.s:109    .text:000000000000009c .L1
-     /tmp/cc93g4CE.s:151    .text:00000000000000f4 .L6
-     /tmp/cc93g4CE.s:164    .text:0000000000000110 .L8
-     /tmp/cc93g4CE.s:441    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-     /tmp/cc93g4CE.s:756    .debug_str:0000000000000161 .LASF24
-     /tmp/cc93g4CE.s:746    .debug_str:0000000000000104 .LASF25
-     /tmp/cc93g4CE.s:734    .debug_str:000000000000009b .LASF26
-     /tmp/cc93g4CE.s:5      .text:0000000000000000 .Ltext0
-     /tmp/cc93g4CE.s:175    .text:0000000000000124 .Letext0
-     /tmp/cc93g4CE.s:710    .debug_line:0000000000000000 .Ldebug_line0
-     /tmp/cc93g4CE.s:712    .debug_str:0000000000000000 .LASF0
-     /tmp/cc93g4CE.s:754    .debug_str:000000000000014e .LASF1
-     /tmp/cc93g4CE.s:738    .debug_str:00000000000000c5 .LASF2
-     /tmp/cc93g4CE.s:730    .debug_str:0000000000000087 .LASF4
-     /tmp/cc93g4CE.s:724    .debug_str:000000000000004a .LASF3
-     /tmp/cc93g4CE.s:718    .debug_str:000000000000002a .LASF5
-     /tmp/cc93g4CE.s:728    .debug_str:0000000000000074 .LASF6
-     /tmp/cc93g4CE.s:752    .debug_str:000000000000013b .LASF7
-     /tmp/cc93g4CE.s:762    .debug_str:0000000000000239 .LASF8
-     /tmp/cc93g4CE.s:714    .debug_str:000000000000000d .LASF9
-     /tmp/cc93g4CE.s:716    .debug_str:000000000000001b .LASF10
-     /tmp/cc93g4CE.s:758    .debug_str:0000000000000225 .LASF11
-     /tmp/cc93g4CE.s:720    .debug_str:0000000000000031 .LASF12
-     /tmp/cc93g4CE.s:766    .debug_str:0000000000000252 .LASF13
-     /tmp/cc93g4CE.s:736    .debug_str:00000000000000b9 .LASF14
-     /tmp/cc93g4CE.s:744    .debug_str:00000000000000ee .LASF15
-     /tmp/cc93g4CE.s:742    .debug_str:00000000000000d8 .LASF16
-     /tmp/cc93g4CE.s:764    .debug_str:0000000000000249 .LASF27
-     /tmp/cc93g4CE.s:732    .debug_str:000000000000008e .LASF28
-     /tmp/cc93g4CE.s:36     .text:0000000000000000 .LFB0
-GAS LISTING /tmp/cc93g4CE.s 			page 10
+     /tmp/ccMSzsAe.s:158    .text:00000000000000fc .L0 
+     /tmp/ccMSzsAe.s:159    .text:00000000000000fc .L0 
+     /tmp/ccMSzsAe.s:162    .text:0000000000000104 .L0 
+     /tmp/ccMSzsAe.s:163    .text:0000000000000104 .L0 
+     /tmp/ccMSzsAe.s:167    .text:0000000000000114 .L0 
+     /tmp/ccMSzsAe.s:170    .text:0000000000000118 .L0 
+     /tmp/ccMSzsAe.s:171    .text:0000000000000118 .L0 
+     /tmp/ccMSzsAe.s:172    .text:0000000000000118 .L0 
+     /tmp/ccMSzsAe.s:176    .text:000000000000012c .L0 
+     /tmp/ccMSzsAe.s:185    .text:000000000000012c .L0 
+     /tmp/ccMSzsAe.s:8      .rodata.str1.8:0000000000000000 .LC0
+     /tmp/ccMSzsAe.s:54     .text:0000000000000018 .L0 
+     /tmp/ccMSzsAe.s:20     .rodata.str1.8:00000000000000c0 .LC4
+     /tmp/ccMSzsAe.s:99     .text:0000000000000080 .L0 
+     /tmp/ccMSzsAe.s:11     .rodata.str1.8:0000000000000020 .LC1
+     /tmp/ccMSzsAe.s:109    .text:0000000000000094 .L0 
+     /tmp/ccMSzsAe.s:14     .rodata.str1.8:0000000000000050 .LC2
+     /tmp/ccMSzsAe.s:133    .text:00000000000000bc .L0 
+     /tmp/ccMSzsAe.s:23     .rodata.str1.8:0000000000000100 .LC5
+     /tmp/ccMSzsAe.s:145    .text:00000000000000d8 .L0 
+     /tmp/ccMSzsAe.s:26     .rodata.str1.8:0000000000000120 .LC6
+     /tmp/ccMSzsAe.s:150    .text:00000000000000e8 .L0 
+     /tmp/ccMSzsAe.s:17     .rodata.str1.8:0000000000000080 .LC3
+     /tmp/ccMSzsAe.s:163    .text:0000000000000104 .L0 
+     /tmp/ccMSzsAe.s:29     .rodata.str1.8:0000000000000178 .LC7
+     /tmp/ccMSzsAe.s:172    .text:0000000000000118 .L0 
+     /tmp/ccMSzsAe.s:105    .text:0000000000000094 .L11
+     /tmp/ccMSzsAe.s:128    .text:00000000000000bc .L12
+     /tmp/ccMSzsAe.s:138    .text:00000000000000d0 .L5
+     /tmp/ccMSzsAe.s:113    .text:00000000000000a4 .L1
+     /tmp/ccMSzsAe.s:155    .text:00000000000000fc .L6
+     /tmp/ccMSzsAe.s:168    .text:0000000000000118 .L8
+     /tmp/ccMSzsAe.s:455    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/ccMSzsAe.s:772    .debug_str:000000000000017b .LASF26
+     /tmp/ccMSzsAe.s:762    .debug_str:000000000000011e .LASF27
+     /tmp/ccMSzsAe.s:750    .debug_str:00000000000000b5 .LASF28
+     /tmp/ccMSzsAe.s:5      .text:0000000000000000 .Ltext0
+     /tmp/ccMSzsAe.s:179    .text:000000000000012c .Letext0
+     /tmp/ccMSzsAe.s:724    .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/ccMSzsAe.s:728    .debug_str:000000000000001a .LASF0
+     /tmp/ccMSzsAe.s:770    .debug_str:0000000000000168 .LASF1
+     /tmp/ccMSzsAe.s:754    .debug_str:00000000000000df .LASF2
+     /tmp/ccMSzsAe.s:746    .debug_str:00000000000000a1 .LASF4
+     /tmp/ccMSzsAe.s:740    .debug_str:0000000000000064 .LASF3
+     /tmp/ccMSzsAe.s:734    .debug_str:0000000000000044 .LASF5
+     /tmp/ccMSzsAe.s:744    .debug_str:000000000000008e .LASF6
+     /tmp/ccMSzsAe.s:768    .debug_str:0000000000000155 .LASF7
+     /tmp/ccMSzsAe.s:778    .debug_str:0000000000000253 .LASF8
+     /tmp/ccMSzsAe.s:730    .debug_str:0000000000000027 .LASF9
+     /tmp/ccMSzsAe.s:732    .debug_str:0000000000000035 .LASF10
+     /tmp/ccMSzsAe.s:774    .debug_str:000000000000023f .LASF11
+     /tmp/ccMSzsAe.s:736    .debug_str:000000000000004b .LASF12
+     /tmp/ccMSzsAe.s:782    .debug_str:000000000000026c .LASF13
+     /tmp/ccMSzsAe.s:752    .debug_str:00000000000000d3 .LASF14
+     /tmp/ccMSzsAe.s:760    .debug_str:0000000000000108 .LASF15
+     /tmp/ccMSzsAe.s:758    .debug_str:00000000000000f2 .LASF16
+     /tmp/ccMSzsAe.s:780    .debug_str:0000000000000263 .LASF29
+GAS LISTING /tmp/ccMSzsAe.s 			page 10
 
 
-     /tmp/cc93g4CE.s:173    .text:0000000000000124 .LFE0
-     /tmp/cc93g4CE.s:760    .debug_str:0000000000000234 .LASF17
-     /tmp/cc93g4CE.s:676    .debug_loc:0000000000000000 .LLST0
-     /tmp/cc93g4CE.s:56     .text:0000000000000028 .LVL0
-     /tmp/cc93g4CE.s:60     .text:0000000000000030 .LVL1
-     /tmp/cc93g4CE.s:68     .text:0000000000000040 .LVL3
-     /tmp/cc93g4CE.s:97     .text:0000000000000088 .LVL5
-     /tmp/cc93g4CE.s:107    .text:000000000000009c .LVL7
-     /tmp/cc93g4CE.s:131    .text:00000000000000c4 .LVL8
-     /tmp/cc93g4CE.s:143    .text:00000000000000e0 .LVL9
-     /tmp/cc93g4CE.s:148    .text:00000000000000f0 .LVL10
-     /tmp/cc93g4CE.s:156    .text:00000000000000fc .LVL11
-     /tmp/cc93g4CE.s:161    .text:000000000000010c .LVL12
-     /tmp/cc93g4CE.s:170    .text:0000000000000120 .LVL13
-     /tmp/cc93g4CE.s:748    .debug_str:0000000000000115 .LASF18
-     /tmp/cc93g4CE.s:768    .debug_str:0000000000000262 .LASF20
-     /tmp/cc93g4CE.s:722    .debug_str:0000000000000041 .LASF19
-     /tmp/cc93g4CE.s:740    .debug_str:00000000000000d3 .LASF21
-     /tmp/cc93g4CE.s:726    .debug_str:000000000000005c .LASF22
-     /tmp/cc93g4CE.s:750    .debug_str:0000000000000128 .LASF23
-     /tmp/cc93g4CE.s:64     .text:0000000000000038 .LVL2
-     /tmp/cc93g4CE.s:79     .text:0000000000000050 .LVL4
-     /tmp/cc93g4CE.s:100    .text:000000000000008c .LVL6
-     /tmp/cc93g4CE.s:181    .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccMSzsAe.s:748    .debug_str:00000000000000a8 .LASF30
+     /tmp/ccMSzsAe.s:36     .text:0000000000000000 .LFB0
+     /tmp/ccMSzsAe.s:177    .text:000000000000012c .LFE0
+     /tmp/ccMSzsAe.s:776    .debug_str:000000000000024e .LASF17
+     /tmp/ccMSzsAe.s:690    .debug_loc:0000000000000000 .LLST0
+     /tmp/ccMSzsAe.s:56     .text:0000000000000028 .LVL0
+     /tmp/ccMSzsAe.s:60     .text:0000000000000030 .LVL1
+     /tmp/ccMSzsAe.s:68     .text:0000000000000040 .LVL3
+     /tmp/ccMSzsAe.s:96     .text:0000000000000080 .LVL5
+     /tmp/ccMSzsAe.s:101    .text:0000000000000090 .LVL6
+     /tmp/ccMSzsAe.s:111    .text:00000000000000a4 .LVL8
+     /tmp/ccMSzsAe.s:135    .text:00000000000000cc .LVL9
+     /tmp/ccMSzsAe.s:147    .text:00000000000000e8 .LVL10
+     /tmp/ccMSzsAe.s:152    .text:00000000000000f8 .LVL11
+     /tmp/ccMSzsAe.s:160    .text:0000000000000104 .LVL12
+     /tmp/ccMSzsAe.s:165    .text:0000000000000114 .LVL13
+     /tmp/ccMSzsAe.s:174    .text:0000000000000128 .LVL14
+     /tmp/ccMSzsAe.s:764    .debug_str:000000000000012f .LASF18
+     /tmp/ccMSzsAe.s:784    .debug_str:000000000000027c .LASF20
+     /tmp/ccMSzsAe.s:738    .debug_str:000000000000005b .LASF19
+     /tmp/ccMSzsAe.s:756    .debug_str:00000000000000ed .LASF21
+     /tmp/ccMSzsAe.s:726    .debug_str:0000000000000000 .LASF22
+     /tmp/ccMSzsAe.s:786    .debug_str:0000000000000288 .LASF23
+     /tmp/ccMSzsAe.s:742    .debug_str:0000000000000076 .LASF24
+     /tmp/ccMSzsAe.s:766    .debug_str:0000000000000142 .LASF25
+     /tmp/ccMSzsAe.s:64     .text:0000000000000038 .LVL2
+     /tmp/ccMSzsAe.s:79     .text:0000000000000050 .LVL4
+     /tmp/ccMSzsAe.s:104    .text:0000000000000094 .LVL7
+     /tmp/ccMSzsAe.s:186    .debug_info:0000000000000000 .Ldebug_info0
 
 UNDEFINED SYMBOLS
 _Z11printStringPKc
 _Z4getcv
+_Z20Threads_CPP_API_testv
 _Z18Threads_C_API_testv

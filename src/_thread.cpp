@@ -24,6 +24,7 @@ void _thread::dispatch()
 void _thread::threadWrapper()
 {
     Riscv::popSppSpie();
+    while(!running->started) _thread::dispatch();
     running->body();
     running->setFinished(true);
     _thread::dispatch();
@@ -34,3 +35,9 @@ int _thread::exitThread() {
     _thread::dispatch();
     return 0;
 }
+
+void _thread::setStart(bool b) {
+    this->started = b;
+}
+
+
