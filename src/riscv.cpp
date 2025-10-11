@@ -48,7 +48,7 @@ void Riscv::handleSupervisorTrap()
                     break;
                 }
                 case SCALL_THREAD_EXIT:
-                    ret = _thread::exitThread();
+                    _thread::exitThread();
                     break;
                 case SCALL_THREAD_DISPATCH:
                     _thread::dispatch();

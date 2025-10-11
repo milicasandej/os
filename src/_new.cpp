@@ -1,7 +1,6 @@
 
 
 #include "../lib/mem.h"
-#include "../lib/console.h"
 #include "../h/syscall_cpp.hpp"
 
 
@@ -27,10 +26,3 @@ void operator delete[](void *p)
     __mem_free(p);
 }
 
-char Console::getc() {
-    return __getc();
-}
-
-void Console::putc(char c) {
-    __putc(c);
-}

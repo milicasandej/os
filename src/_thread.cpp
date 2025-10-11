@@ -9,13 +9,7 @@ _thread *_thread::running = nullptr;
 _thread *_thread::createThread(Body body, void* args)
 {
     _thread* newThread = new _thread(body, args);
-    Scheduler::put(newThread);
     return newThread;
-}
-
-void _thread::yield()
-{
-    __asm__ volatile ("ecall");
 }
 
 void _thread::dispatch()
@@ -32,7 +26,7 @@ void _thread::threadWrapper()
     Riscv::popSppSpie();
     running->body();
     running->setFinished(true);
-    _thread::yield();
+    _thread::dispatch();
 }
 
 int _thread::exitThread() {
