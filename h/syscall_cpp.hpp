@@ -47,6 +47,6 @@ private:
 class Console{
 public:
     static char getc();
-    static void putc(char);
+    static void putc(char c);
 };
 #endif //PROJECT_BASE_SYSCALL_CPP_HPP

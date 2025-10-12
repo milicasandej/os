@@ -17,9 +17,7 @@ void main()
     thread_create(&idleThread, nullptr, nullptr);
     _thread::running = idleThread;
 
-    // promena rezima
-
-    // uposleno cekanje
+    //userMode();
 
     userMain();
     printString("Finished\n");

@@ -7,7 +7,7 @@
 
 #include "../lib/hw.h"
 
-
+void userMode();
 void* mem_alloc(size_t size);
 int mem_free(void*);
 size_t mem_get_free_space();
@@ -31,6 +31,6 @@ int sem_close(sem_t handle);
 int sem_wait(sem_t id);
 int sem_signal(sem_t id);
 char getc();
-void putc(char);
+void putc(char c);
 
 #endif //PROJECT_BASE_SYSCALL_C_HPP

@@ -2,6 +2,7 @@
 
 #include "../h/_thread.hpp"
 #include "../h/riscv.hpp"
+#include "../h/syscall_c.hpp"
 
 _thread *_thread::running = nullptr;
 
@@ -24,15 +25,15 @@ void _thread::dispatch()
 void _thread::threadWrapper()
 {
     Riscv::popSppSpie();
-    while(!running->isStarted()) _thread::dispatch();
+    while(!running->isStarted()) thread_dispatch();
     running->body(running->args);
     running->setFinished(true);
-    _thread::dispatch();
+    thread_dispatch();
 }
 
 int _thread::exitThread() {
     _thread::running->setFinished(true);
-    _thread::dispatch();
+    thread_dispatch();
     return 0;
 }
 

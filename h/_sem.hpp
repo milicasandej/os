@@ -26,7 +26,7 @@ public:
 
     int value() const { return val; }
     void setWaitStatus(int s) { waitStatus = s;}
-    int getWaitStatus() { return waitStatus;}
+    int getWaitStatus() const { return waitStatus;}
 
 
 

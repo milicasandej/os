@@ -5,6 +5,7 @@
 #include "../lib/console.h"
 #include "../lib/mem.h"
 #include "../h/_sem.hpp"
+#include "../test/printing.hpp"
 
 using namespace Num;
 
@@ -13,6 +14,7 @@ void Riscv::popSppSpie()
 {
     __asm__ volatile("csrw sepc, ra");
     __asm__ volatile("sret");
+
 }
 
 
@@ -28,9 +30,21 @@ void Riscv::handleSupervisorTrap()
             uint64 ret = 0;
             READ_REG(scallnum, "a7");
             switch (scallnum) {
+                case SCALL_USER_MODE:
+                    mc_sstatus(SSTATUS_SPP);
+                    mc_sip(SIP_SSIP);
+                    w_sepc(sepc);
+                    return;
+                    break;
                 case SCALL_MEM_ALLOC:
+                    size_t size;
+                    READ_REG(size, "a0");
+                    __mem_alloc(size);
                     break;
                 case SCALL_MEM_FREE:
+                    void* ptr;
+                    READ_REG(ptr, "a0");
+                    __mem_free(ptr);
                     break;
                 case SCALL_MEM_GET_FREE_SPACE:
                     break;
@@ -46,10 +60,11 @@ void Riscv::handleSupervisorTrap()
                     *handle = _thread::createThread(body, args);
                     if(*handle != nullptr) ret = 0;
                     else ret = -1;
+                    WRITE_REG("a0", ret);
                     break;
                 }
                 case SCALL_THREAD_EXIT:
-                    ret = _thread::exitThread();
+                    _thread::exitThread();
                     break;
                 case SCALL_THREAD_DISPATCH:
                     _thread::dispatch();
@@ -62,26 +77,35 @@ void Riscv::handleSupervisorTrap()
                     *handle = _sem::createSemaphore(init);
                     if(*handle != nullptr) ret = 0;
                     else ret = -1;
+                    WRITE_REG("a0", ret);
                     break;
                 case SCALL_SEM_CLOSE:
                     sem_t handleClose;
                     READ_REG(handleClose, "a0");
-                    ret = handleClose->close();
+                    handleClose->close();
                     break;
                 case SCALL_SEM_WAIT:
                     sem_t idWait;
                     READ_REG(idWait, "a0");
-                    ret = idWait->wait();
+                    idWait->wait();
                     break;
                 case SCALL_SEM_SIGNAL:
                     sem_t idSignal;
                     READ_REG(idSignal, "a0");
-                    ret = idSignal->signal();
+                    idSignal->signal();
+                    break;
+                case SCALL_GETC:
+                    __getc();
+                    break;
+                case SCALL_PUTC:
+                    char c;
+                    READ_REG(c, "a0");
+                    __putc(c);
                     break;
                 default:
                     break;
             }
-            WRITE_REG("a0", ret);
+
             w_sstatus(sstatus);
             w_sepc(sepc);
             break;
@@ -93,6 +117,9 @@ void Riscv::handleSupervisorTrap()
             console_handler();
             break;
         default:
+            printString("\nScause: ");
+            printInt(scause);
+            thread_exit();
             break;
     }
 }

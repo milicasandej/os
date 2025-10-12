@@ -9,6 +9,7 @@
 #define WRITE_REG(regname, val) __asm__ volatile("mv " regname ", %0" :: "r"(val))
 
 namespace Num{
+    constexpr uint8 SCALL_USER_MODE = 0x00;
     constexpr uint8 SCALL_MEM_ALLOC = 0x01;
     constexpr uint8 SCALL_MEM_FREE = 0x02;
     constexpr uint8 SCALL_MEM_GET_FREE_SPACE = 0x03;
@@ -20,6 +21,8 @@ namespace Num{
     constexpr uint8 SCALL_SEM_CLOSE = 0x22;
     constexpr uint8 SCALL_SEM_WAIT = 0x23;
     constexpr uint8 SCALL_SEM_SIGNAL = 0x24;
+    constexpr uint8 SCALL_GETC = 0x41;
+    constexpr uint8 SCALL_PUTC = 0x42;
 }
 
 

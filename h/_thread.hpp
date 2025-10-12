@@ -62,7 +62,6 @@ private:
     void* args;
     uint64 *stack;
     Context context;
-    uint64 timeSlice;
     bool finished, started, blocked;
 
     friend class Riscv;

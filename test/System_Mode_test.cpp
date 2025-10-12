@@ -1,6 +1,5 @@
 
 #include "../h/syscall_c.hpp"
-#include "Threads_C_API_test.hpp"
 
 #include "printing.hpp"
 
@@ -11,9 +10,7 @@ static volatile bool finishedD = false;
 
 static uint64 fibonacci(uint64 n) {
     if (n == 0 || n == 1) { return n; }
-    if (n % 10 == 0) {
-        thread_dispatch();
-    }
+    if (n % 10 == 0) { thread_dispatch(); }
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
@@ -35,6 +32,9 @@ static void workerBodyB(void* arg) {
         for (uint64 j = 0; j < 10000; j++) {
             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
             thread_dispatch();
+        }
+        if (i == 10) {
+            asm volatile("csrr t6, sepc");
         }
     }
     printString("B finished!\n");
@@ -64,7 +64,7 @@ static void workerBodyC(void* arg) {
         printString("C: i="); printInt(i); printString("\n");
     }
 
-    printString("C finished!\n");
+    printString("A finished!\n");
     finishedC = true;
     thread_dispatch();
 }
@@ -92,7 +92,7 @@ static void workerBodyD(void* arg) {
 }
 
 
-void Threads_C_API_test() {
+void System_Mode_test() {
     thread_t threads[4];
     thread_create(&threads[0], workerBodyA, nullptr);
     printString("ThreadA created\n");

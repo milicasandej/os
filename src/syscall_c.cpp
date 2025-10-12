@@ -7,13 +7,30 @@
 #include "../lib/mem.h"
 #include "../lib/console.h"
 
+void userMode(){
+    WRITE_REG("a7", Num::SCALL_USER_MODE);
+
+    __asm__ volatile("ecall");
+}
 
 void* mem_alloc(size_t size){
-    return __mem_alloc(size); //TODO
+    WRITE_REG("a7", Num::SCALL_MEM_ALLOC);
+
+    __asm__ volatile("ecall");
+
+    void* ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 int mem_free(void* ptr){
-    return __mem_free(ptr); //TODO
+    WRITE_REG("a7", Num::SCALL_MEM_FREE);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 //
 //size_t mem_get_free_space(){
@@ -91,9 +108,18 @@ int sem_signal(sem_t id){
 }
 
 char getc(){
-    return __getc();
+    WRITE_REG("a7", Num::SCALL_GETC);
+
+    __asm__ volatile("ecall");
+
+    char ret;
+    READ_REG(ret, "a0");
+    return ret;
 }
 
 void putc(char c){
-    __putc(c);
+    WRITE_REG("a7", Num::SCALL_PUTC);
+
+    __asm__ volatile("ecall");
+
 }
