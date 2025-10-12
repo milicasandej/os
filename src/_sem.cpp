@@ -6,6 +6,7 @@
 #include "../h/syscall_c.hpp"
 
 int _sem::wait() {
+    if (isClosed()) return -1;
     if (--val < 0){
         _thread* cur = _thread::running;
         cur->setBlock(true);
@@ -17,6 +18,7 @@ int _sem::wait() {
 }
 
 int _sem::signal() {
+    if (isClosed()) return -1;
     if(++val <= 0){
         if(_thread* cur = blocked.removeFirst()){
             cur->setBlock(false);
@@ -27,16 +29,21 @@ int _sem::signal() {
 }
 
 int _sem::close() {
-    this->setWaitStatus(-1);
+    setClosed(true);
+    setWaitStatus(-1);
     while(_thread* cur = blocked.removeFirst()){
         cur->setBlock(false);
         Scheduler::put(cur);
     }
-    delete this;
+
     return 0;
 }
 
 _sem* _sem::createSemaphore(uint32 init) {
     _sem* newSemaphore = new _sem(init);
     return newSemaphore;
+}
+
+void _sem::setClosed(bool b) {
+    closed = b;
 }
