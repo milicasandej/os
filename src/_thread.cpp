@@ -28,9 +28,9 @@ void _thread::dispatch()
 
 void _thread::threadWrapper()
 {
+
     Riscv::popSppSpie();
     while(!running->isStarted()) thread_dispatch();
-    userMode();
     running->body(running->args);
     thread_exit();
 }

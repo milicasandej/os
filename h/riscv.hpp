@@ -98,10 +98,14 @@ public:
     // supervisor trap
     static void supervisorTrap();
 
+    // set mode
+    static void setUserMode(bool b) {userMode = b;}
+
 private:
 
     // supervisor trap handler
     static void handleSupervisorTrap();
+    static bool userMode;
 
 };
 

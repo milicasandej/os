@@ -7,18 +7,32 @@
 
 extern void userMain();
 
+void userMainWrapper(void* arg){
+    userMain();
+}
+
 void main()
 {
 
     Riscv::w_stvec((uint64) &Riscv::supervisorTrap);
+    // memorija inicijalizacija
 
     // idle nit
-    thread_t idleThread;
+    thread_t idleThread = nullptr;
     thread_create(&idleThread, nullptr, nullptr);
     _thread::running = idleThread;
 
-    //userMode();
+    Riscv::ms_sstatus(Riscv::SSTATUS_SIE);
 
-    userMain();
-    printString("Finished\n");
+    Riscv::setUserMode(true);
+
+    uint8 userCode = 0x0;
+    WRITE_REG("a7", userCode);
+    __asm__ volatile("ecall");
+
+    thread_t userThread;
+    thread_create(&userThread, &userMainWrapper, nullptr);
+    while (!userThread->isFinished()) thread_dispatch();
+
+    printString("FINISHED!\n");
 }

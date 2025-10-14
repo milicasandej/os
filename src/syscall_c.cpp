@@ -4,14 +4,6 @@
 
 #include "../h/syscall_c.hpp"
 #include "../h/riscv.hpp"
-#include "../lib/mem.h"
-#include "../lib/console.h"
-
-void userMode(){
-    WRITE_REG("a7", Num::SCALL_USER_MODE);
-
-    __asm__ volatile("ecall");
-}
 
 void* mem_alloc(size_t size){
     WRITE_REG("a7", Num::SCALL_MEM_ALLOC);
@@ -118,8 +110,10 @@ char getc(){
 }
 
 void putc(char c){
+
     WRITE_REG("a7", Num::SCALL_PUTC);
 
     __asm__ volatile("ecall");
+
 
 }

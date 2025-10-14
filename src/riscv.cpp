@@ -8,10 +8,13 @@
 #include "../test/printing.hpp"
 
 using namespace Num;
+bool Riscv::userMode = false;
 
 
 void Riscv::popSppSpie()
 {
+    if (userMode) mc_sstatus(SSTATUS_SPP);
+    else ms_sstatus(SSTATUS_SPP);
     __asm__ volatile("csrw sepc, ra");
     __asm__ volatile("sret");
 
@@ -24,18 +27,12 @@ void Riscv::handleSupervisorTrap()
     switch((uint64)scause){
         case 0x0000000000000008UL:
         case 0x0000000000000009UL: {
-            uint64 sepc = r_sepc() + 4;
-            uint64 sstatus = r_sstatus();
+            uint64 volatile sepc = r_sepc() + 4;
+            uint64 volatile sstatus = r_sstatus();
             uint64 scallnum;
             uint64 ret = 0;
             READ_REG(scallnum, "a7");
             switch (scallnum) {
-                case SCALL_USER_MODE:
-                    mc_sstatus(SSTATUS_SPP);
-                    mc_sip(SIP_SSIP);
-                    w_sepc(sepc);
-                    return;
-                    break;
                 case SCALL_MEM_ALLOC:
                     size_t size;
                     READ_REG(size, "a0");
@@ -117,9 +114,13 @@ void Riscv::handleSupervisorTrap()
             console_handler();
             break;
         default:
-            printString("\nScause: ");
-            printInt(scause);
-            thread_exit();
+
+            printString("Store access fault: stval=");
+            printInt((int)Riscv::r_stval());
+            printString(" sepc=");
+            printInt((int)Riscv::r_sepc());
+            printString("\n");
+
             break;
     }
 }
