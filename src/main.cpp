@@ -4,6 +4,7 @@
 #include "../h/syscall_c.hpp"
 #include "../h/riscv.hpp"
 #include "../h/_thread.hpp"
+#include "../h/memory.hpp"
 
 extern void userMain();
 
@@ -15,7 +16,7 @@ void main()
 {
 
     Riscv::w_stvec((uint64) &Riscv::supervisorTrap);
-    // memorija inicijalizacija
+    memory::initialize();
 
     // idle nit
     thread_t idleThread = nullptr;

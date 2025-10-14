@@ -3,7 +3,7 @@
 #include "../h/riscv.hpp"
 #include "../h/_thread.hpp"
 #include "../lib/console.h"
-#include "../lib/mem.h"
+#include "../h/memory.hpp"
 #include "../h/_sem.hpp"
 #include "../test/printing.hpp"
 
@@ -36,16 +36,18 @@ void Riscv::handleSupervisorTrap()
                 case SCALL_MEM_ALLOC:
                     size_t size;
                     READ_REG(size, "a0");
-                    __mem_alloc(size);
+                    memory::allocateMemory(size);
                     break;
                 case SCALL_MEM_FREE:
                     void* ptr;
                     READ_REG(ptr, "a0");
-                    __mem_free(ptr);
+                    memory::freeMemory(ptr);
                     break;
                 case SCALL_MEM_GET_FREE_SPACE:
+                    memory::getFreeSpace();
                     break;
                 case SCALL_MEM_GET_LARGEST_FREE_BLOCK:
+                    memory::getLargestFreeBlock();
                     break;
                 case SCALL_THREAD_CREATE: {
                     thread_t* handle;
@@ -115,11 +117,11 @@ void Riscv::handleSupervisorTrap()
             break;
         default:
 
-            printString("Store access fault: stval=");
-            printInt((int)Riscv::r_stval());
-            printString(" sepc=");
-            printInt((int)Riscv::r_sepc());
+            printString("Scause: ");
+            printInt(scause);
             printString("\n");
+            printString("Koraci ko laki oblaci, skoci da te zemlja odbaci!\n");
+            if ((int)scause == 2) thread_exit();
 
             break;
     }

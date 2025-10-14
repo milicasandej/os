@@ -24,14 +24,26 @@ int mem_free(void* ptr){
     READ_REG(ret, "a0");
     return ret;
 }
-//
-//size_t mem_get_free_space(){
-//    //TODO
-//}
-//
-//size_t mem_get_largest_free_block(){
-//    //TODO
-//}
+
+size_t mem_get_free_space(){
+    WRITE_REG("a7", Num::SCALL_MEM_GET_FREE_SPACE);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
+}
+
+size_t mem_get_largest_free_block(){
+    WRITE_REG("a7", Num::SCALL_MEM_GET_LARGEST_FREE_BLOCK);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
+}
 
 int thread_create(thread_t* handle, void(*start_routine)(void*), void* arg){
     WRITE_REG("a7", Num::SCALL_THREAD_CREATE);
