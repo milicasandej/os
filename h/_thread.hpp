@@ -36,6 +36,9 @@ public:
 
     bool isBlocked() const { return blocked; }
 
+    void setSemStatus(int s) { semStatus = s; }
+    int getSemStatus() const { return semStatus; }
+
 private:
     _thread(Body body, void* args) :
             body(body),
@@ -47,7 +50,8 @@ private:
             }),
             finished(false),
             started(true),
-            blocked(false)
+            blocked(false),
+            semStatus(0)
     {
             if (body != nullptr) { Scheduler::put(this);}
     }
@@ -63,6 +67,7 @@ private:
     uint64 *stack;
     Context context;
     bool finished, started, blocked;
+    int semStatus;
 
     friend class Riscv;
 

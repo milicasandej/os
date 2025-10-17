@@ -15,7 +15,7 @@ private:
 public:
     static _thread *get();
 
-    static void put(_thread *ccb);
+    static void put(_thread *tcb);
 
 };
 

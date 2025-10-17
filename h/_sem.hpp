@@ -17,7 +17,7 @@ typedef _sem* sem_t;
 class _sem {
 
 public:
-    _sem(uint32 init = 1) : val(init), waitStatus(0), closed(false) {}
+    _sem(uint32 init = 1) : val(init), closed(false) {}
     static _sem* createSemaphore(uint32 init);
 
     int wait();
@@ -25,15 +25,14 @@ public:
     int close();
 
     int value() const { return val; }
-    void setWaitStatus(int s) { waitStatus = s;}
-    int getWaitStatus() const { return waitStatus;}
+
 
     void setClosed(bool b);
     bool isClosed() const {return closed;}
 
 
 private:
-    int val, waitStatus;
+    int val;
     bool closed;
     List<_thread> blocked;
 };

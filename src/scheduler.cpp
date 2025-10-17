@@ -9,7 +9,7 @@ _thread *Scheduler::get()
     return readyThreadQueue.removeFirst();
 }
 
-void Scheduler::put(_thread *ccb)
+void Scheduler::put(_thread *tcb)
 {
-    readyThreadQueue.addLast(ccb);
+    readyThreadQueue.addLast(tcb);
 }

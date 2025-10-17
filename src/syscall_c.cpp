@@ -30,7 +30,7 @@ size_t mem_get_free_space(){
 
     __asm__ volatile("ecall");
 
-    int ret;
+    size_t ret;
     READ_REG(ret, "a0");
     return ret;
 }
@@ -40,7 +40,7 @@ size_t mem_get_largest_free_block(){
 
     __asm__ volatile("ecall");
 
-    int ret;
+    size_t ret;
     READ_REG(ret, "a0");
     return ret;
 }

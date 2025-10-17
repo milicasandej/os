@@ -10,11 +10,12 @@ int _sem::wait() {
     if (--val < 0){
         _thread* cur = _thread::running;
         cur->setBlock(true);
+        cur->setSemStatus(0);
         blocked.addLast(cur);
         thread_dispatch();
     }
 
-    return this->getWaitStatus();
+    return _thread::running->getSemStatus();
 }
 
 int _sem::signal() {
@@ -30,8 +31,8 @@ int _sem::signal() {
 
 int _sem::close() {
     setClosed(true);
-    setWaitStatus(-1);
     while(_thread* cur = blocked.removeFirst()){
+        cur->setSemStatus(-1);
         cur->setBlock(false);
         Scheduler::put(cur);
     }
