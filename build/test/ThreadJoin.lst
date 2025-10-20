@@ -1,0 +1,1031 @@
+GAS LISTING /tmp/ccDYPqvm.s 			page 1
+
+
+   1              		.file	"ThreadJoin.cpp"
+   2              		.option pic
+   3              		.option norelax
+   4              		.text
+   5              	.Ltext0:
+   6              		.section	.text._ZN10WorkerJoinD2Ev,"axG",@progbits,_ZN10WorkerJoinD5Ev,comdat
+   7              		.align	2
+   8              		.weak	_ZN10WorkerJoinD2Ev
+  10              	_ZN10WorkerJoinD2Ev:
+  11              	.LFB16:
+  12              		.file 1 "test/ThreadJoin.cpp"
+   1:test/ThreadJoin.cpp **** //
+   2:test/ThreadJoin.cpp **** // Created by os on 10/18/25.
+   3:test/ThreadJoin.cpp **** //
+   4:test/ThreadJoin.cpp **** 
+   5:test/ThreadJoin.cpp **** #include "ThreadJoin.hpp"
+   6:test/ThreadJoin.cpp **** 
+   7:test/ThreadJoin.cpp **** #include "../h/syscall_cpp.hpp"
+   8:test/ThreadJoin.cpp **** 
+   9:test/ThreadJoin.cpp **** #include "printing.hpp"
+  10:test/ThreadJoin.cpp **** 
+  11:test/ThreadJoin.cpp **** class WorkerJoin: public Thread {
+  13              		.loc 1 11 7
+  14              		.cfi_startproc
+  15              	.LVL0:
+  16 0000 130101FF 		addi	sp,sp,-16
+  17              		.cfi_def_cfa_offset 16
+  18 0004 23341100 		sd	ra,8(sp)
+  19 0008 23308100 		sd	s0,0(sp)
+  20              		.cfi_offset 1, -8
+  21              		.cfi_offset 8, -16
+  22 000c 13040101 		addi	s0,sp,16
+  23              		.cfi_def_cfa 8, 0
+  24              	.LBB13:
+  25              		.loc 1 11 7 is_stmt 0
+  26 0010 97070000 		lla	a5,_ZTV10WorkerJoin+16
+  26      93870700 
+  27 0018 2330F500 		sd	a5,0(a0)
+  28 001c 97000000 		call	_ZN6ThreadD2Ev@plt
+  28      E7800000 
+  29              	.LVL1:
+  30              	.LBE13:
+  31 0024 83308100 		ld	ra,8(sp)
+  32              		.cfi_restore 1
+  33 0028 03340100 		ld	s0,0(sp)
+  34              		.cfi_restore 8
+  35              		.cfi_def_cfa 2, 16
+  36 002c 13010101 		addi	sp,sp,16
+  37              		.cfi_def_cfa_offset 0
+  38 0030 67800000 		jr	ra
+  39              		.cfi_endproc
+  40              	.LFE16:
+  42              		.weak	_ZN10WorkerJoinD1Ev
+  43              		.set	_ZN10WorkerJoinD1Ev,_ZN10WorkerJoinD2Ev
+  44              		.section	.text._ZN10WorkerJoinD0Ev,"axG",@progbits,_ZN10WorkerJoinD5Ev,comdat
+  45              		.align	2
+  46              		.weak	_ZN10WorkerJoinD0Ev
+GAS LISTING /tmp/ccDYPqvm.s 			page 2
+
+
+  48              	_ZN10WorkerJoinD0Ev:
+  49              	.LFB18:
+  50              		.loc 1 11 7 is_stmt 1
+  51              		.cfi_startproc
+  52              	.LVL2:
+  53 0000 130101FE 		addi	sp,sp,-32
+  54              		.cfi_def_cfa_offset 32
+  55 0004 233C1100 		sd	ra,24(sp)
+  56 0008 23388100 		sd	s0,16(sp)
+  57 000c 23349100 		sd	s1,8(sp)
+  58              		.cfi_offset 1, -8
+  59              		.cfi_offset 8, -16
+  60              		.cfi_offset 9, -24
+  61 0010 13040102 		addi	s0,sp,32
+  62              		.cfi_def_cfa 8, 0
+  63 0014 93040500 		mv	s1,a0
+  64              	.LVL3:
+  65              	.LBB14:
+  66              	.LBB15:
+  67              		.loc 1 11 7 is_stmt 0
+  68 0018 97070000 		lla	a5,_ZTV10WorkerJoin+16
+  68      93870700 
+  69 0020 2330F500 		sd	a5,0(a0)
+  70 0024 97000000 		call	_ZN6ThreadD2Ev@plt
+  70      E7800000 
+  71              	.LVL4:
+  72              	.LBE15:
+  73              	.LBE14:
+  74 002c 13850400 		mv	a0,s1
+  75 0030 97000000 		call	_ZdlPv@plt
+  75      E7800000 
+  76              	.LVL5:
+  77 0038 83308101 		ld	ra,24(sp)
+  78              		.cfi_restore 1
+  79 003c 03340101 		ld	s0,16(sp)
+  80              		.cfi_restore 8
+  81              		.cfi_def_cfa 2, 32
+  82 0040 83348100 		ld	s1,8(sp)
+  83              		.cfi_restore 9
+  84              	.LVL6:
+  85 0044 13010102 		addi	sp,sp,32
+  86              		.cfi_def_cfa_offset 0
+  87 0048 67800000 		jr	ra
+  88              		.cfi_endproc
+  89              	.LFE18:
+  91              		.section	.rodata.str1.8,"aMS",@progbits,1
+  92              		.align	3
+  93              	.LC0:
+  94 0000 413A2069 		.string	"A: i="
+  94      3D00
+  95 0006 0000     		.align	3
+  96              	.LC1:
+  97 0008 0A00     		.string	"\n"
+  98 000a 00000000 		.align	3
+  98      0000
+  99              	.LC2:
+ 100 0010 776F726B 		.string	"worker finished!\n"
+GAS LISTING /tmp/ccDYPqvm.s 			page 3
+
+
+ 100      65722066 
+ 100      696E6973 
+ 100      68656421 
+ 100      0A00
+ 101              		.text
+ 102              		.align	2
+ 103              		.globl	_ZN10WorkerJoin14workerBodyJoinEPv
+ 105              	_ZN10WorkerJoin14workerBodyJoinEPv:
+ 106              	.LFB13:
+  12:test/ThreadJoin.cpp ****     void workerBodyJoin(void* arg);
+  13:test/ThreadJoin.cpp **** public:
+  14:test/ThreadJoin.cpp ****     WorkerJoin():Thread() {}
+  15:test/ThreadJoin.cpp **** 
+  16:test/ThreadJoin.cpp ****     void run() override {
+  17:test/ThreadJoin.cpp ****         workerBodyJoin(nullptr);
+  18:test/ThreadJoin.cpp ****     }
+  19:test/ThreadJoin.cpp **** };
+  20:test/ThreadJoin.cpp **** 
+  21:test/ThreadJoin.cpp **** 
+  22:test/ThreadJoin.cpp **** void WorkerJoin::workerBodyJoin(void *arg) {
+ 107              		.loc 1 22 44 is_stmt 1
+ 108              		.cfi_startproc
+ 109              	.LVL7:
+ 110 0000 130101FE 		addi	sp,sp,-32
+ 111              		.cfi_def_cfa_offset 32
+ 112 0004 233C1100 		sd	ra,24(sp)
+ 113 0008 23388100 		sd	s0,16(sp)
+ 114 000c 23349100 		sd	s1,8(sp)
+ 115 0010 23302101 		sd	s2,0(sp)
+ 116              		.cfi_offset 1, -8
+ 117              		.cfi_offset 8, -16
+ 118              		.cfi_offset 9, -24
+ 119              		.cfi_offset 18, -32
+ 120 0014 13040102 		addi	s0,sp,32
+ 121              		.cfi_def_cfa 8, 0
+  23:test/ThreadJoin.cpp ****     for (uint64 i = 0; i < 10; i++) {
+ 122              		.loc 1 23 5
+ 123              	.LVL8:
+ 124              	.LBB16:
+ 125              		.loc 1 23 17 is_stmt 0
+ 126 0018 13090000 		li	s2,0
+ 127 001c 6F008003 		j	.L11
+ 128              	.LVL9:
+ 129              	.L8:
+ 130              	.LBB17:
+ 131              	.LBB18:
+ 132              	.LBB19:
+  24:test/ThreadJoin.cpp ****         printString("A: i="); printInt(i); printString("\n");
+  25:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+  26:test/ThreadJoin.cpp ****             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
+  27:test/ThreadJoin.cpp ****             thread_dispatch();
+ 133              		.loc 1 27 13 is_stmt 1 discriminator 2
+ 134              		.loc 1 27 28 is_stmt 0 discriminator 2
+ 135 0020 97000000 		call	_Z15thread_dispatchv@plt
+ 135      E7800000 
+ 136              	.LVL10:
+ 137              	.LBE19:
+GAS LISTING /tmp/ccDYPqvm.s 			page 4
+
+
+  25:test/ThreadJoin.cpp ****             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
+ 138              		.loc 1 25 9 is_stmt 1 discriminator 2
+ 139 0028 93841400 		addi	s1,s1,1
+ 140              	.LVL11:
+ 141              	.L10:
+  25:test/ThreadJoin.cpp ****             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
+ 142              		.loc 1 25 30 discriminator 1
+ 143 002c B7270000 		li	a5,8192
+ 144 0030 9387F770 		addi	a5,a5,1807
+ 145 0034 63EE9700 		bgtu	s1,a5,.L7
+ 146              	.LBB21:
+ 147              	.LBB20:
+  26:test/ThreadJoin.cpp ****             thread_dispatch();
+ 148              		.loc 1 26 25 is_stmt 0
+ 149 0038 13070000 		li	a4,0
+ 150              	.L9:
+ 151              	.LVL12:
+  26:test/ThreadJoin.cpp ****             thread_dispatch();
+ 152              		.loc 1 26 34 is_stmt 1 discriminator 3
+ 153 003c B7770000 		li	a5,28672
+ 154 0040 9387F752 		addi	a5,a5,1327
+ 155 0044 E3EEE7FC 		bgtu	a4,a5,.L8
+  26:test/ThreadJoin.cpp ****             thread_dispatch();
+ 156              		.loc 1 26 13 discriminator 2
+ 157 0048 13071700 		addi	a4,a4,1
+ 158              	.LVL13:
+ 159 004c 6FF01FFF 		j	.L9
+ 160              	.LVL14:
+ 161              	.L7:
+ 162              	.LBE20:
+ 163              	.LBE21:
+ 164              	.LBE18:
+ 165              	.LBE17:
+  23:test/ThreadJoin.cpp ****         printString("A: i="); printInt(i); printString("\n");
+ 166              		.loc 1 23 5 discriminator 2
+ 167 0050 13091900 		addi	s2,s2,1
+ 168              	.LVL15:
+ 169              	.L11:
+  23:test/ThreadJoin.cpp ****         printString("A: i="); printInt(i); printString("\n");
+ 170              		.loc 1 23 26 discriminator 1
+ 171 0054 93079000 		li	a5,9
+ 172 0058 63E02705 		bgtu	s2,a5,.L6
+ 173              	.LBB23:
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 174              		.loc 1 24 9
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 175              		.loc 1 24 20 is_stmt 0
+ 176 005c 17050000 		lla	a0,.LC0
+ 176      13050500 
+ 177 0064 97000000 		call	_Z11printStringPKc@plt
+ 177      E7800000 
+ 178              	.LVL16:
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 179              		.loc 1 24 31 is_stmt 1
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 180              		.loc 1 24 39 is_stmt 0
+ 181 006c 13060000 		li	a2,0
+GAS LISTING /tmp/ccDYPqvm.s 			page 5
+
+
+ 182 0070 9305A000 		li	a1,10
+ 183 0074 1B050900 		sext.w	a0,s2
+ 184 0078 97000000 		call	_Z8printIntiii@plt
+ 184      E7800000 
+ 185              	.LVL17:
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 186              		.loc 1 24 44 is_stmt 1
+  24:test/ThreadJoin.cpp ****         for (uint64 j = 0; j < 10000; j++) {
+ 187              		.loc 1 24 55 is_stmt 0
+ 188 0080 17050000 		lla	a0,.LC1
+ 188      13050500 
+ 189 0088 97000000 		call	_Z11printStringPKc@plt
+ 189      E7800000 
+ 190              	.LVL18:
+  25:test/ThreadJoin.cpp ****             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
+ 191              		.loc 1 25 9 is_stmt 1
+ 192              	.LBB22:
+  25:test/ThreadJoin.cpp ****             for (uint64 k = 0; k < 30000; k++) { /* busy wait */ }
+ 193              		.loc 1 25 21 is_stmt 0
+ 194 0090 93040000 		li	s1,0
+ 195 0094 6FF09FF9 		j	.L10
+ 196              	.LVL19:
+ 197              	.L6:
+ 198              	.LBE22:
+ 199              	.LBE23:
+ 200              	.LBE16:
+  28:test/ThreadJoin.cpp ****         }
+  29:test/ThreadJoin.cpp ****     }
+  30:test/ThreadJoin.cpp ****     printString("worker finished!\n");
+ 201              		.loc 1 30 5 is_stmt 1
+ 202              		.loc 1 30 16 is_stmt 0
+ 203 0098 17050000 		lla	a0,.LC2
+ 203      13050500 
+ 204 00a0 97000000 		call	_Z11printStringPKc@plt
+ 204      E7800000 
+ 205              	.LVL20:
+  31:test/ThreadJoin.cpp **** }
+ 206              		.loc 1 31 1
+ 207 00a8 83308101 		ld	ra,24(sp)
+ 208              		.cfi_restore 1
+ 209 00ac 03340101 		ld	s0,16(sp)
+ 210              		.cfi_restore 8
+ 211              		.cfi_def_cfa 2, 32
+ 212 00b0 83348100 		ld	s1,8(sp)
+ 213              		.cfi_restore 9
+ 214 00b4 03390100 		ld	s2,0(sp)
+ 215              		.cfi_restore 18
+ 216              	.LVL21:
+ 217 00b8 13010102 		addi	sp,sp,32
+ 218              		.cfi_def_cfa_offset 0
+ 219 00bc 67800000 		jr	ra
+ 220              		.cfi_endproc
+ 221              	.LFE13:
+ 223              		.section	.text._ZN10WorkerJoin3runEv,"axG",@progbits,_ZN10WorkerJoin3runEv,comdat
+ 224              		.align	2
+ 225              		.weak	_ZN10WorkerJoin3runEv
+ 227              	_ZN10WorkerJoin3runEv:
+GAS LISTING /tmp/ccDYPqvm.s 			page 6
+
+
+ 228              	.LFB12:
+  16:test/ThreadJoin.cpp ****         workerBodyJoin(nullptr);
+ 229              		.loc 1 16 10 is_stmt 1
+ 230              		.cfi_startproc
+ 231              	.LVL22:
+ 232 0000 130101FF 		addi	sp,sp,-16
+ 233              		.cfi_def_cfa_offset 16
+ 234 0004 23341100 		sd	ra,8(sp)
+ 235 0008 23308100 		sd	s0,0(sp)
+ 236              		.cfi_offset 1, -8
+ 237              		.cfi_offset 8, -16
+ 238 000c 13040101 		addi	s0,sp,16
+ 239              		.cfi_def_cfa 8, 0
+  17:test/ThreadJoin.cpp ****     }
+ 240              		.loc 1 17 9
+  17:test/ThreadJoin.cpp ****     }
+ 241              		.loc 1 17 23 is_stmt 0
+ 242 0010 93050000 		li	a1,0
+ 243 0014 97000000 		call	_ZN10WorkerJoin14workerBodyJoinEPv
+ 243      E7800000 
+ 244              	.LVL23:
+  18:test/ThreadJoin.cpp **** };
+ 245              		.loc 1 18 5
+ 246 001c 83308100 		ld	ra,8(sp)
+ 247              		.cfi_restore 1
+ 248 0020 03340100 		ld	s0,0(sp)
+ 249              		.cfi_restore 8
+ 250              		.cfi_def_cfa 2, 16
+ 251 0024 13010101 		addi	sp,sp,16
+ 252              		.cfi_def_cfa_offset 0
+ 253 0028 67800000 		jr	ra
+ 254              		.cfi_endproc
+ 255              	.LFE12:
+ 257              		.section	.rodata.str1.8
+ 258 0022 00000000 		.align	3
+ 258      0000
+ 259              	.LC3:
+ 260 0028 576F726B 		.string	"Worker created\n"
+ 260      65722063 
+ 260      72656174 
+ 260      65640A00 
+ 261              		.align	3
+ 262              	.LC4:
+ 263 0038 4D61696E 		.string	"Main nit zavrsena\n"
+ 263      206E6974 
+ 263      207A6176 
+ 263      7273656E 
+ 263      610A00
+ 264              		.text
+ 265              		.align	2
+ 266              		.globl	_Z15ThreadJoin_testv
+ 268              	_Z15ThreadJoin_testv:
+ 269              	.LFB14:
+  32:test/ThreadJoin.cpp **** 
+  33:test/ThreadJoin.cpp **** 
+  34:test/ThreadJoin.cpp **** void ThreadJoin_test() {
+ 270              		.loc 1 34 24 is_stmt 1
+GAS LISTING /tmp/ccDYPqvm.s 			page 7
+
+
+ 271              		.cfi_startproc
+ 272              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 273              		.cfi_lsda 0x1b,.LLSDA14
+ 274 00c0 130101FD 		addi	sp,sp,-48
+ 275              		.cfi_def_cfa_offset 48
+ 276 00c4 23341102 		sd	ra,40(sp)
+ 277 00c8 23308102 		sd	s0,32(sp)
+ 278 00cc 233C9100 		sd	s1,24(sp)
+ 279 00d0 23382101 		sd	s2,16(sp)
+ 280              		.cfi_offset 1, -8
+ 281              		.cfi_offset 8, -16
+ 282              		.cfi_offset 9, -24
+ 283              		.cfi_offset 18, -32
+ 284 00d4 13040103 		addi	s0,sp,48
+ 285              		.cfi_def_cfa 8, 0
+  35:test/ThreadJoin.cpp ****     Thread* threads[2];
+ 286              		.loc 1 35 5
+  36:test/ThreadJoin.cpp **** 
+  37:test/ThreadJoin.cpp ****     threads[0] = new WorkerJoin();
+ 287              		.loc 1 37 5
+ 288              		.loc 1 37 33 is_stmt 0
+ 289 00d8 13050002 		li	a0,32
+ 290              	.LEHB0:
+ 291 00dc 97000000 		call	_Znwm@plt
+ 291      E7800000 
+ 292              	.LVL24:
+ 293              	.LEHE0:
+ 294 00e4 93040500 		mv	s1,a0
+ 295              	.LVL25:
+ 296              	.LEHB1:
+ 297              	.LBB24:
+ 298              	.LBB25:
+  14:test/ThreadJoin.cpp **** 
+ 299              		.loc 1 14 25
+ 300 00e8 97000000 		call	_ZN6ThreadC2Ev@plt
+ 300      E7800000 
+ 301              	.LVL26:
+ 302              	.LEHE1:
+ 303 00f0 97070000 		lla	a5,_ZTV10WorkerJoin+16
+ 303      93870700 
+ 304 00f8 23B0F400 		sd	a5,0(s1)
+ 305              	.LVL27:
+ 306              	.LBE25:
+ 307              	.LBE24:
+ 308              		.loc 1 37 16
+ 309 00fc 233894FC 		sd	s1,-48(s0)
+  38:test/ThreadJoin.cpp ****     printString("Worker created\n");
+ 310              		.loc 1 38 5 is_stmt 1
+ 311              		.loc 1 38 16 is_stmt 0
+ 312 0100 17050000 		lla	a0,.LC3
+ 312      13050500 
+ 313              	.LEHB2:
+ 314 0108 97000000 		call	_Z11printStringPKc@plt
+ 314      E7800000 
+ 315              	.LVL28:
+  39:test/ThreadJoin.cpp **** 
+  40:test/ThreadJoin.cpp ****     threads[1] = new WorkerJoin();
+GAS LISTING /tmp/ccDYPqvm.s 			page 8
+
+
+ 316              		.loc 1 40 5 is_stmt 1
+ 317              		.loc 1 40 33 is_stmt 0
+ 318 0110 13050002 		li	a0,32
+ 319 0114 97000000 		call	_Znwm@plt
+ 319      E7800000 
+ 320              	.LVL29:
+ 321              	.LEHE2:
+ 322 011c 93040500 		mv	s1,a0
+ 323              	.LVL30:
+ 324              	.LEHB3:
+ 325              	.LBB26:
+ 326              	.LBB27:
+  14:test/ThreadJoin.cpp **** 
+ 327              		.loc 1 14 25
+ 328 0120 97000000 		call	_ZN6ThreadC2Ev@plt
+ 328      E7800000 
+ 329              	.LVL31:
+ 330              	.LEHE3:
+ 331 0128 97070000 		lla	a5,_ZTV10WorkerJoin+16
+ 331      93870700 
+ 332 0130 23B0F400 		sd	a5,0(s1)
+ 333              	.LVL32:
+ 334              	.LBE27:
+ 335              	.LBE26:
+ 336              		.loc 1 40 16
+ 337 0134 233C94FC 		sd	s1,-40(s0)
+  41:test/ThreadJoin.cpp ****     printString("Worker created\n");
+ 338              		.loc 1 41 5 is_stmt 1
+ 339              		.loc 1 41 16 is_stmt 0
+ 340 0138 17050000 		lla	a0,.LC3
+ 340      13050500 
+ 341              	.LEHB4:
+ 342 0140 97000000 		call	_Z11printStringPKc@plt
+ 342      E7800000 
+ 343              	.LVL33:
+ 344              	.LBB28:
+  42:test/ThreadJoin.cpp **** 
+  43:test/ThreadJoin.cpp ****     for(int i=0; i<2; i++) {
+ 345              		.loc 1 43 13
+ 346 0148 93040000 		li	s1,0
+ 347 014c 6F000002 		j	.L17
+ 348              	.LVL34:
+ 349              	.L26:
+  44:test/ThreadJoin.cpp ****         threads[i]->start();
+ 350              		.loc 1 44 9 is_stmt 1
+ 351              		.loc 1 44 18 is_stmt 0
+ 352 0150 93973400 		slli	a5,s1,3
+ 353 0154 130704FE 		addi	a4,s0,-32
+ 354 0158 B307F700 		add	a5,a4,a5
+ 355              		.loc 1 44 26
+ 356 015c 03B507FF 		ld	a0,-16(a5)
+ 357 0160 97000000 		call	_ZN6Thread5startEv@plt
+ 357      E7800000 
+ 358              	.LVL35:
+  43:test/ThreadJoin.cpp ****         threads[i]->start();
+ 359              		.loc 1 43 5 is_stmt 1
+ 360 0168 9B841400 		addiw	s1,s1,1
+GAS LISTING /tmp/ccDYPqvm.s 			page 9
+
+
+ 361              	.LVL36:
+ 362              	.L17:
+  43:test/ThreadJoin.cpp ****         threads[i]->start();
+ 363              		.loc 1 43 19 discriminator 1
+ 364 016c 93071000 		li	a5,1
+ 365 0170 E3D097FE 		ble	s1,a5,.L26
+ 366              	.LBE28:
+  45:test/ThreadJoin.cpp ****     }
+  46:test/ThreadJoin.cpp **** 
+  47:test/ThreadJoin.cpp ****     threads[0]->join();
+ 367              		.loc 1 47 5
+ 368              		.loc 1 47 21 is_stmt 0
+ 369 0174 033504FD 		ld	a0,-48(s0)
+ 370 0178 97000000 		call	_ZN6Thread4joinEv@plt
+ 370      E7800000 
+ 371              	.LVL37:
+  48:test/ThreadJoin.cpp ****     threads[1]->join();
+ 372              		.loc 1 48 5 is_stmt 1
+ 373              		.loc 1 48 21 is_stmt 0
+ 374 0180 033584FD 		ld	a0,-40(s0)
+ 375 0184 97000000 		call	_ZN6Thread4joinEv@plt
+ 375      E7800000 
+ 376              	.LVL38:
+  49:test/ThreadJoin.cpp ****     printString("Main nit zavrsena\n");
+ 377              		.loc 1 49 5 is_stmt 1
+ 378              		.loc 1 49 16 is_stmt 0
+ 379 018c 17050000 		lla	a0,.LC4
+ 379      13050500 
+ 380 0194 97000000 		call	_Z11printStringPKc@plt
+ 380      E7800000 
+ 381              	.LVL39:
+ 382              	.LEHE4:
+ 383              	.LBB29:
+  50:test/ThreadJoin.cpp ****     for (auto thread: threads) { delete thread; }
+ 384              		.loc 1 50 23
+ 385 019c 930404FD 		addi	s1,s0,-48
+ 386              	.LVL40:
+ 387 01a0 6F008000 		j	.L20
+ 388              	.LVL41:
+ 389              	.L19:
+ 390              		.loc 1 50 5 is_stmt 1 discriminator 5
+ 391 01a4 93848400 		addi	s1,s1,8
+ 392              	.LVL42:
+ 393              	.L20:
+ 394              		.loc 1 50 23 discriminator 6
+ 395 01a8 930704FE 		addi	a5,s0,-32
+ 396 01ac 638AF404 		beq	s1,a5,.L15
+ 397              		.loc 1 50 15 is_stmt 0 discriminator 2
+ 398 01b0 03B50400 		ld	a0,0(s1)
+ 399              	.LVL43:
+ 400              		.loc 1 50 34 is_stmt 1 discriminator 2
+ 401              		.loc 1 50 47 is_stmt 0 discriminator 2
+ 402 01b4 E30805FE 		beqz	a0,.L19
+ 403              		.loc 1 50 41 discriminator 3
+ 404 01b8 83370500 		ld	a5,0(a0)
+ 405 01bc 83B78700 		ld	a5,8(a5)
+ 406 01c0 E7800700 		jalr	a5
+GAS LISTING /tmp/ccDYPqvm.s 			page 10
+
+
+ 407              	.LVL44:
+ 408 01c4 6FF01FFE 		j	.L19
+ 409              	.LVL45:
+ 410              	.L23:
+ 411 01c8 13090500 		mv	s2,a0
+ 412              	.LBE29:
+  37:test/ThreadJoin.cpp ****     printString("Worker created\n");
+ 413              		.loc 1 37 33
+ 414 01cc 13850400 		mv	a0,s1
+ 415 01d0 97000000 		call	_ZdlPv@plt
+ 415      E7800000 
+ 416              	.LVL46:
+ 417 01d8 13050900 		mv	a0,s2
+ 418              	.LEHB5:
+ 419 01dc 97000000 		call	_Unwind_Resume@plt
+ 419      E7800000 
+ 420              	.LVL47:
+ 421              	.LEHE5:
+ 422              	.L24:
+ 423 01e4 13090500 		mv	s2,a0
+  40:test/ThreadJoin.cpp ****     printString("Worker created\n");
+ 424              		.loc 1 40 33
+ 425 01e8 13850400 		mv	a0,s1
+ 426 01ec 97000000 		call	_ZdlPv@plt
+ 426      E7800000 
+ 427              	.LVL48:
+ 428 01f4 13050900 		mv	a0,s2
+ 429              	.LEHB6:
+ 430 01f8 97000000 		call	_Unwind_Resume@plt
+ 430      E7800000 
+ 431              	.LVL49:
+ 432              	.LEHE6:
+ 433              	.L15:
+  51:test/ThreadJoin.cpp **** }
+ 434              		.loc 1 51 1
+ 435 0200 83308102 		ld	ra,40(sp)
+ 436              		.cfi_restore 1
+ 437 0204 03340102 		ld	s0,32(sp)
+ 438              		.cfi_restore 8
+ 439              		.cfi_def_cfa 2, 48
+ 440 0208 83348101 		ld	s1,24(sp)
+ 441              		.cfi_restore 9
+ 442              	.LVL50:
+ 443 020c 03390101 		ld	s2,16(sp)
+ 444              		.cfi_restore 18
+ 445 0210 13010103 		addi	sp,sp,48
+ 446              		.cfi_def_cfa_offset 0
+ 447 0214 67800000 		jr	ra
+ 448              		.cfi_endproc
+ 449              	.LFE14:
+ 450              		.globl	__gxx_personality_v0
+ 451              		.section	.gcc_except_table,"a",@progbits
+ 452              	.LLSDA14:
+ 453 0000 FF       		.byte	0xff
+ 454 0001 FF       		.byte	0xff
+ 455 0002 03       		.byte	0x3
+ 456 0003 5B       		.byte	0x5b
+GAS LISTING /tmp/ccDYPqvm.s 			page 11
+
+
+ 457 0004 00000000 		.4byte	.LEHB0-.LFB14
+ 458 0008 00000000 		.4byte	.LEHE0-.LEHB0
+ 459 000c 00000000 		.4byte	0
+ 460 0010 00       		.byte	0
+ 461 0011 00000000 		.4byte	.LEHB1-.LFB14
+ 462 0015 00000000 		.4byte	.LEHE1-.LEHB1
+ 463 0019 00000000 		.4byte	.L23-.LFB14
+ 464 001d 00       		.byte	0
+ 465 001e 00000000 		.4byte	.LEHB2-.LFB14
+ 466 0022 00000000 		.4byte	.LEHE2-.LEHB2
+ 467 0026 00000000 		.4byte	0
+ 468 002a 00       		.byte	0
+ 469 002b 00000000 		.4byte	.LEHB3-.LFB14
+ 470 002f 00000000 		.4byte	.LEHE3-.LEHB3
+ 471 0033 00000000 		.4byte	.L24-.LFB14
+ 472 0037 00       		.byte	0
+ 473 0038 00000000 		.4byte	.LEHB4-.LFB14
+ 474 003c 00000000 		.4byte	.LEHE4-.LEHB4
+ 475 0040 00000000 		.4byte	0
+ 476 0044 00       		.byte	0
+ 477 0045 00000000 		.4byte	.LEHB5-.LFB14
+ 478 0049 00000000 		.4byte	.LEHE5-.LEHB5
+ 479 004d 00000000 		.4byte	0
+ 480 0051 00       		.byte	0
+ 481 0052 00000000 		.4byte	.LEHB6-.LFB14
+ 482 0056 00000000 		.4byte	.LEHE6-.LEHB6
+ 483 005a 00000000 		.4byte	0
+ 484 005e 00       		.byte	0
+ 485              		.text
+ 487              		.weak	_ZTV10WorkerJoin
+ 488              		.section	.data.rel.ro.local._ZTV10WorkerJoin,"awG",@progbits,_ZTV10WorkerJoin,comdat
+ 489              		.align	3
+ 492              	_ZTV10WorkerJoin:
+ 493 0000 00000000 		.dword	0
+ 493      00000000 
+ 494 0008 00000000 		.dword	0
+ 494      00000000 
+ 495 0010 00000000 		.dword	_ZN10WorkerJoinD1Ev
+ 495      00000000 
+ 496 0018 00000000 		.dword	_ZN10WorkerJoinD0Ev
+ 496      00000000 
+ 497 0020 00000000 		.dword	_ZN10WorkerJoin3runEv
+ 497      00000000 
+ 498              		.text
+ 499              	.Letext0:
+ 500              		.file 2 "test/../h/../lib/hw.h"
+ 501              		.file 3 "test/../h/syscall_cpp.hpp"
+ 502              		.file 4 "test/printing.hpp"
+ 503              		.file 5 "test/../h/syscall_c.hpp"
+ 2293              		.align	3
+ 2296              	DW.ref.__gxx_personality_v0:
+ 2297 0000 00000000 		.dword	__gxx_personality_v0
+ 2297      00000000 
+ 2298              		.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0"
+ 2299              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccDYPqvm.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ThreadJoin.cpp
+     /tmp/ccDYPqvm.s:10     .text._ZN10WorkerJoinD2Ev:0000000000000000 _ZN10WorkerJoinD2Ev
+     /tmp/ccDYPqvm.s:14     .text._ZN10WorkerJoinD2Ev:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:16     .text._ZN10WorkerJoinD2Ev:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:17     .text._ZN10WorkerJoinD2Ev:0000000000000004 .L0 
+     /tmp/ccDYPqvm.s:20     .text._ZN10WorkerJoinD2Ev:000000000000000c .L0 
+     /tmp/ccDYPqvm.s:21     .text._ZN10WorkerJoinD2Ev:000000000000000c .L0 
+     /tmp/ccDYPqvm.s:23     .text._ZN10WorkerJoinD2Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:492    .data.rel.ro.local._ZTV10WorkerJoin:0000000000000000 _ZTV10WorkerJoin
+     /tmp/ccDYPqvm.s:26     .text._ZN10WorkerJoinD2Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:32     .text._ZN10WorkerJoinD2Ev:0000000000000028 .L0 
+     /tmp/ccDYPqvm.s:34     .text._ZN10WorkerJoinD2Ev:000000000000002c .L0 
+     /tmp/ccDYPqvm.s:35     .text._ZN10WorkerJoinD2Ev:000000000000002c .L0 
+     /tmp/ccDYPqvm.s:37     .text._ZN10WorkerJoinD2Ev:0000000000000030 .L0 
+     /tmp/ccDYPqvm.s:39     .text._ZN10WorkerJoinD2Ev:0000000000000034 .L0 
+     /tmp/ccDYPqvm.s:10     .text._ZN10WorkerJoinD2Ev:0000000000000000 _ZN10WorkerJoinD1Ev
+     /tmp/ccDYPqvm.s:48     .text._ZN10WorkerJoinD0Ev:0000000000000000 _ZN10WorkerJoinD0Ev
+     /tmp/ccDYPqvm.s:51     .text._ZN10WorkerJoinD0Ev:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:53     .text._ZN10WorkerJoinD0Ev:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:54     .text._ZN10WorkerJoinD0Ev:0000000000000004 .L0 
+     /tmp/ccDYPqvm.s:58     .text._ZN10WorkerJoinD0Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:59     .text._ZN10WorkerJoinD0Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:60     .text._ZN10WorkerJoinD0Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:62     .text._ZN10WorkerJoinD0Ev:0000000000000014 .L0 
+     /tmp/ccDYPqvm.s:68     .text._ZN10WorkerJoinD0Ev:0000000000000018 .L0 
+     /tmp/ccDYPqvm.s:78     .text._ZN10WorkerJoinD0Ev:000000000000003c .L0 
+     /tmp/ccDYPqvm.s:80     .text._ZN10WorkerJoinD0Ev:0000000000000040 .L0 
+     /tmp/ccDYPqvm.s:81     .text._ZN10WorkerJoinD0Ev:0000000000000040 .L0 
+     /tmp/ccDYPqvm.s:83     .text._ZN10WorkerJoinD0Ev:0000000000000044 .L0 
+     /tmp/ccDYPqvm.s:86     .text._ZN10WorkerJoinD0Ev:0000000000000048 .L0 
+     /tmp/ccDYPqvm.s:88     .text._ZN10WorkerJoinD0Ev:000000000000004c .L0 
+     /tmp/ccDYPqvm.s:105    .text:0000000000000000 _ZN10WorkerJoin14workerBodyJoinEPv
+     /tmp/ccDYPqvm.s:108    .text:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:110    .text:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:111    .text:0000000000000004 .L0 
+     /tmp/ccDYPqvm.s:116    .text:0000000000000014 .L0 
+     /tmp/ccDYPqvm.s:117    .text:0000000000000014 .L0 
+     /tmp/ccDYPqvm.s:118    .text:0000000000000014 .L0 
+     /tmp/ccDYPqvm.s:119    .text:0000000000000014 .L0 
+     /tmp/ccDYPqvm.s:121    .text:0000000000000018 .L0 
+     /tmp/ccDYPqvm.s:125    .text:0000000000000018 .L0 
+     /tmp/ccDYPqvm.s:126    .text:0000000000000018 .L0 
+     /tmp/ccDYPqvm.s:134    .text:0000000000000020 .L0 
+     /tmp/ccDYPqvm.s:135    .text:0000000000000020 .L0 
+     /tmp/ccDYPqvm.s:139    .text:0000000000000028 .L0 
+     /tmp/ccDYPqvm.s:143    .text:000000000000002c .L0 
+     /tmp/ccDYPqvm.s:149    .text:0000000000000038 .L0 
+     /tmp/ccDYPqvm.s:153    .text:000000000000003c .L0 
+     /tmp/ccDYPqvm.s:157    .text:0000000000000048 .L0 
+     /tmp/ccDYPqvm.s:167    .text:0000000000000050 .L0 
+     /tmp/ccDYPqvm.s:171    .text:0000000000000054 .L0 
+     /tmp/ccDYPqvm.s:175    .text:000000000000005c .L0 
+     /tmp/ccDYPqvm.s:176    .text:000000000000005c .L0 
+     /tmp/ccDYPqvm.s:180    .text:000000000000006c .L0 
+     /tmp/ccDYPqvm.s:181    .text:000000000000006c .L0 
+     /tmp/ccDYPqvm.s:187    .text:0000000000000080 .L0 
+GAS LISTING /tmp/ccDYPqvm.s 			page 13
+
+
+     /tmp/ccDYPqvm.s:188    .text:0000000000000080 .L0 
+     /tmp/ccDYPqvm.s:193    .text:0000000000000090 .L0 
+     /tmp/ccDYPqvm.s:194    .text:0000000000000090 .L0 
+     /tmp/ccDYPqvm.s:202    .text:0000000000000098 .L0 
+     /tmp/ccDYPqvm.s:203    .text:0000000000000098 .L0 
+     /tmp/ccDYPqvm.s:207    .text:00000000000000a8 .L0 
+     /tmp/ccDYPqvm.s:208    .text:00000000000000ac .L0 
+     /tmp/ccDYPqvm.s:210    .text:00000000000000b0 .L0 
+     /tmp/ccDYPqvm.s:211    .text:00000000000000b0 .L0 
+     /tmp/ccDYPqvm.s:213    .text:00000000000000b4 .L0 
+     /tmp/ccDYPqvm.s:215    .text:00000000000000b8 .L0 
+     /tmp/ccDYPqvm.s:218    .text:00000000000000bc .L0 
+     /tmp/ccDYPqvm.s:220    .text:00000000000000c0 .L0 
+     /tmp/ccDYPqvm.s:227    .text._ZN10WorkerJoin3runEv:0000000000000000 _ZN10WorkerJoin3runEv
+     /tmp/ccDYPqvm.s:230    .text._ZN10WorkerJoin3runEv:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:232    .text._ZN10WorkerJoin3runEv:0000000000000000 .L0 
+     /tmp/ccDYPqvm.s:233    .text._ZN10WorkerJoin3runEv:0000000000000004 .L0 
+     /tmp/ccDYPqvm.s:236    .text._ZN10WorkerJoin3runEv:000000000000000c .L0 
+     /tmp/ccDYPqvm.s:237    .text._ZN10WorkerJoin3runEv:000000000000000c .L0 
+     /tmp/ccDYPqvm.s:239    .text._ZN10WorkerJoin3runEv:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:241    .text._ZN10WorkerJoin3runEv:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:242    .text._ZN10WorkerJoin3runEv:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:246    .text._ZN10WorkerJoin3runEv:000000000000001c .L0 
+     /tmp/ccDYPqvm.s:247    .text._ZN10WorkerJoin3runEv:0000000000000020 .L0 
+     /tmp/ccDYPqvm.s:249    .text._ZN10WorkerJoin3runEv:0000000000000024 .L0 
+     /tmp/ccDYPqvm.s:250    .text._ZN10WorkerJoin3runEv:0000000000000024 .L0 
+     /tmp/ccDYPqvm.s:252    .text._ZN10WorkerJoin3runEv:0000000000000028 .L0 
+     /tmp/ccDYPqvm.s:254    .text._ZN10WorkerJoin3runEv:000000000000002c .L0 
+     /tmp/ccDYPqvm.s:268    .text:00000000000000c0 _Z15ThreadJoin_testv
+     /tmp/ccDYPqvm.s:271    .text:00000000000000c0 .L0 
+     /tmp/ccDYPqvm.s:2296   .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
+     /tmp/ccDYPqvm.s:274    .text:00000000000000c0 .L0 
+     /tmp/ccDYPqvm.s:275    .text:00000000000000c4 .L0 
+     /tmp/ccDYPqvm.s:280    .text:00000000000000d4 .L0 
+     /tmp/ccDYPqvm.s:281    .text:00000000000000d4 .L0 
+     /tmp/ccDYPqvm.s:282    .text:00000000000000d4 .L0 
+     /tmp/ccDYPqvm.s:283    .text:00000000000000d4 .L0 
+     /tmp/ccDYPqvm.s:285    .text:00000000000000d8 .L0 
+     /tmp/ccDYPqvm.s:287    .text:00000000000000d8 .L0 
+     /tmp/ccDYPqvm.s:288    .text:00000000000000d8 .L0 
+     /tmp/ccDYPqvm.s:289    .text:00000000000000d8 .L0 
+     /tmp/ccDYPqvm.s:300    .text:00000000000000e8 .L0 
+     /tmp/ccDYPqvm.s:309    .text:00000000000000fc .L0 
+     /tmp/ccDYPqvm.s:311    .text:0000000000000100 .L0 
+     /tmp/ccDYPqvm.s:312    .text:0000000000000100 .L0 
+     /tmp/ccDYPqvm.s:317    .text:0000000000000110 .L0 
+     /tmp/ccDYPqvm.s:318    .text:0000000000000110 .L0 
+     /tmp/ccDYPqvm.s:328    .text:0000000000000120 .L0 
+     /tmp/ccDYPqvm.s:337    .text:0000000000000134 .L0 
+     /tmp/ccDYPqvm.s:339    .text:0000000000000138 .L0 
+     /tmp/ccDYPqvm.s:340    .text:0000000000000138 .L0 
+     /tmp/ccDYPqvm.s:346    .text:0000000000000148 .L0 
+     /tmp/ccDYPqvm.s:351    .text:0000000000000150 .L0 
+     /tmp/ccDYPqvm.s:352    .text:0000000000000150 .L0 
+     /tmp/ccDYPqvm.s:356    .text:000000000000015c .L0 
+     /tmp/ccDYPqvm.s:360    .text:0000000000000168 .L0 
+     /tmp/ccDYPqvm.s:364    .text:000000000000016c .L0 
+GAS LISTING /tmp/ccDYPqvm.s 			page 14
+
+
+     /tmp/ccDYPqvm.s:368    .text:0000000000000174 .L0 
+     /tmp/ccDYPqvm.s:369    .text:0000000000000174 .L0 
+     /tmp/ccDYPqvm.s:373    .text:0000000000000180 .L0 
+     /tmp/ccDYPqvm.s:374    .text:0000000000000180 .L0 
+     /tmp/ccDYPqvm.s:378    .text:000000000000018c .L0 
+     /tmp/ccDYPqvm.s:379    .text:000000000000018c .L0 
+     /tmp/ccDYPqvm.s:385    .text:000000000000019c .L0 
+     /tmp/ccDYPqvm.s:391    .text:00000000000001a4 .L0 
+     /tmp/ccDYPqvm.s:395    .text:00000000000001a8 .L0 
+     /tmp/ccDYPqvm.s:398    .text:00000000000001b0 .L0 
+     /tmp/ccDYPqvm.s:401    .text:00000000000001b4 .L0 
+     /tmp/ccDYPqvm.s:402    .text:00000000000001b4 .L0 
+     /tmp/ccDYPqvm.s:404    .text:00000000000001b8 .L0 
+     /tmp/ccDYPqvm.s:414    .text:00000000000001cc .L0 
+     /tmp/ccDYPqvm.s:425    .text:00000000000001e8 .L0 
+     /tmp/ccDYPqvm.s:435    .text:0000000000000200 .L0 
+     /tmp/ccDYPqvm.s:436    .text:0000000000000204 .L0 
+     /tmp/ccDYPqvm.s:438    .text:0000000000000208 .L0 
+     /tmp/ccDYPqvm.s:439    .text:0000000000000208 .L0 
+     /tmp/ccDYPqvm.s:441    .text:000000000000020c .L0 
+     /tmp/ccDYPqvm.s:444    .text:0000000000000210 .L0 
+     /tmp/ccDYPqvm.s:446    .text:0000000000000214 .L0 
+     /tmp/ccDYPqvm.s:448    .text:0000000000000218 .L0 
+     /tmp/ccDYPqvm.s:44     .text._ZN10WorkerJoinD2Ev:0000000000000034 .L0 
+     /tmp/ccDYPqvm.s:91     .text._ZN10WorkerJoinD0Ev:000000000000004c .L0 
+     /tmp/ccDYPqvm.s:504    .text:0000000000000218 .L0 
+     /tmp/ccDYPqvm.s:257    .text._ZN10WorkerJoin3runEv:000000000000002c .L0 
+     /tmp/ccDYPqvm.s:93     .rodata.str1.8:0000000000000000 .LC0
+     /tmp/ccDYPqvm.s:176    .text:000000000000005c .L0 
+     /tmp/ccDYPqvm.s:96     .rodata.str1.8:0000000000000008 .LC1
+     /tmp/ccDYPqvm.s:188    .text:0000000000000080 .L0 
+     /tmp/ccDYPqvm.s:99     .rodata.str1.8:0000000000000010 .LC2
+     /tmp/ccDYPqvm.s:203    .text:0000000000000098 .L0 
+     /tmp/ccDYPqvm.s:303    .text:00000000000000f0 .L0 
+     /tmp/ccDYPqvm.s:259    .rodata.str1.8:0000000000000028 .LC3
+     /tmp/ccDYPqvm.s:312    .text:0000000000000100 .L0 
+     /tmp/ccDYPqvm.s:331    .text:0000000000000128 .L0 
+     /tmp/ccDYPqvm.s:340    .text:0000000000000138 .L0 
+     /tmp/ccDYPqvm.s:262    .rodata.str1.8:0000000000000038 .LC4
+     /tmp/ccDYPqvm.s:379    .text:000000000000018c .L0 
+     /tmp/ccDYPqvm.s:169    .text:0000000000000054 .L11
+     /tmp/ccDYPqvm.s:161    .text:0000000000000050 .L7
+     /tmp/ccDYPqvm.s:129    .text:0000000000000020 .L8
+     /tmp/ccDYPqvm.s:150    .text:000000000000003c .L9
+     /tmp/ccDYPqvm.s:197    .text:0000000000000098 .L6
+     /tmp/ccDYPqvm.s:141    .text:000000000000002c .L10
+     /tmp/ccDYPqvm.s:362    .text:000000000000016c .L17
+     /tmp/ccDYPqvm.s:349    .text:0000000000000150 .L26
+     /tmp/ccDYPqvm.s:393    .text:00000000000001a8 .L20
+     /tmp/ccDYPqvm.s:433    .text:0000000000000200 .L15
+     /tmp/ccDYPqvm.s:389    .text:00000000000001a4 .L19
+     /tmp/ccDYPqvm.s:26     .text._ZN10WorkerJoinD2Ev:0000000000000010 .L0 
+     /tmp/ccDYPqvm.s:68     .text._ZN10WorkerJoinD0Ev:0000000000000018 .L0 
+     /tmp/ccDYPqvm.s:290    .text:00000000000000dc .LEHB0
+     /tmp/ccDYPqvm.s:269    .text:00000000000000c0 .LFB14
+     /tmp/ccDYPqvm.s:293    .text:00000000000000e4 .LEHE0
+     /tmp/ccDYPqvm.s:296    .text:00000000000000e8 .LEHB1
+GAS LISTING /tmp/ccDYPqvm.s 			page 15
+
+
+     /tmp/ccDYPqvm.s:302    .text:00000000000000f0 .LEHE1
+     /tmp/ccDYPqvm.s:410    .text:00000000000001c8 .L23
+     /tmp/ccDYPqvm.s:313    .text:0000000000000108 .LEHB2
+     /tmp/ccDYPqvm.s:321    .text:000000000000011c .LEHE2
+     /tmp/ccDYPqvm.s:324    .text:0000000000000120 .LEHB3
+     /tmp/ccDYPqvm.s:330    .text:0000000000000128 .LEHE3
+     /tmp/ccDYPqvm.s:422    .text:00000000000001e4 .L24
+     /tmp/ccDYPqvm.s:341    .text:0000000000000140 .LEHB4
+     /tmp/ccDYPqvm.s:382    .text:000000000000019c .LEHE4
+     /tmp/ccDYPqvm.s:418    .text:00000000000001dc .LEHB5
+     /tmp/ccDYPqvm.s:421    .text:00000000000001e4 .LEHE5
+     /tmp/ccDYPqvm.s:429    .text:00000000000001f8 .LEHB6
+     /tmp/ccDYPqvm.s:432    .text:0000000000000200 .LEHE6
+     /tmp/ccDYPqvm.s:1249   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/ccDYPqvm.s:2226   .debug_str:0000000000000175 .LASF45
+     /tmp/ccDYPqvm.s:2264   .debug_str:0000000000000366 .LASF46
+     /tmp/ccDYPqvm.s:2256   .debug_str:000000000000030e .LASF47
+     /tmp/ccDYPqvm.s:2152   .debug_ranges:0000000000000000 .Ldebug_ranges0
+     /tmp/ccDYPqvm.s:2170   .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/ccDYPqvm.s:2236   .debug_str:000000000000027c .LASF0
+     /tmp/ccDYPqvm.s:2216   .debug_str:000000000000012e .LASF1
+     /tmp/ccDYPqvm.s:2208   .debug_str:00000000000000f4 .LASF2
+     /tmp/ccDYPqvm.s:2184   .debug_str:000000000000005f .LASF4
+     /tmp/ccDYPqvm.s:2214   .debug_str:000000000000011c .LASF3
+     /tmp/ccDYPqvm.s:2176   .debug_str:0000000000000023 .LASF5
+     /tmp/ccDYPqvm.s:2172   .debug_str:0000000000000000 .LASF6
+     /tmp/ccDYPqvm.s:2200   .debug_str:00000000000000b7 .LASF7
+     /tmp/ccDYPqvm.s:2252   .debug_str:00000000000002e8 .LASF8
+     /tmp/ccDYPqvm.s:2182   .debug_str:0000000000000051 .LASF9
+     /tmp/ccDYPqvm.s:2288   .debug_str:000000000000042d .LASF10
+     /tmp/ccDYPqvm.s:2204   .debug_str:00000000000000de .LASF11
+     /tmp/ccDYPqvm.s:2274   .debug_str:00000000000003c5 .LASF12
+     /tmp/ccDYPqvm.s:2248   .debug_str:00000000000002cd .LASF13
+     /tmp/ccDYPqvm.s:2220   .debug_str:0000000000000148 .LASF14
+     /tmp/ccDYPqvm.s:2190   .debug_str:000000000000007b .LASF15
+     /tmp/ccDYPqvm.s:2254   .debug_str:00000000000002f8 .LASF16
+     /tmp/ccDYPqvm.s:2242   .debug_str:00000000000002ad .LASF17
+     /tmp/ccDYPqvm.s:2250   .debug_str:00000000000002dd .LASF18
+     /tmp/ccDYPqvm.s:2276   .debug_str:00000000000003d5 .LASF19
+     /tmp/ccDYPqvm.s:2272   .debug_str:00000000000003ae .LASF20
+     /tmp/ccDYPqvm.s:2232   .debug_str:000000000000025b .LASF21
+     /tmp/ccDYPqvm.s:2268   .debug_str:0000000000000384 .LASF48
+     /tmp/ccDYPqvm.s:2262   .debug_str:0000000000000352 .LASF49
+     /tmp/ccDYPqvm.s:2260   .debug_str:000000000000033c .LASF50
+     /tmp/ccDYPqvm.s:2222   .debug_str:0000000000000154 .LASF22
+     /tmp/ccDYPqvm.s:2284   .debug_str:000000000000040d .LASF51
+     /tmp/ccDYPqvm.s:2206   .debug_str:00000000000000ed .LASF52
+     /tmp/ccDYPqvm.s:2198   .debug_str:00000000000000a4 .LASF23
+     /tmp/ccDYPqvm.s:2196   .debug_str:000000000000009e .LASF25
+     /tmp/ccDYPqvm.s:2234   .debug_str:000000000000026a .LASF24
+     /tmp/ccDYPqvm.s:2192   .debug_str:0000000000000091 .LASF26
+     /tmp/ccDYPqvm.s:2210   .debug_str:0000000000000102 .LASF27
+     /tmp/ccDYPqvm.s:2266   .debug_str:000000000000037a .LASF28
+     /tmp/ccDYPqvm.s:2238   .debug_str:0000000000000289 .LASF29
+     /tmp/ccDYPqvm.s:49     .text._ZN10WorkerJoinD0Ev:0000000000000000 .LFB18
+     /tmp/ccDYPqvm.s:89     .text._ZN10WorkerJoinD0Ev:000000000000004c .LFE18
+     /tmp/ccDYPqvm.s:1966   .debug_loc:0000000000000000 .LLST1
+GAS LISTING /tmp/ccDYPqvm.s 			page 16
+
+
+     /tmp/ccDYPqvm.s:65     .text._ZN10WorkerJoinD0Ev:0000000000000018 .LBB14
+     /tmp/ccDYPqvm.s:73     .text._ZN10WorkerJoinD0Ev:000000000000002c .LBE14
+     /tmp/ccDYPqvm.s:1984   .debug_loc:000000000000004c .LLST2
+     /tmp/ccDYPqvm.s:71     .text._ZN10WorkerJoinD0Ev:000000000000002c .LVL4
+     /tmp/ccDYPqvm.s:76     .text._ZN10WorkerJoinD0Ev:0000000000000038 .LVL5
+     /tmp/ccDYPqvm.s:2202   .debug_str:00000000000000ca .LASF30
+     /tmp/ccDYPqvm.s:11     .text._ZN10WorkerJoinD2Ev:0000000000000000 .LFB16
+     /tmp/ccDYPqvm.s:40     .text._ZN10WorkerJoinD2Ev:0000000000000034 .LFE16
+     /tmp/ccDYPqvm.s:1995   .debug_loc:0000000000000082 .LLST0
+     /tmp/ccDYPqvm.s:29     .text._ZN10WorkerJoinD2Ev:0000000000000024 .LVL1
+     /tmp/ccDYPqvm.s:2174   .debug_str:0000000000000013 .LASF53
+     /tmp/ccDYPqvm.s:2212   .debug_str:0000000000000107 .LASF54
+     /tmp/ccDYPqvm.s:449    .text:0000000000000218 .LFE14
+     /tmp/ccDYPqvm.s:2194   .debug_str:0000000000000096 .LASF31
+     /tmp/ccDYPqvm.s:344    .text:0000000000000148 .LBB28
+     /tmp/ccDYPqvm.s:366    .text:0000000000000174 .LBE28
+     /tmp/ccDYPqvm.s:2009   .debug_loc:00000000000000bb .LLST11
+     /tmp/ccDYPqvm.s:358    .text:0000000000000168 .LVL35
+     /tmp/ccDYPqvm.s:383    .text:000000000000019c .LBB29
+     /tmp/ccDYPqvm.s:412    .text:00000000000001cc .LBE29
+     /tmp/ccDYPqvm.s:2218   .debug_str:0000000000000141 .LASF32
+     /tmp/ccDYPqvm.s:2016   .debug_loc:00000000000000de .LLST12
+     /tmp/ccDYPqvm.s:2246   .debug_str:00000000000002c1 .LASF33
+     /tmp/ccDYPqvm.s:2186   .debug_str:0000000000000066 .LASF55
+     /tmp/ccDYPqvm.s:2023   .debug_loc:0000000000000101 .LLST13
+     /tmp/ccDYPqvm.s:2230   .debug_str:0000000000000251 .LASF34
+     /tmp/ccDYPqvm.s:297    .text:00000000000000e8 .LBB24
+     /tmp/ccDYPqvm.s:307    .text:00000000000000fc .LBE24
+     /tmp/ccDYPqvm.s:2034   .debug_loc:0000000000000137 .LLST9
+     /tmp/ccDYPqvm.s:301    .text:00000000000000f0 .LVL26
+     /tmp/ccDYPqvm.s:325    .text:0000000000000120 .LBB26
+     /tmp/ccDYPqvm.s:335    .text:0000000000000134 .LBE26
+     /tmp/ccDYPqvm.s:2045   .debug_loc:000000000000016d .LLST10
+     /tmp/ccDYPqvm.s:329    .text:0000000000000128 .LVL31
+     /tmp/ccDYPqvm.s:292    .text:00000000000000e4 .LVL24
+     /tmp/ccDYPqvm.s:315    .text:0000000000000110 .LVL28
+     /tmp/ccDYPqvm.s:320    .text:000000000000011c .LVL29
+     /tmp/ccDYPqvm.s:343    .text:0000000000000148 .LVL33
+     /tmp/ccDYPqvm.s:371    .text:0000000000000180 .LVL37
+     /tmp/ccDYPqvm.s:376    .text:000000000000018c .LVL38
+     /tmp/ccDYPqvm.s:381    .text:000000000000019c .LVL39
+     /tmp/ccDYPqvm.s:416    .text:00000000000001d8 .LVL46
+     /tmp/ccDYPqvm.s:420    .text:00000000000001e4 .LVL47
+     /tmp/ccDYPqvm.s:427    .text:00000000000001f4 .LVL48
+     /tmp/ccDYPqvm.s:431    .text:0000000000000200 .LVL49
+     /tmp/ccDYPqvm.s:106    .text:0000000000000000 .LFB13
+     /tmp/ccDYPqvm.s:221    .text:00000000000000c0 .LFE13
+     /tmp/ccDYPqvm.s:2056   .debug_loc:00000000000001a3 .LLST3
+     /tmp/ccDYPqvm.s:2070   .debug_loc:00000000000001dc .LLST4
+     /tmp/ccDYPqvm.s:124    .text:0000000000000018 .LBB16
+     /tmp/ccDYPqvm.s:200    .text:0000000000000098 .LBE16
+     /tmp/ccDYPqvm.s:2084   .debug_loc:0000000000000215 .LLST5
+     /tmp/ccDYPqvm.s:2096   .debug_loc:000000000000024c .LLST6
+     /tmp/ccDYPqvm.s:147    .text:0000000000000038 .LBB20
+     /tmp/ccDYPqvm.s:162    .text:0000000000000050 .LBE20
+     /tmp/ccDYPqvm.s:2108   .debug_loc:0000000000000283 .LLST7
+     /tmp/ccDYPqvm.s:136    .text:0000000000000028 .LVL10
+GAS LISTING /tmp/ccDYPqvm.s 			page 17
+
+
+     /tmp/ccDYPqvm.s:178    .text:000000000000006c .LVL16
+     /tmp/ccDYPqvm.s:185    .text:0000000000000080 .LVL17
+     /tmp/ccDYPqvm.s:190    .text:0000000000000090 .LVL18
+     /tmp/ccDYPqvm.s:205    .text:00000000000000a8 .LVL20
+     /tmp/ccDYPqvm.s:228    .text._ZN10WorkerJoin3runEv:0000000000000000 .LFB12
+     /tmp/ccDYPqvm.s:255    .text._ZN10WorkerJoin3runEv:000000000000002c .LFE12
+     /tmp/ccDYPqvm.s:2119   .debug_loc:00000000000002b9 .LLST8
+     /tmp/ccDYPqvm.s:244    .text._ZN10WorkerJoin3runEv:000000000000001c .LVL23
+     /tmp/ccDYPqvm.s:2178   .debug_str:000000000000002a .LASF56
+     /tmp/ccDYPqvm.s:2270   .debug_str:00000000000003a7 .LASF35
+     /tmp/ccDYPqvm.s:2240   .debug_str:000000000000029d .LASF36
+     /tmp/ccDYPqvm.s:2280   .debug_str:00000000000003f8 .LASF37
+     /tmp/ccDYPqvm.s:2278   .debug_str:00000000000003eb .LASF38
+     /tmp/ccDYPqvm.s:2180   .debug_str:000000000000003e .LASF39
+     /tmp/ccDYPqvm.s:2286   .debug_str:0000000000000421 .LASF40
+     /tmp/ccDYPqvm.s:2282   .debug_str:00000000000003fe .LASF57
+     /tmp/ccDYPqvm.s:2228   .debug_str:0000000000000239 .LASF58
+     /tmp/ccDYPqvm.s:2224   .debug_str:0000000000000160 .LASF41
+     /tmp/ccDYPqvm.s:2258   .debug_str:000000000000032c .LASF42
+     /tmp/ccDYPqvm.s:2244   .debug_str:00000000000002b2 .LASF43
+     /tmp/ccDYPqvm.s:2188   .debug_str:0000000000000072 .LASF44
+     /tmp/ccDYPqvm.s:52     .text._ZN10WorkerJoinD0Ev:0000000000000000 .LVL2
+     /tmp/ccDYPqvm.s:84     .text._ZN10WorkerJoinD0Ev:0000000000000044 .LVL6
+     /tmp/ccDYPqvm.s:64     .text._ZN10WorkerJoinD0Ev:0000000000000018 .LVL3
+     /tmp/ccDYPqvm.s:15     .text._ZN10WorkerJoinD2Ev:0000000000000000 .LVL0
+     /tmp/ccDYPqvm.s:348    .text:0000000000000150 .LVL34
+     /tmp/ccDYPqvm.s:386    .text:00000000000001a0 .LVL40
+     /tmp/ccDYPqvm.s:399    .text:00000000000001b4 .LVL43
+     /tmp/ccDYPqvm.s:407    .text:00000000000001c4 .LVL44
+     /tmp/ccDYPqvm.s:388    .text:00000000000001a4 .LVL41
+     /tmp/ccDYPqvm.s:409    .text:00000000000001c8 .LVL45
+     /tmp/ccDYPqvm.s:442    .text:000000000000020c .LVL50
+     /tmp/ccDYPqvm.s:295    .text:00000000000000e8 .LVL25
+     /tmp/ccDYPqvm.s:305    .text:00000000000000fc .LVL27
+     /tmp/ccDYPqvm.s:323    .text:0000000000000120 .LVL30
+     /tmp/ccDYPqvm.s:333    .text:0000000000000134 .LVL32
+     /tmp/ccDYPqvm.s:109    .text:0000000000000000 .LVL7
+     /tmp/ccDYPqvm.s:128    .text:0000000000000020 .LVL9
+     /tmp/ccDYPqvm.s:123    .text:0000000000000018 .LVL8
+     /tmp/ccDYPqvm.s:216    .text:00000000000000b8 .LVL21
+     /tmp/ccDYPqvm.s:168    .text:0000000000000054 .LVL15
+     /tmp/ccDYPqvm.s:196    .text:0000000000000098 .LVL19
+     /tmp/ccDYPqvm.s:151    .text:000000000000003c .LVL12
+     /tmp/ccDYPqvm.s:160    .text:0000000000000050 .LVL14
+     /tmp/ccDYPqvm.s:231    .text._ZN10WorkerJoin3runEv:0000000000000000 .LVL22
+     /tmp/ccDYPqvm.s:505    .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccDYPqvm.s:5      .text:0000000000000000 .Ltext0
+     /tmp/ccDYPqvm.s:499    .text:0000000000000218 .Letext0
+     /tmp/ccDYPqvm.s:131    .text:0000000000000020 .LBB18
+     /tmp/ccDYPqvm.s:164    .text:0000000000000050 .LBE18
+     /tmp/ccDYPqvm.s:192    .text:0000000000000090 .LBB22
+     /tmp/ccDYPqvm.s:198    .text:0000000000000098 .LBE22
+     /tmp/ccDYPqvm.s:452    .gcc_except_table:0000000000000000 .LLSDA14
+                           .group:0000000000000000 _ZN10WorkerJoinD5Ev
+
+UNDEFINED SYMBOLS
+_ZN6ThreadD2Ev
+GAS LISTING /tmp/ccDYPqvm.s 			page 18
+
+
+_ZdlPv
+_Z15thread_dispatchv
+_Z11printStringPKc
+_Z8printIntiii
+_Znwm
+_ZN6ThreadC2Ev
+_ZN6Thread5startEv
+_ZN6Thread4joinEv
+_Unwind_Resume
+__gxx_personality_v0

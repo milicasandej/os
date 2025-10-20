@@ -21,6 +21,8 @@ int thread_create(
 );
 int thread_exit();
 void thread_dispatch();
+void thread_join(thread_t* handle);
+void thread_joinAll();
 class _sem;
 typedef _sem* sem_t;
 int sem_open(
@@ -32,5 +34,6 @@ int sem_wait(sem_t id);
 int sem_signal(sem_t id);
 char getc();
 void putc(char c);
+int getThreadId();
 
 #endif //PROJECT_BASE_SYSCALL_C_HPP

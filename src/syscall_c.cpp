@@ -71,6 +71,7 @@ void thread_dispatch(){
     __asm__ volatile("ecall");
 }
 
+
 int sem_open(sem_t* handle, unsigned init){
     WRITE_REG("a7", Num::SCALL_SEM_OPEN);
 
@@ -127,5 +128,27 @@ void putc(char c){
 
     __asm__ volatile("ecall");
 
+
+}
+
+void thread_join(thread_t* handle) {
+    WRITE_REG("a7", Num::SCALL_THREAD_JOIN);
+
+    __asm__ volatile("ecall");
+}
+
+int getThreadId() {
+    WRITE_REG("a7", Num::SCALL_GET_ID);
+
+    __asm__ volatile("ecall");
+
+    int ret;
+    READ_REG(ret, "a0");
+    return ret;
+}
+void thread_joinAll(){
+    WRITE_REG("a7", Num::SCALL_JOIN_ALL);
+
+    __asm__ volatile("ecall");
 
 }

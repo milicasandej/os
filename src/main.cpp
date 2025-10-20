@@ -5,11 +5,18 @@
 #include "../h/riscv.hpp"
 #include "../h/_thread.hpp"
 #include "../h/memory.hpp"
+#include "../h/syscall_cpp.hpp"
+#include "../test/ThreadJoin.hpp"
+#include "../test/semMaxThreads.hpp"
+
+
 
 extern void userMain();
 
 void userMainWrapper(void* arg){
-    userMain();
+    //userMain();
+    //ThreadJoin_test();
+    semMaxThreads_test();
 }
 
 void main()
@@ -34,6 +41,7 @@ void main()
     thread_t userThread;
     thread_create(&userThread, &userMainWrapper, nullptr);
     while (!userThread->isFinished()) thread_dispatch();
+
 
     printString("FINISHED!\n");
 }

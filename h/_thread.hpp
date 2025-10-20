@@ -5,6 +5,7 @@
 
 #include "../lib/hw.h"
 #include "scheduler.hpp"
+#include "syscall_c.hpp"
 
 typedef _thread* thread_t;
 
@@ -14,10 +15,6 @@ class _thread
 public:
     ~_thread() { delete[] stack; }
 
-    bool isFinished() const { return finished; }
-
-    void setFinished(bool value) { finished = value; }
-
     using Body = void (*)(void*);
 
     static _thread *createThread(Body body, void* args);
@@ -25,19 +22,21 @@ public:
     static void yield();
 
     static _thread *running;
-
+    static sem_t semMaxThreads;
+    static int ID;
     static int exitThread();
 
+    bool isFinished() const { return finished; }
+    void setFinished(bool value) { finished = value; }
     void setStart(bool b);
-
     bool isStarted() const { return started; }
-
     void setBlock(bool b);
-
     bool isBlocked() const { return blocked; }
-
     void setSemStatus(int s) { semStatus = s; }
     int getSemStatus() const { return semStatus; }
+    int getThreadID();
+
+
 
 private:
     _thread(Body body, void* args) :
@@ -51,7 +50,10 @@ private:
             finished(false),
             started(true),
             blocked(false),
-            semStatus(0)
+            semStatus(0),
+            myID(ID++),
+            children()
+
     {
             if (body != nullptr) { Scheduler::put(this);}
     }
@@ -67,7 +69,8 @@ private:
     uint64 *stack;
     Context context;
     bool finished, started, blocked;
-    int semStatus;
+    int semStatus, myID;
+    List<_thread> children;
 
     friend class Riscv;
 
@@ -76,10 +79,9 @@ private:
     static void contextSwitch(Context *oldContext, Context *runningContext);
 
     static void dispatch();
+    static void join(thread_t* handle);
 
-
-
-
+    void joinAll();
 };
 
 #endif //OS1_VEZBE07_RISCV_CONTEXT_SWITCH_2_INTERRUPT_TCB_HPP

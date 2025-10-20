@@ -68,6 +68,16 @@ void Riscv::handleSupervisorTrap()
                 case SCALL_THREAD_DISPATCH:
                     _thread::dispatch();
                     break;
+                case SCALL_THREAD_JOIN:
+                    thread_t* handlejoin;
+                    READ_REG(handlejoin, "a0");
+                    _thread::join(handlejoin);
+                    break;
+                case SCALL_GET_ID:
+                    _thread::running->getThreadID();
+                    break;
+                case SCALL_JOIN_ALL:
+                    _thread::running->joinAll();
                 case SCALL_SEM_OPEN:
                     sem_t* handle;
                     uint32 init;
@@ -122,7 +132,8 @@ void Riscv::handleSupervisorTrap()
             printString("\n");
             printString("Koraci ko laki oblaci, skoci da te zemlja odbaci!\n");
             if ((int)scause == 2) thread_exit();
-
+            printInt(r_sepc());
+            thread_exit();
             break;
     }
 }

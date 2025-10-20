@@ -6,6 +6,7 @@
 #include "../h/_thread.hpp"
 #include "../lib/console.h"
 
+sem_t _thread::semMaxThreads = nullptr;
 
 char Console::getc() {
     return __getc();
@@ -21,6 +22,7 @@ Thread::Thread(void (*body)(void *), void *arg) {
 }
 
 int Thread::start() {
+    //sem_wait(_thread::semMaxThreads);
     myHandle->setStart(true);
     return 0;
 }
@@ -44,6 +46,15 @@ void Thread::startWrapper(void *thread) {
     t->run();
 }
 
+void Thread::join() {
+    thread_join(&myHandle);
+}
+
+//void Thread::SetMaximumThreads(int num_of_threads) {
+//    sem_open(&_thread::semMaxThreads, num_of_threads);
+//}
+
+
 int Semaphore::wait() {
     return sem_wait(myHandle);
 }
@@ -60,3 +71,6 @@ Semaphore::~Semaphore() {
     sem_close(myHandle);
 
 }
+
+
+

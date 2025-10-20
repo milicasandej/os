@@ -17,6 +17,9 @@ namespace Num{
     constexpr uint8 SCALL_THREAD_CREATE= 0x11;
     constexpr uint8 SCALL_THREAD_EXIT = 0x12;
     constexpr uint8 SCALL_THREAD_DISPATCH = 0x13;
+    constexpr uint8 SCALL_THREAD_JOIN = 0x14;
+    constexpr uint8 SCALL_GET_ID = 0x15;
+    constexpr uint8 SCALL_JOIN_ALL = 0x16;
     constexpr uint8 SCALL_SEM_OPEN = 0x21;
     constexpr uint8 SCALL_SEM_CLOSE = 0x22;
     constexpr uint8 SCALL_SEM_WAIT = 0x23;

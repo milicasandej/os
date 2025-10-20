@@ -5,6 +5,7 @@
 #ifndef PROJECT_BASE_SYSCALL_CPP_HPP
 #define PROJECT_BASE_SYSCALL_CPP_HPP
 #include "syscall_c.hpp"
+#include "list.hpp"
 
 void* operator new (size_t);
 void operator delete (void*);
@@ -17,8 +18,9 @@ public:
     int start();
 
     static void dispatch();
+    void join();
 
-
+    //static void SetMaximumThreads(int num_of_threads = 5);
 
 protected:
     Thread();

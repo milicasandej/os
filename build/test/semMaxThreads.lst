@@ -1,0 +1,906 @@
+GAS LISTING /tmp/ccIfDxWg.s 			page 1
+
+
+   1              		.file	"semMaxThreads.cpp"
+   2              		.option pic
+   3              		.option norelax
+   4              		.text
+   5              	.Ltext0:
+   6              		.section	.text._ZN12WorkerSemMaxD2Ev,"axG",@progbits,_ZN12WorkerSemMaxD5Ev,comdat
+   7              		.align	2
+   8              		.weak	_ZN12WorkerSemMaxD2Ev
+  10              	_ZN12WorkerSemMaxD2Ev:
+  11              	.LFB16:
+  12              		.file 1 "test/semMaxThreads.cpp"
+   1:test/semMaxThreads.cpp **** //
+   2:test/semMaxThreads.cpp **** // Created by os on 10/18/25.
+   3:test/semMaxThreads.cpp **** //
+   4:test/semMaxThreads.cpp **** 
+   5:test/semMaxThreads.cpp **** #include "semMaxThreads.hpp"
+   6:test/semMaxThreads.cpp **** 
+   7:test/semMaxThreads.cpp **** #include "../h/syscall_cpp.hpp"
+   8:test/semMaxThreads.cpp **** #include "../h/syscall_c.hpp"
+   9:test/semMaxThreads.cpp **** #include "printing.hpp"
+  10:test/semMaxThreads.cpp **** 
+  11:test/semMaxThreads.cpp **** //int brojac = 20;
+  12:test/semMaxThreads.cpp **** 
+  13:test/semMaxThreads.cpp **** class WorkerSemMax: public Thread {
+  13              		.loc 1 13 7
+  14              		.cfi_startproc
+  15              	.LVL0:
+  16 0000 130101FF 		addi	sp,sp,-16
+  17              		.cfi_def_cfa_offset 16
+  18 0004 23341100 		sd	ra,8(sp)
+  19 0008 23308100 		sd	s0,0(sp)
+  20              		.cfi_offset 1, -8
+  21              		.cfi_offset 8, -16
+  22 000c 13040101 		addi	s0,sp,16
+  23              		.cfi_def_cfa 8, 0
+  24              	.LBB10:
+  25              		.loc 1 13 7 is_stmt 0
+  26 0010 97070000 		lla	a5,_ZTV12WorkerSemMax+16
+  26      93870700 
+  27 0018 2330F500 		sd	a5,0(a0)
+  28 001c 97000000 		call	_ZN6ThreadD2Ev@plt
+  28      E7800000 
+  29              	.LVL1:
+  30              	.LBE10:
+  31 0024 83308100 		ld	ra,8(sp)
+  32              		.cfi_restore 1
+  33 0028 03340100 		ld	s0,0(sp)
+  34              		.cfi_restore 8
+  35              		.cfi_def_cfa 2, 16
+  36 002c 13010101 		addi	sp,sp,16
+  37              		.cfi_def_cfa_offset 0
+  38 0030 67800000 		jr	ra
+  39              		.cfi_endproc
+  40              	.LFE16:
+  42              		.weak	_ZN12WorkerSemMaxD1Ev
+  43              		.set	_ZN12WorkerSemMaxD1Ev,_ZN12WorkerSemMaxD2Ev
+  44              		.section	.text._ZN12WorkerSemMaxD0Ev,"axG",@progbits,_ZN12WorkerSemMaxD5Ev,comdat
+GAS LISTING /tmp/ccIfDxWg.s 			page 2
+
+
+  45              		.align	2
+  46              		.weak	_ZN12WorkerSemMaxD0Ev
+  48              	_ZN12WorkerSemMaxD0Ev:
+  49              	.LFB18:
+  50              		.loc 1 13 7 is_stmt 1
+  51              		.cfi_startproc
+  52              	.LVL2:
+  53 0000 130101FE 		addi	sp,sp,-32
+  54              		.cfi_def_cfa_offset 32
+  55 0004 233C1100 		sd	ra,24(sp)
+  56 0008 23388100 		sd	s0,16(sp)
+  57 000c 23349100 		sd	s1,8(sp)
+  58              		.cfi_offset 1, -8
+  59              		.cfi_offset 8, -16
+  60              		.cfi_offset 9, -24
+  61 0010 13040102 		addi	s0,sp,32
+  62              		.cfi_def_cfa 8, 0
+  63 0014 93040500 		mv	s1,a0
+  64              	.LVL3:
+  65              	.LBB11:
+  66              	.LBB12:
+  67              		.loc 1 13 7 is_stmt 0
+  68 0018 97070000 		lla	a5,_ZTV12WorkerSemMax+16
+  68      93870700 
+  69 0020 2330F500 		sd	a5,0(a0)
+  70 0024 97000000 		call	_ZN6ThreadD2Ev@plt
+  70      E7800000 
+  71              	.LVL4:
+  72              	.LBE12:
+  73              	.LBE11:
+  74 002c 13850400 		mv	a0,s1
+  75 0030 97000000 		call	_ZdlPv@plt
+  75      E7800000 
+  76              	.LVL5:
+  77 0038 83308101 		ld	ra,24(sp)
+  78              		.cfi_restore 1
+  79 003c 03340101 		ld	s0,16(sp)
+  80              		.cfi_restore 8
+  81              		.cfi_def_cfa 2, 32
+  82 0040 83348100 		ld	s1,8(sp)
+  83              		.cfi_restore 9
+  84              	.LVL6:
+  85 0044 13010102 		addi	sp,sp,32
+  86              		.cfi_def_cfa_offset 0
+  87 0048 67800000 		jr	ra
+  88              		.cfi_endproc
+  89              	.LFE18:
+  91              		.section	.rodata.str1.8,"aMS",@progbits,1
+  92              		.align	3
+  93              	.LC0:
+  94 0000 48656C6C 		.string	"Hello! ID: "
+  94      6F212049 
+  94      443A2000 
+  95 000c 00000000 		.align	3
+  96              	.LC1:
+  97 0010 0A00     		.string	"\n"
+  98              		.text
+GAS LISTING /tmp/ccIfDxWg.s 			page 3
+
+
+  99              		.align	2
+ 100              		.globl	_ZN12WorkerSemMax10workerBodyEPv
+ 102              	_ZN12WorkerSemMax10workerBodyEPv:
+ 103              	.LFB13:
+  14:test/semMaxThreads.cpp ****     void workerBody(void* arg);
+  15:test/semMaxThreads.cpp **** public:
+  16:test/semMaxThreads.cpp ****     WorkerSemMax():Thread() {}
+  17:test/semMaxThreads.cpp **** 
+  18:test/semMaxThreads.cpp ****     void run() override {
+  19:test/semMaxThreads.cpp ****         workerBody(nullptr);
+  20:test/semMaxThreads.cpp ****     }
+  21:test/semMaxThreads.cpp **** };
+  22:test/semMaxThreads.cpp **** 
+  23:test/semMaxThreads.cpp **** 
+  24:test/semMaxThreads.cpp **** void WorkerSemMax::workerBody(void *arg) {
+ 104              		.loc 1 24 42 is_stmt 1
+ 105              		.cfi_startproc
+ 106              	.LVL7:
+ 107 0000 130101FE 		addi	sp,sp,-32
+ 108              		.cfi_def_cfa_offset 32
+ 109 0004 233C1100 		sd	ra,24(sp)
+ 110 0008 23388100 		sd	s0,16(sp)
+ 111 000c 23349100 		sd	s1,8(sp)
+ 112 0010 23302101 		sd	s2,0(sp)
+ 113              		.cfi_offset 1, -8
+ 114              		.cfi_offset 8, -16
+ 115              		.cfi_offset 9, -24
+ 116              		.cfi_offset 18, -32
+ 117 0014 13040102 		addi	s0,sp,32
+ 118              		.cfi_def_cfa 8, 0
+  25:test/semMaxThreads.cpp **** 
+  26:test/semMaxThreads.cpp ****     for (uint64 i = 0; i < 5; i++) {
+ 119              		.loc 1 26 5
+ 120              	.LVL8:
+ 121              	.LBB13:
+ 122              		.loc 1 26 17 is_stmt 0
+ 123 0018 13090000 		li	s2,0
+ 124 001c 6F000003 		j	.L11
+ 125              	.LVL9:
+ 126              	.L8:
+ 127              	.LBB14:
+ 128              	.LBB15:
+ 129              	.LBB16:
+  27:test/semMaxThreads.cpp ****         int id = getThreadId();
+  28:test/semMaxThreads.cpp ****         printString("Hello! ID: ");
+  29:test/semMaxThreads.cpp ****         printInt(id);
+  30:test/semMaxThreads.cpp ****         printString("\n");
+  31:test/semMaxThreads.cpp ****         for (uint64 j = 0; j < 1000; j++) {
+  32:test/semMaxThreads.cpp ****             for (uint64 k = 0; k < 1000; k++) { /* busy wait */ }
+  33:test/semMaxThreads.cpp ****             thread_dispatch();
+ 130              		.loc 1 33 13 is_stmt 1 discriminator 2
+ 131              		.loc 1 33 28 is_stmt 0 discriminator 2
+ 132 0020 97000000 		call	_Z15thread_dispatchv@plt
+ 132      E7800000 
+ 133              	.LVL10:
+ 134              	.LBE16:
+  31:test/semMaxThreads.cpp ****             for (uint64 k = 0; k < 1000; k++) { /* busy wait */ }
+GAS LISTING /tmp/ccIfDxWg.s 			page 4
+
+
+ 135              		.loc 1 31 9 is_stmt 1 discriminator 2
+ 136 0028 93841400 		addi	s1,s1,1
+ 137              	.LVL11:
+ 138              	.L10:
+  31:test/semMaxThreads.cpp ****             for (uint64 k = 0; k < 1000; k++) { /* busy wait */ }
+ 139              		.loc 1 31 30 discriminator 1
+ 140 002c 9307703E 		li	a5,999
+ 141 0030 63EC9700 		bgtu	s1,a5,.L7
+ 142              	.LBB18:
+ 143              	.LBB17:
+  32:test/semMaxThreads.cpp ****             thread_dispatch();
+ 144              		.loc 1 32 25 is_stmt 0
+ 145 0034 93070000 		li	a5,0
+ 146              	.L9:
+ 147              	.LVL12:
+  32:test/semMaxThreads.cpp ****             thread_dispatch();
+ 148              		.loc 1 32 34 is_stmt 1 discriminator 3
+ 149 0038 1307703E 		li	a4,999
+ 150 003c E362F7FE 		bgtu	a5,a4,.L8
+  32:test/semMaxThreads.cpp ****             thread_dispatch();
+ 151              		.loc 1 32 13 discriminator 2
+ 152 0040 93871700 		addi	a5,a5,1
+ 153              	.LVL13:
+ 154 0044 6FF05FFF 		j	.L9
+ 155              	.LVL14:
+ 156              	.L7:
+ 157              	.LBE17:
+ 158              	.LBE18:
+ 159              	.LBE15:
+ 160              	.LBE14:
+  26:test/semMaxThreads.cpp ****         int id = getThreadId();
+ 161              		.loc 1 26 5 discriminator 2
+ 162 0048 13091900 		addi	s2,s2,1
+ 163              	.LVL15:
+ 164              	.L11:
+  26:test/semMaxThreads.cpp ****         int id = getThreadId();
+ 165              		.loc 1 26 26 discriminator 1
+ 166 004c 93074000 		li	a5,4
+ 167 0050 63E62705 		bgtu	s2,a5,.L5
+ 168              	.LBB20:
+  27:test/semMaxThreads.cpp ****         printString("Hello! ID: ");
+ 169              		.loc 1 27 9
+  27:test/semMaxThreads.cpp ****         printString("Hello! ID: ");
+ 170              		.loc 1 27 29 is_stmt 0
+ 171 0054 97000000 		call	_Z11getThreadIdv@plt
+ 171      E7800000 
+ 172              	.LVL16:
+ 173 005c 93040500 		mv	s1,a0
+ 174              	.LVL17:
+  28:test/semMaxThreads.cpp ****         printInt(id);
+ 175              		.loc 1 28 9 is_stmt 1
+  28:test/semMaxThreads.cpp ****         printInt(id);
+ 176              		.loc 1 28 20 is_stmt 0
+ 177 0060 17050000 		lla	a0,.LC0
+ 177      13050500 
+ 178 0068 97000000 		call	_Z11printStringPKc@plt
+ 178      E7800000 
+GAS LISTING /tmp/ccIfDxWg.s 			page 5
+
+
+ 179              	.LVL18:
+  29:test/semMaxThreads.cpp ****         printString("\n");
+ 180              		.loc 1 29 9 is_stmt 1
+  29:test/semMaxThreads.cpp ****         printString("\n");
+ 181              		.loc 1 29 17 is_stmt 0
+ 182 0070 13060000 		li	a2,0
+ 183 0074 9305A000 		li	a1,10
+ 184 0078 13850400 		mv	a0,s1
+ 185 007c 97000000 		call	_Z8printIntiii@plt
+ 185      E7800000 
+ 186              	.LVL19:
+  30:test/semMaxThreads.cpp ****         for (uint64 j = 0; j < 1000; j++) {
+ 187              		.loc 1 30 9 is_stmt 1
+  30:test/semMaxThreads.cpp ****         for (uint64 j = 0; j < 1000; j++) {
+ 188              		.loc 1 30 20 is_stmt 0
+ 189 0084 17050000 		lla	a0,.LC1
+ 189      13050500 
+ 190 008c 97000000 		call	_Z11printStringPKc@plt
+ 190      E7800000 
+ 191              	.LVL20:
+  31:test/semMaxThreads.cpp ****             for (uint64 k = 0; k < 1000; k++) { /* busy wait */ }
+ 192              		.loc 1 31 9 is_stmt 1
+ 193              	.LBB19:
+  31:test/semMaxThreads.cpp ****             for (uint64 k = 0; k < 1000; k++) { /* busy wait */ }
+ 194              		.loc 1 31 21 is_stmt 0
+ 195 0094 93040000 		li	s1,0
+ 196              	.LVL21:
+ 197 0098 6FF05FF9 		j	.L10
+ 198              	.LVL22:
+ 199              	.L5:
+ 200              	.LBE19:
+ 201              	.LBE20:
+ 202              	.LBE13:
+  34:test/semMaxThreads.cpp ****         }
+  35:test/semMaxThreads.cpp ****     }
+  36:test/semMaxThreads.cpp ****     //brojac--;
+  37:test/semMaxThreads.cpp **** }
+ 203              		.loc 1 37 1
+ 204 009c 83308101 		ld	ra,24(sp)
+ 205              		.cfi_restore 1
+ 206 00a0 03340101 		ld	s0,16(sp)
+ 207              		.cfi_restore 8
+ 208              		.cfi_def_cfa 2, 32
+ 209 00a4 83348100 		ld	s1,8(sp)
+ 210              		.cfi_restore 9
+ 211 00a8 03390100 		ld	s2,0(sp)
+ 212              		.cfi_restore 18
+ 213              	.LVL23:
+ 214 00ac 13010102 		addi	sp,sp,32
+ 215              		.cfi_def_cfa_offset 0
+ 216 00b0 67800000 		jr	ra
+ 217              		.cfi_endproc
+ 218              	.LFE13:
+ 220              		.section	.text._ZN12WorkerSemMax3runEv,"axG",@progbits,_ZN12WorkerSemMax3runEv,comdat
+ 221              		.align	2
+ 222              		.weak	_ZN12WorkerSemMax3runEv
+ 224              	_ZN12WorkerSemMax3runEv:
+GAS LISTING /tmp/ccIfDxWg.s 			page 6
+
+
+ 225              	.LFB12:
+  18:test/semMaxThreads.cpp ****         workerBody(nullptr);
+ 226              		.loc 1 18 10 is_stmt 1
+ 227              		.cfi_startproc
+ 228              	.LVL24:
+ 229 0000 130101FF 		addi	sp,sp,-16
+ 230              		.cfi_def_cfa_offset 16
+ 231 0004 23341100 		sd	ra,8(sp)
+ 232 0008 23308100 		sd	s0,0(sp)
+ 233              		.cfi_offset 1, -8
+ 234              		.cfi_offset 8, -16
+ 235 000c 13040101 		addi	s0,sp,16
+ 236              		.cfi_def_cfa 8, 0
+  19:test/semMaxThreads.cpp ****     }
+ 237              		.loc 1 19 9
+  19:test/semMaxThreads.cpp ****     }
+ 238              		.loc 1 19 19 is_stmt 0
+ 239 0010 93050000 		li	a1,0
+ 240 0014 97000000 		call	_ZN12WorkerSemMax10workerBodyEPv
+ 240      E7800000 
+ 241              	.LVL25:
+  20:test/semMaxThreads.cpp **** };
+ 242              		.loc 1 20 5
+ 243 001c 83308100 		ld	ra,8(sp)
+ 244              		.cfi_restore 1
+ 245 0020 03340100 		ld	s0,0(sp)
+ 246              		.cfi_restore 8
+ 247              		.cfi_def_cfa 2, 16
+ 248 0024 13010101 		addi	sp,sp,16
+ 249              		.cfi_def_cfa_offset 0
+ 250 0028 67800000 		jr	ra
+ 251              		.cfi_endproc
+ 252              	.LFE12:
+ 254              		.text
+ 255              		.align	2
+ 256              		.globl	_Z18semMaxThreads_testv
+ 258              	_Z18semMaxThreads_testv:
+ 259              	.LFB14:
+  38:test/semMaxThreads.cpp **** 
+  39:test/semMaxThreads.cpp **** void semMaxThreads_test() {
+ 260              		.loc 1 39 27 is_stmt 1
+ 261              		.cfi_startproc
+ 262              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 263              		.cfi_lsda 0x1b,.LLSDA14
+ 264 00b4 130101F4 		addi	sp,sp,-192
+ 265              		.cfi_def_cfa_offset 192
+ 266 00b8 233C110A 		sd	ra,184(sp)
+ 267 00bc 2338810A 		sd	s0,176(sp)
+ 268 00c0 2334910A 		sd	s1,168(sp)
+ 269 00c4 2330210B 		sd	s2,160(sp)
+ 270              		.cfi_offset 1, -8
+ 271              		.cfi_offset 8, -16
+ 272              		.cfi_offset 9, -24
+ 273              		.cfi_offset 18, -32
+ 274 00c8 1304010C 		addi	s0,sp,192
+ 275              		.cfi_def_cfa 8, 0
+  40:test/semMaxThreads.cpp **** 
+GAS LISTING /tmp/ccIfDxWg.s 			page 7
+
+
+  41:test/semMaxThreads.cpp ****     //Thread::SetMaximumThreads(3);
+  42:test/semMaxThreads.cpp ****     Thread* threads[20];
+ 276              		.loc 1 42 5
+  43:test/semMaxThreads.cpp **** 
+  44:test/semMaxThreads.cpp ****     for(int i=0; i<20; i++) {
+ 277              		.loc 1 44 5
+ 278              	.LVL26:
+ 279              	.LBB21:
+ 280              		.loc 1 44 13 is_stmt 0
+ 281 00cc 13090000 		li	s2,0
+ 282 00d0 6F004002 		j	.L17
+ 283              	.LVL27:
+ 284              	.L24:
+ 285              	.LBB22:
+ 286              	.LBB23:
+  16:test/semMaxThreads.cpp **** 
+ 287              		.loc 1 16 27
+ 288 00d4 97070000 		lla	a5,_ZTV12WorkerSemMax+16
+ 288      93870700 
+ 289 00dc 23B0F400 		sd	a5,0(s1)
+ 290              	.LVL28:
+ 291              	.LBE23:
+ 292              	.LBE22:
+  45:test/semMaxThreads.cpp ****         threads[i] = new WorkerSemMax();
+ 293              		.loc 1 45 20
+ 294 00e0 93173900 		slli	a5,s2,3
+ 295 00e4 130704FE 		addi	a4,s0,-32
+ 296 00e8 B307F700 		add	a5,a4,a5
+ 297 00ec 23B097F6 		sd	s1,-160(a5)
+  44:test/semMaxThreads.cpp ****         threads[i] = new WorkerSemMax();
+ 298              		.loc 1 44 5 is_stmt 1
+ 299 00f0 1B091900 		addiw	s2,s2,1
+ 300              	.LVL29:
+ 301              	.L17:
+  44:test/semMaxThreads.cpp ****         threads[i] = new WorkerSemMax();
+ 302              		.loc 1 44 19 discriminator 1
+ 303 00f4 93073001 		li	a5,19
+ 304 00f8 63C02703 		bgt	s2,a5,.L20
+ 305              		.loc 1 45 9
+ 306              		.loc 1 45 39 is_stmt 0
+ 307 00fc 13050002 		li	a0,32
+ 308              	.LEHB0:
+ 309 0100 97000000 		call	_Znwm@plt
+ 309      E7800000 
+ 310              	.LVL30:
+ 311              	.LEHE0:
+ 312 0108 93040500 		mv	s1,a0
+ 313              	.LVL31:
+ 314              	.LEHB1:
+ 315              	.LBB25:
+ 316              	.LBB24:
+  16:test/semMaxThreads.cpp **** 
+ 317              		.loc 1 16 27
+ 318 010c 97000000 		call	_ZN6ThreadC2Ev@plt
+ 318      E7800000 
+ 319              	.LVL32:
+ 320              	.LEHE1:
+GAS LISTING /tmp/ccIfDxWg.s 			page 8
+
+
+ 321 0114 6FF01FFC 		j	.L24
+ 322              	.LVL33:
+ 323              	.L20:
+ 324              	.LBE24:
+ 325              	.LBE25:
+ 326              	.LBE21:
+ 327              	.LBB26:
+  46:test/semMaxThreads.cpp ****     }
+  47:test/semMaxThreads.cpp **** 
+  48:test/semMaxThreads.cpp ****     for(int i=0; i<20; i++) {
+ 328              		.loc 1 48 13
+ 329 0118 93040000 		li	s1,0
+ 330 011c 6F000002 		j	.L16
+ 331              	.LVL34:
+ 332              	.L25:
+  49:test/semMaxThreads.cpp ****         threads[i]->start();
+ 333              		.loc 1 49 9 is_stmt 1
+ 334              		.loc 1 49 18 is_stmt 0
+ 335 0120 93973400 		slli	a5,s1,3
+ 336 0124 130704FE 		addi	a4,s0,-32
+ 337 0128 B307F700 		add	a5,a4,a5
+ 338              		.loc 1 49 26
+ 339 012c 03B507F6 		ld	a0,-160(a5)
+ 340              	.LEHB2:
+ 341 0130 97000000 		call	_ZN6Thread5startEv@plt
+ 341      E7800000 
+ 342              	.LVL35:
+  48:test/semMaxThreads.cpp ****         threads[i]->start();
+ 343              		.loc 1 48 5 is_stmt 1
+ 344 0138 9B841400 		addiw	s1,s1,1
+ 345              	.LVL36:
+ 346              	.L16:
+  48:test/semMaxThreads.cpp ****         threads[i]->start();
+ 347              		.loc 1 48 19 discriminator 1
+ 348 013c 93073001 		li	a5,19
+ 349 0140 E3D097FE 		ble	s1,a5,.L25
+ 350              	.LBE26:
+  50:test/semMaxThreads.cpp ****     }
+  51:test/semMaxThreads.cpp **** 
+  52:test/semMaxThreads.cpp **** //    while(brojac) {
+  53:test/semMaxThreads.cpp **** //        thread_dispatch();
+  54:test/semMaxThreads.cpp **** //   }
+  55:test/semMaxThreads.cpp **** 
+  56:test/semMaxThreads.cpp ****     thread_joinAll();
+ 351              		.loc 1 56 5
+ 352              		.loc 1 56 19 is_stmt 0
+ 353 0144 97000000 		call	_Z14thread_joinAllv@plt
+ 353      E7800000 
+ 354              	.LVL37:
+ 355              	.LEHE2:
+  57:test/semMaxThreads.cpp **** }
+ 356              		.loc 1 57 1
+ 357 014c 8330810B 		ld	ra,184(sp)
+ 358              		.cfi_remember_state
+ 359              		.cfi_restore 1
+ 360 0150 0334010B 		ld	s0,176(sp)
+ 361              		.cfi_restore 8
+GAS LISTING /tmp/ccIfDxWg.s 			page 9
+
+
+ 362              		.cfi_def_cfa 2, 192
+ 363 0154 8334810A 		ld	s1,168(sp)
+ 364              		.cfi_restore 9
+ 365              	.LVL38:
+ 366 0158 0339010A 		ld	s2,160(sp)
+ 367              		.cfi_restore 18
+ 368              	.LVL39:
+ 369 015c 1301010C 		addi	sp,sp,192
+ 370              		.cfi_def_cfa_offset 0
+ 371 0160 67800000 		jr	ra
+ 372              	.LVL40:
+ 373              	.L21:
+ 374              		.cfi_restore_state
+ 375 0164 13090500 		mv	s2,a0
+ 376              	.LVL41:
+ 377              	.LBB27:
+  45:test/semMaxThreads.cpp ****     }
+ 378              		.loc 1 45 39
+ 379 0168 13850400 		mv	a0,s1
+ 380 016c 97000000 		call	_ZdlPv@plt
+ 380      E7800000 
+ 381              	.LVL42:
+ 382 0174 13050900 		mv	a0,s2
+ 383              	.LEHB3:
+ 384 0178 97000000 		call	_Unwind_Resume@plt
+ 384      E7800000 
+ 385              	.LVL43:
+ 386              	.LEHE3:
+ 387              	.LBE27:
+ 388              		.cfi_endproc
+ 389              	.LFE14:
+ 390              		.globl	__gxx_personality_v0
+ 391              		.section	.gcc_except_table,"a",@progbits
+ 392              	.LLSDA14:
+ 393 0000 FF       		.byte	0xff
+ 394 0001 FF       		.byte	0xff
+ 395 0002 03       		.byte	0x3
+ 396 0003 34       		.byte	0x34
+ 397 0004 00000000 		.4byte	.LEHB0-.LFB14
+ 398 0008 00000000 		.4byte	.LEHE0-.LEHB0
+ 399 000c 00000000 		.4byte	0
+ 400 0010 00       		.byte	0
+ 401 0011 00000000 		.4byte	.LEHB1-.LFB14
+ 402 0015 00000000 		.4byte	.LEHE1-.LEHB1
+ 403 0019 00000000 		.4byte	.L21-.LFB14
+ 404 001d 00       		.byte	0
+ 405 001e 00000000 		.4byte	.LEHB2-.LFB14
+ 406 0022 00000000 		.4byte	.LEHE2-.LEHB2
+ 407 0026 00000000 		.4byte	0
+ 408 002a 00       		.byte	0
+ 409 002b 00000000 		.4byte	.LEHB3-.LFB14
+ 410 002f 00000000 		.4byte	.LEHE3-.LEHB3
+ 411 0033 00000000 		.4byte	0
+ 412 0037 00       		.byte	0
+ 413              		.text
+ 415              		.weak	_ZTV12WorkerSemMax
+ 416              		.section	.data.rel.ro.local._ZTV12WorkerSemMax,"awG",@progbits,_ZTV12WorkerSemMax,comdat
+GAS LISTING /tmp/ccIfDxWg.s 			page 10
+
+
+ 417              		.align	3
+ 420              	_ZTV12WorkerSemMax:
+ 421 0000 00000000 		.dword	0
+ 421      00000000 
+ 422 0008 00000000 		.dword	0
+ 422      00000000 
+ 423 0010 00000000 		.dword	_ZN12WorkerSemMaxD1Ev
+ 423      00000000 
+ 424 0018 00000000 		.dword	_ZN12WorkerSemMaxD0Ev
+ 424      00000000 
+ 425 0020 00000000 		.dword	_ZN12WorkerSemMax3runEv
+ 425      00000000 
+ 426              		.text
+ 427              	.Letext0:
+ 428              		.file 2 "test/../h/../lib/hw.h"
+ 429              		.file 3 "test/../h/syscall_cpp.hpp"
+ 430              		.file 4 "test/../h/syscall_c.hpp"
+ 431              		.file 5 "test/printing.hpp"
+ 2143              		.align	3
+ 2146              	DW.ref.__gxx_personality_v0:
+ 2147 0000 00000000 		.dword	__gxx_personality_v0
+ 2147      00000000 
+ 2148              		.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0"
+ 2149              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccIfDxWg.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 semMaxThreads.cpp
+     /tmp/ccIfDxWg.s:10     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 _ZN12WorkerSemMaxD2Ev
+     /tmp/ccIfDxWg.s:14     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:16     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:17     .text._ZN12WorkerSemMaxD2Ev:0000000000000004 .L0 
+     /tmp/ccIfDxWg.s:20     .text._ZN12WorkerSemMaxD2Ev:000000000000000c .L0 
+     /tmp/ccIfDxWg.s:21     .text._ZN12WorkerSemMaxD2Ev:000000000000000c .L0 
+     /tmp/ccIfDxWg.s:23     .text._ZN12WorkerSemMaxD2Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:420    .data.rel.ro.local._ZTV12WorkerSemMax:0000000000000000 _ZTV12WorkerSemMax
+     /tmp/ccIfDxWg.s:26     .text._ZN12WorkerSemMaxD2Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:32     .text._ZN12WorkerSemMaxD2Ev:0000000000000028 .L0 
+     /tmp/ccIfDxWg.s:34     .text._ZN12WorkerSemMaxD2Ev:000000000000002c .L0 
+     /tmp/ccIfDxWg.s:35     .text._ZN12WorkerSemMaxD2Ev:000000000000002c .L0 
+     /tmp/ccIfDxWg.s:37     .text._ZN12WorkerSemMaxD2Ev:0000000000000030 .L0 
+     /tmp/ccIfDxWg.s:39     .text._ZN12WorkerSemMaxD2Ev:0000000000000034 .L0 
+     /tmp/ccIfDxWg.s:10     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 _ZN12WorkerSemMaxD1Ev
+     /tmp/ccIfDxWg.s:48     .text._ZN12WorkerSemMaxD0Ev:0000000000000000 _ZN12WorkerSemMaxD0Ev
+     /tmp/ccIfDxWg.s:51     .text._ZN12WorkerSemMaxD0Ev:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:53     .text._ZN12WorkerSemMaxD0Ev:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:54     .text._ZN12WorkerSemMaxD0Ev:0000000000000004 .L0 
+     /tmp/ccIfDxWg.s:58     .text._ZN12WorkerSemMaxD0Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:59     .text._ZN12WorkerSemMaxD0Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:60     .text._ZN12WorkerSemMaxD0Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:62     .text._ZN12WorkerSemMaxD0Ev:0000000000000014 .L0 
+     /tmp/ccIfDxWg.s:68     .text._ZN12WorkerSemMaxD0Ev:0000000000000018 .L0 
+     /tmp/ccIfDxWg.s:78     .text._ZN12WorkerSemMaxD0Ev:000000000000003c .L0 
+     /tmp/ccIfDxWg.s:80     .text._ZN12WorkerSemMaxD0Ev:0000000000000040 .L0 
+     /tmp/ccIfDxWg.s:81     .text._ZN12WorkerSemMaxD0Ev:0000000000000040 .L0 
+     /tmp/ccIfDxWg.s:83     .text._ZN12WorkerSemMaxD0Ev:0000000000000044 .L0 
+     /tmp/ccIfDxWg.s:86     .text._ZN12WorkerSemMaxD0Ev:0000000000000048 .L0 
+     /tmp/ccIfDxWg.s:88     .text._ZN12WorkerSemMaxD0Ev:000000000000004c .L0 
+     /tmp/ccIfDxWg.s:102    .text:0000000000000000 _ZN12WorkerSemMax10workerBodyEPv
+     /tmp/ccIfDxWg.s:105    .text:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:107    .text:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:108    .text:0000000000000004 .L0 
+     /tmp/ccIfDxWg.s:113    .text:0000000000000014 .L0 
+     /tmp/ccIfDxWg.s:114    .text:0000000000000014 .L0 
+     /tmp/ccIfDxWg.s:115    .text:0000000000000014 .L0 
+     /tmp/ccIfDxWg.s:116    .text:0000000000000014 .L0 
+     /tmp/ccIfDxWg.s:118    .text:0000000000000018 .L0 
+     /tmp/ccIfDxWg.s:122    .text:0000000000000018 .L0 
+     /tmp/ccIfDxWg.s:123    .text:0000000000000018 .L0 
+     /tmp/ccIfDxWg.s:131    .text:0000000000000020 .L0 
+     /tmp/ccIfDxWg.s:132    .text:0000000000000020 .L0 
+     /tmp/ccIfDxWg.s:136    .text:0000000000000028 .L0 
+     /tmp/ccIfDxWg.s:140    .text:000000000000002c .L0 
+     /tmp/ccIfDxWg.s:145    .text:0000000000000034 .L0 
+     /tmp/ccIfDxWg.s:149    .text:0000000000000038 .L0 
+     /tmp/ccIfDxWg.s:152    .text:0000000000000040 .L0 
+     /tmp/ccIfDxWg.s:162    .text:0000000000000048 .L0 
+     /tmp/ccIfDxWg.s:166    .text:000000000000004c .L0 
+     /tmp/ccIfDxWg.s:170    .text:0000000000000054 .L0 
+     /tmp/ccIfDxWg.s:171    .text:0000000000000054 .L0 
+     /tmp/ccIfDxWg.s:176    .text:0000000000000060 .L0 
+     /tmp/ccIfDxWg.s:177    .text:0000000000000060 .L0 
+     /tmp/ccIfDxWg.s:181    .text:0000000000000070 .L0 
+GAS LISTING /tmp/ccIfDxWg.s 			page 12
+
+
+     /tmp/ccIfDxWg.s:182    .text:0000000000000070 .L0 
+     /tmp/ccIfDxWg.s:188    .text:0000000000000084 .L0 
+     /tmp/ccIfDxWg.s:189    .text:0000000000000084 .L0 
+     /tmp/ccIfDxWg.s:194    .text:0000000000000094 .L0 
+     /tmp/ccIfDxWg.s:195    .text:0000000000000094 .L0 
+     /tmp/ccIfDxWg.s:204    .text:000000000000009c .L0 
+     /tmp/ccIfDxWg.s:205    .text:00000000000000a0 .L0 
+     /tmp/ccIfDxWg.s:207    .text:00000000000000a4 .L0 
+     /tmp/ccIfDxWg.s:208    .text:00000000000000a4 .L0 
+     /tmp/ccIfDxWg.s:210    .text:00000000000000a8 .L0 
+     /tmp/ccIfDxWg.s:212    .text:00000000000000ac .L0 
+     /tmp/ccIfDxWg.s:215    .text:00000000000000b0 .L0 
+     /tmp/ccIfDxWg.s:217    .text:00000000000000b4 .L0 
+     /tmp/ccIfDxWg.s:224    .text._ZN12WorkerSemMax3runEv:0000000000000000 _ZN12WorkerSemMax3runEv
+     /tmp/ccIfDxWg.s:227    .text._ZN12WorkerSemMax3runEv:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:229    .text._ZN12WorkerSemMax3runEv:0000000000000000 .L0 
+     /tmp/ccIfDxWg.s:230    .text._ZN12WorkerSemMax3runEv:0000000000000004 .L0 
+     /tmp/ccIfDxWg.s:233    .text._ZN12WorkerSemMax3runEv:000000000000000c .L0 
+     /tmp/ccIfDxWg.s:234    .text._ZN12WorkerSemMax3runEv:000000000000000c .L0 
+     /tmp/ccIfDxWg.s:236    .text._ZN12WorkerSemMax3runEv:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:238    .text._ZN12WorkerSemMax3runEv:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:239    .text._ZN12WorkerSemMax3runEv:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:243    .text._ZN12WorkerSemMax3runEv:000000000000001c .L0 
+     /tmp/ccIfDxWg.s:244    .text._ZN12WorkerSemMax3runEv:0000000000000020 .L0 
+     /tmp/ccIfDxWg.s:246    .text._ZN12WorkerSemMax3runEv:0000000000000024 .L0 
+     /tmp/ccIfDxWg.s:247    .text._ZN12WorkerSemMax3runEv:0000000000000024 .L0 
+     /tmp/ccIfDxWg.s:249    .text._ZN12WorkerSemMax3runEv:0000000000000028 .L0 
+     /tmp/ccIfDxWg.s:251    .text._ZN12WorkerSemMax3runEv:000000000000002c .L0 
+     /tmp/ccIfDxWg.s:258    .text:00000000000000b4 _Z18semMaxThreads_testv
+     /tmp/ccIfDxWg.s:261    .text:00000000000000b4 .L0 
+     /tmp/ccIfDxWg.s:2146   .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
+     /tmp/ccIfDxWg.s:264    .text:00000000000000b4 .L0 
+     /tmp/ccIfDxWg.s:265    .text:00000000000000b8 .L0 
+     /tmp/ccIfDxWg.s:270    .text:00000000000000c8 .L0 
+     /tmp/ccIfDxWg.s:271    .text:00000000000000c8 .L0 
+     /tmp/ccIfDxWg.s:272    .text:00000000000000c8 .L0 
+     /tmp/ccIfDxWg.s:273    .text:00000000000000c8 .L0 
+     /tmp/ccIfDxWg.s:275    .text:00000000000000cc .L0 
+     /tmp/ccIfDxWg.s:277    .text:00000000000000cc .L0 
+     /tmp/ccIfDxWg.s:280    .text:00000000000000cc .L0 
+     /tmp/ccIfDxWg.s:281    .text:00000000000000cc .L0 
+     /tmp/ccIfDxWg.s:288    .text:00000000000000d4 .L0 
+     /tmp/ccIfDxWg.s:294    .text:00000000000000e0 .L0 
+     /tmp/ccIfDxWg.s:299    .text:00000000000000f0 .L0 
+     /tmp/ccIfDxWg.s:303    .text:00000000000000f4 .L0 
+     /tmp/ccIfDxWg.s:306    .text:00000000000000fc .L0 
+     /tmp/ccIfDxWg.s:307    .text:00000000000000fc .L0 
+     /tmp/ccIfDxWg.s:318    .text:000000000000010c .L0 
+     /tmp/ccIfDxWg.s:329    .text:0000000000000118 .L0 
+     /tmp/ccIfDxWg.s:334    .text:0000000000000120 .L0 
+     /tmp/ccIfDxWg.s:335    .text:0000000000000120 .L0 
+     /tmp/ccIfDxWg.s:339    .text:000000000000012c .L0 
+     /tmp/ccIfDxWg.s:344    .text:0000000000000138 .L0 
+     /tmp/ccIfDxWg.s:348    .text:000000000000013c .L0 
+     /tmp/ccIfDxWg.s:352    .text:0000000000000144 .L0 
+     /tmp/ccIfDxWg.s:353    .text:0000000000000144 .L0 
+     /tmp/ccIfDxWg.s:357    .text:000000000000014c .L0 
+GAS LISTING /tmp/ccIfDxWg.s 			page 13
+
+
+     /tmp/ccIfDxWg.s:358    .text:0000000000000150 .L0 
+     /tmp/ccIfDxWg.s:359    .text:0000000000000150 .L0 
+     /tmp/ccIfDxWg.s:361    .text:0000000000000154 .L0 
+     /tmp/ccIfDxWg.s:362    .text:0000000000000154 .L0 
+     /tmp/ccIfDxWg.s:364    .text:0000000000000158 .L0 
+     /tmp/ccIfDxWg.s:367    .text:000000000000015c .L0 
+     /tmp/ccIfDxWg.s:370    .text:0000000000000160 .L0 
+     /tmp/ccIfDxWg.s:374    .text:0000000000000164 .L0 
+     /tmp/ccIfDxWg.s:379    .text:0000000000000168 .L0 
+     /tmp/ccIfDxWg.s:388    .text:0000000000000180 .L0 
+     /tmp/ccIfDxWg.s:44     .text._ZN12WorkerSemMaxD2Ev:0000000000000034 .L0 
+     /tmp/ccIfDxWg.s:91     .text._ZN12WorkerSemMaxD0Ev:000000000000004c .L0 
+     /tmp/ccIfDxWg.s:432    .text:0000000000000180 .L0 
+     /tmp/ccIfDxWg.s:254    .text._ZN12WorkerSemMax3runEv:000000000000002c .L0 
+     /tmp/ccIfDxWg.s:93     .rodata.str1.8:0000000000000000 .LC0
+     /tmp/ccIfDxWg.s:177    .text:0000000000000060 .L0 
+     /tmp/ccIfDxWg.s:96     .rodata.str1.8:0000000000000010 .LC1
+     /tmp/ccIfDxWg.s:189    .text:0000000000000084 .L0 
+     /tmp/ccIfDxWg.s:288    .text:00000000000000d4 .L0 
+     /tmp/ccIfDxWg.s:164    .text:000000000000004c .L11
+     /tmp/ccIfDxWg.s:156    .text:0000000000000048 .L7
+     /tmp/ccIfDxWg.s:126    .text:0000000000000020 .L8
+     /tmp/ccIfDxWg.s:146    .text:0000000000000038 .L9
+     /tmp/ccIfDxWg.s:199    .text:000000000000009c .L5
+     /tmp/ccIfDxWg.s:138    .text:000000000000002c .L10
+     /tmp/ccIfDxWg.s:301    .text:00000000000000f4 .L17
+     /tmp/ccIfDxWg.s:323    .text:0000000000000118 .L20
+     /tmp/ccIfDxWg.s:284    .text:00000000000000d4 .L24
+     /tmp/ccIfDxWg.s:346    .text:000000000000013c .L16
+     /tmp/ccIfDxWg.s:332    .text:0000000000000120 .L25
+     /tmp/ccIfDxWg.s:26     .text._ZN12WorkerSemMaxD2Ev:0000000000000010 .L0 
+     /tmp/ccIfDxWg.s:68     .text._ZN12WorkerSemMaxD0Ev:0000000000000018 .L0 
+     /tmp/ccIfDxWg.s:308    .text:0000000000000100 .LEHB0
+     /tmp/ccIfDxWg.s:259    .text:00000000000000b4 .LFB14
+     /tmp/ccIfDxWg.s:311    .text:0000000000000108 .LEHE0
+     /tmp/ccIfDxWg.s:314    .text:000000000000010c .LEHB1
+     /tmp/ccIfDxWg.s:320    .text:0000000000000114 .LEHE1
+     /tmp/ccIfDxWg.s:373    .text:0000000000000164 .L21
+     /tmp/ccIfDxWg.s:340    .text:0000000000000130 .LEHB2
+     /tmp/ccIfDxWg.s:355    .text:000000000000014c .LEHE2
+     /tmp/ccIfDxWg.s:383    .text:0000000000000178 .LEHB3
+     /tmp/ccIfDxWg.s:386    .text:0000000000000180 .LEHE3
+     /tmp/ccIfDxWg.s:1093   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/ccIfDxWg.s:2072   .debug_str:000000000000016e .LASF44
+     /tmp/ccIfDxWg.s:2052   .debug_str:00000000000000d4 .LASF45
+     /tmp/ccIfDxWg.s:2104   .debug_str:0000000000000340 .LASF46
+     /tmp/ccIfDxWg.s:1988   .debug_ranges:0000000000000000 .Ldebug_ranges0
+     /tmp/ccIfDxWg.s:2024   .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/ccIfDxWg.s:2082   .debug_str:0000000000000286 .LASF0
+     /tmp/ccIfDxWg.s:2066   .debug_str:0000000000000139 .LASF1
+     /tmp/ccIfDxWg.s:2060   .debug_str:0000000000000114 .LASF2
+     /tmp/ccIfDxWg.s:2038   .debug_str:000000000000005c .LASF4
+     /tmp/ccIfDxWg.s:2064   .debug_str:0000000000000127 .LASF3
+     /tmp/ccIfDxWg.s:2030   .debug_str:0000000000000020 .LASF5
+     /tmp/ccIfDxWg.s:2028   .debug_str:000000000000000d .LASF6
+     /tmp/ccIfDxWg.s:2054   .debug_str:00000000000000eb .LASF7
+     /tmp/ccIfDxWg.s:2096   .debug_str:00000000000002ee .LASF8
+GAS LISTING /tmp/ccIfDxWg.s 			page 14
+
+
+     /tmp/ccIfDxWg.s:2036   .debug_str:000000000000004e .LASF9
+     /tmp/ccIfDxWg.s:2138   .debug_str:0000000000000444 .LASF10
+     /tmp/ccIfDxWg.s:2056   .debug_str:00000000000000fe .LASF11
+     /tmp/ccIfDxWg.s:2124   .debug_str:00000000000003d8 .LASF12
+     /tmp/ccIfDxWg.s:2094   .debug_str:00000000000002de .LASF13
+     /tmp/ccIfDxWg.s:2068   .debug_str:000000000000014c .LASF14
+     /tmp/ccIfDxWg.s:2044   .debug_str:000000000000007f .LASF15
+     /tmp/ccIfDxWg.s:2098   .debug_str:00000000000002fe .LASF16
+     /tmp/ccIfDxWg.s:2088   .debug_str:00000000000002a9 .LASF17
+     /tmp/ccIfDxWg.s:2026   .debug_str:0000000000000000 .LASF18
+     /tmp/ccIfDxWg.s:2136   .debug_str:000000000000042c .LASF19
+     /tmp/ccIfDxWg.s:2118   .debug_str:00000000000003ac .LASF20
+     /tmp/ccIfDxWg.s:2108   .debug_str:000000000000036e .LASF21
+     /tmp/ccIfDxWg.s:2092   .debug_str:00000000000002bd .LASF47
+     /tmp/ccIfDxWg.s:2070   .debug_str:0000000000000158 .LASF48
+     /tmp/ccIfDxWg.s:2078   .debug_str:000000000000025d .LASF49
+     /tmp/ccIfDxWg.s:2114   .debug_str:0000000000000394 .LASF22
+     /tmp/ccIfDxWg.s:2100   .debug_str:0000000000000314 .LASF50
+     /tmp/ccIfDxWg.s:2058   .debug_str:000000000000010d .LASF51
+     /tmp/ccIfDxWg.s:2040   .debug_str:0000000000000063 .LASF28
+     /tmp/ccIfDxWg.s:2084   .debug_str:0000000000000293 .LASF30
+     /tmp/ccIfDxWg.s:2062   .debug_str:0000000000000122 .LASF23
+     /tmp/ccIfDxWg.s:2116   .debug_str:00000000000003a2 .LASF24
+     /tmp/ccIfDxWg.s:2102   .debug_str:000000000000032a .LASF25
+     /tmp/ccIfDxWg.s:49     .text._ZN12WorkerSemMaxD0Ev:0000000000000000 .LFB18
+     /tmp/ccIfDxWg.s:89     .text._ZN12WorkerSemMaxD0Ev:000000000000004c .LFE18
+     /tmp/ccIfDxWg.s:1804   .debug_loc:0000000000000000 .LLST1
+     /tmp/ccIfDxWg.s:65     .text._ZN12WorkerSemMaxD0Ev:0000000000000018 .LBB11
+     /tmp/ccIfDxWg.s:73     .text._ZN12WorkerSemMaxD0Ev:000000000000002c .LBE11
+     /tmp/ccIfDxWg.s:1822   .debug_loc:000000000000004c .LLST2
+     /tmp/ccIfDxWg.s:71     .text._ZN12WorkerSemMaxD0Ev:000000000000002c .LVL4
+     /tmp/ccIfDxWg.s:76     .text._ZN12WorkerSemMaxD0Ev:0000000000000038 .LVL5
+     /tmp/ccIfDxWg.s:2046   .debug_str:0000000000000095 .LASF26
+     /tmp/ccIfDxWg.s:11     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 .LFB16
+     /tmp/ccIfDxWg.s:40     .text._ZN12WorkerSemMaxD2Ev:0000000000000034 .LFE16
+     /tmp/ccIfDxWg.s:1833   .debug_loc:0000000000000082 .LLST0
+     /tmp/ccIfDxWg.s:29     .text._ZN12WorkerSemMaxD2Ev:0000000000000024 .LVL1
+     /tmp/ccIfDxWg.s:2112   .debug_str:0000000000000381 .LASF52
+     /tmp/ccIfDxWg.s:2034   .debug_str:0000000000000036 .LASF53
+     /tmp/ccIfDxWg.s:389    .text:0000000000000180 .LFE14
+     /tmp/ccIfDxWg.s:2110   .debug_str:0000000000000379 .LASF27
+     /tmp/ccIfDxWg.s:1847   .debug_loc:00000000000000bb .LLST10
+     /tmp/ccIfDxWg.s:285    .text:00000000000000d4 .LBB22
+     /tmp/ccIfDxWg.s:1863   .debug_loc:0000000000000105 .LLST11
+     /tmp/ccIfDxWg.s:319    .text:0000000000000114 .LVL32
+     /tmp/ccIfDxWg.s:310    .text:0000000000000108 .LVL30
+     /tmp/ccIfDxWg.s:381    .text:0000000000000174 .LVL42
+     /tmp/ccIfDxWg.s:327    .text:0000000000000118 .LBB26
+     /tmp/ccIfDxWg.s:350    .text:0000000000000144 .LBE26
+     /tmp/ccIfDxWg.s:1878   .debug_loc:000000000000014e .LLST12
+     /tmp/ccIfDxWg.s:342    .text:0000000000000138 .LVL35
+     /tmp/ccIfDxWg.s:354    .text:000000000000014c .LVL37
+     /tmp/ccIfDxWg.s:385    .text:0000000000000180 .LVL43
+     /tmp/ccIfDxWg.s:103    .text:0000000000000000 .LFB13
+     /tmp/ccIfDxWg.s:218    .text:00000000000000b4 .LFE13
+     /tmp/ccIfDxWg.s:1885   .debug_loc:0000000000000171 .LLST3
+     /tmp/ccIfDxWg.s:1899   .debug_loc:00000000000001aa .LLST4
+GAS LISTING /tmp/ccIfDxWg.s 			page 15
+
+
+     /tmp/ccIfDxWg.s:121    .text:0000000000000018 .LBB13
+     /tmp/ccIfDxWg.s:202    .text:000000000000009c .LBE13
+     /tmp/ccIfDxWg.s:1913   .debug_loc:00000000000001e3 .LLST5
+     /tmp/ccIfDxWg.s:1925   .debug_loc:000000000000021a .LLST6
+     /tmp/ccIfDxWg.s:1932   .debug_loc:000000000000023d .LLST7
+     /tmp/ccIfDxWg.s:143    .text:0000000000000034 .LBB17
+     /tmp/ccIfDxWg.s:157    .text:0000000000000048 .LBE17
+     /tmp/ccIfDxWg.s:1944   .debug_loc:0000000000000274 .LLST8
+     /tmp/ccIfDxWg.s:133    .text:0000000000000028 .LVL10
+     /tmp/ccIfDxWg.s:172    .text:000000000000005c .LVL16
+     /tmp/ccIfDxWg.s:179    .text:0000000000000070 .LVL18
+     /tmp/ccIfDxWg.s:186    .text:0000000000000084 .LVL19
+     /tmp/ccIfDxWg.s:191    .text:0000000000000094 .LVL20
+     /tmp/ccIfDxWg.s:225    .text._ZN12WorkerSemMax3runEv:0000000000000000 .LFB12
+     /tmp/ccIfDxWg.s:252    .text._ZN12WorkerSemMax3runEv:000000000000002c .LFE12
+     /tmp/ccIfDxWg.s:1955   .debug_loc:00000000000002aa .LLST9
+     /tmp/ccIfDxWg.s:241    .text._ZN12WorkerSemMax3runEv:000000000000001c .LVL25
+     /tmp/ccIfDxWg.s:2126   .debug_str:00000000000003e8 .LASF54
+     /tmp/ccIfDxWg.s:2120   .debug_str:00000000000003c5 .LASF29
+     /tmp/ccIfDxWg.s:2086   .debug_str:0000000000000299 .LASF31
+     /tmp/ccIfDxWg.s:2130   .debug_str:000000000000040b .LASF32
+     /tmp/ccIfDxWg.s:2128   .debug_str:00000000000003fe .LASF33
+     /tmp/ccIfDxWg.s:2048   .debug_str:00000000000000ab .LASF34
+     /tmp/ccIfDxWg.s:2032   .debug_str:0000000000000027 .LASF35
+     /tmp/ccIfDxWg.s:2132   .debug_str:0000000000000411 .LASF55
+     /tmp/ccIfDxWg.s:2074   .debug_str:0000000000000232 .LASF56
+     /tmp/ccIfDxWg.s:2050   .debug_str:00000000000000bf .LASF36
+     /tmp/ccIfDxWg.s:2106   .debug_str:000000000000035e .LASF37
+     /tmp/ccIfDxWg.s:2080   .debug_str:0000000000000275 .LASF38
+     /tmp/ccIfDxWg.s:2122   .debug_str:00000000000003cc .LASF39
+     /tmp/ccIfDxWg.s:2076   .debug_str:000000000000024a .LASF40
+     /tmp/ccIfDxWg.s:2134   .debug_str:0000000000000420 .LASF41
+     /tmp/ccIfDxWg.s:2090   .debug_str:00000000000002ae .LASF42
+     /tmp/ccIfDxWg.s:2042   .debug_str:0000000000000076 .LASF43
+     /tmp/ccIfDxWg.s:52     .text._ZN12WorkerSemMaxD0Ev:0000000000000000 .LVL2
+     /tmp/ccIfDxWg.s:84     .text._ZN12WorkerSemMaxD0Ev:0000000000000044 .LVL6
+     /tmp/ccIfDxWg.s:64     .text._ZN12WorkerSemMaxD0Ev:0000000000000018 .LVL3
+     /tmp/ccIfDxWg.s:15     .text._ZN12WorkerSemMaxD2Ev:0000000000000000 .LVL0
+     /tmp/ccIfDxWg.s:278    .text:00000000000000cc .LVL26
+     /tmp/ccIfDxWg.s:283    .text:00000000000000d4 .LVL27
+     /tmp/ccIfDxWg.s:368    .text:000000000000015c .LVL39
+     /tmp/ccIfDxWg.s:372    .text:0000000000000164 .LVL40
+     /tmp/ccIfDxWg.s:376    .text:0000000000000168 .LVL41
+     /tmp/ccIfDxWg.s:290    .text:00000000000000e0 .LVL28
+     /tmp/ccIfDxWg.s:313    .text:000000000000010c .LVL31
+     /tmp/ccIfDxWg.s:322    .text:0000000000000118 .LVL33
+     /tmp/ccIfDxWg.s:331    .text:0000000000000120 .LVL34
+     /tmp/ccIfDxWg.s:365    .text:0000000000000158 .LVL38
+     /tmp/ccIfDxWg.s:106    .text:0000000000000000 .LVL7
+     /tmp/ccIfDxWg.s:125    .text:0000000000000020 .LVL9
+     /tmp/ccIfDxWg.s:120    .text:0000000000000018 .LVL8
+     /tmp/ccIfDxWg.s:213    .text:00000000000000ac .LVL23
+     /tmp/ccIfDxWg.s:174    .text:0000000000000060 .LVL17
+     /tmp/ccIfDxWg.s:196    .text:0000000000000098 .LVL21
+     /tmp/ccIfDxWg.s:163    .text:000000000000004c .LVL15
+     /tmp/ccIfDxWg.s:198    .text:000000000000009c .LVL22
+     /tmp/ccIfDxWg.s:147    .text:0000000000000038 .LVL12
+GAS LISTING /tmp/ccIfDxWg.s 			page 16
+
+
+     /tmp/ccIfDxWg.s:155    .text:0000000000000048 .LVL14
+     /tmp/ccIfDxWg.s:228    .text._ZN12WorkerSemMax3runEv:0000000000000000 .LVL24
+     /tmp/ccIfDxWg.s:433    .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccIfDxWg.s:5      .text:0000000000000000 .Ltext0
+     /tmp/ccIfDxWg.s:427    .text:0000000000000180 .Letext0
+     /tmp/ccIfDxWg.s:127    .text:0000000000000020 .LBB14
+     /tmp/ccIfDxWg.s:160    .text:0000000000000048 .LBE14
+     /tmp/ccIfDxWg.s:168    .text:0000000000000054 .LBB20
+     /tmp/ccIfDxWg.s:201    .text:000000000000009c .LBE20
+     /tmp/ccIfDxWg.s:128    .text:0000000000000020 .LBB15
+     /tmp/ccIfDxWg.s:159    .text:0000000000000048 .LBE15
+     /tmp/ccIfDxWg.s:193    .text:0000000000000094 .LBB19
+     /tmp/ccIfDxWg.s:200    .text:000000000000009c .LBE19
+     /tmp/ccIfDxWg.s:279    .text:00000000000000cc .LBB21
+     /tmp/ccIfDxWg.s:326    .text:0000000000000118 .LBE21
+     /tmp/ccIfDxWg.s:377    .text:0000000000000168 .LBB27
+     /tmp/ccIfDxWg.s:387    .text:0000000000000180 .LBE27
+     /tmp/ccIfDxWg.s:292    .text:00000000000000e0 .LBE22
+     /tmp/ccIfDxWg.s:315    .text:000000000000010c .LBB25
+     /tmp/ccIfDxWg.s:325    .text:0000000000000118 .LBE25
+     /tmp/ccIfDxWg.s:392    .gcc_except_table:0000000000000000 .LLSDA14
+                           .group:0000000000000000 _ZN12WorkerSemMaxD5Ev
+
+UNDEFINED SYMBOLS
+_ZN6ThreadD2Ev
+_ZdlPv
+_Z15thread_dispatchv
+_Z11getThreadIdv
+_Z11printStringPKc
+_Z8printIntiii
+_Znwm
+_ZN6ThreadC2Ev
+_ZN6Thread5startEv
+_Z14thread_joinAllv
+_Unwind_Resume
+__gxx_personality_v0
